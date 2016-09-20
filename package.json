@@ -1,0 +1,28 @@
+{
+  "name": "homepage",
+  "version": "1.0.0",
+  "description": "my homepage",
+  "main": "index.js",
+  "scripts": {
+    "test": "hello"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reubenfb/homepage.git"
+  },
+  "keywords": [
+    "homepage"
+  ],
+  "author": "reuben fischer-baum",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/reubenfb/homepage/issues"
+  },
+  "homepage": "https://github.com/reubenfb/homepage#readme",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp-gh-pages": "^0.5.4"
+  }
+}
