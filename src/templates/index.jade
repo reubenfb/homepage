@@ -7,37 +7,25 @@ html
     h1 Reuben Fischer-Baum!
 
     - data = _.sortBy(data, date).reverse()
-    
+
+    mixin charts(data)
+      each graphic in data
+        a(href = "#{graphic.link}" target="_blank")
+          .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
+            .title
+              span #{graphic.title}
+            image.cutout(src="./images/#{graphic.image}")
+  
     .graphics-container
       .four-column.column-container
         - fourData = utils.reorderData(data, 4)
-        for graphic in fourData
-          a(href = "#{graphic.link}" target="_blank")
-            .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
-              .title
-                span #{graphic.title}
-              image.cutout(src="./images/se-asia.png")
+        +charts(fourData)
       .three-column.column-container
         - threeData = utils.reorderData(data, 3)
-        for graphic in threeData
-          a(href = "#{graphic.link}" target="_blank")
-            .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
-              .title
-                span #{graphic.title}
-              image.cutout(src="./images/se-asia.png")
+        +charts(threeData)
       .two-column.column-container
         - twoData = utils.reorderData(data, 2)
-        for graphic in twoData
-          a(href = "#{graphic.link}" target="_blank")
-            .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
-              .title
-                span #{graphic.title}
-              image.cutout(src="./images/se-asia.png")
+        +charts(twoData)
       .one-column.column-container
-        for graphic in data
-          a(href = "#{graphic.link}" target="_blank")
-            .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
-              .title
-                span #{graphic.title}
-              image.cutout(src="./images/se-asia.png")
+        +charts(data)
             
