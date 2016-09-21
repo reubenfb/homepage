@@ -1,74 +1,108 @@
-@import url("https://fonts.googleapis.com/css?family=Catamaran");
+@import url("https://fonts.googleapis.com/css?family=Catamaran:400,700");
 body {
+  text-align: center;
   font-family: 'Catamaran'; }
+  @media screen and (max-width: 374px) {
+    body {
+      margin: 5px; } }
   body a {
     color: #222; }
-  body h1 {
-    font-weight: 700; }
-  body .graphics-container {
-    height: 100%; }
-    body .graphics-container .column-container {
-      display: none;
-      -moz-column-gap: 15px;
-      -webkit-column-gap: 15px;
-      column-gap: 15px; }
-      body .graphics-container .column-container.four-column {
-        -moz-column-count: 4;
-        -webkit-column-count: 4;
-        column-count: 4;
-        width: 1285px; }
-        @media screen and (min-width: 1285px) {
-          body .graphics-container .column-container.four-column {
-            display: block; } }
-      body .graphics-container .column-container.three-column {
-        -moz-column-count: 3;
-        -webkit-column-count: 3;
-        column-count: 3;
-        width: 960px; }
-        @media screen and (min-width: 960px) and (max-width: 1284px) {
-          body .graphics-container .column-container.three-column {
-            display: block; } }
-      body .graphics-container .column-container.two-column {
-        -moz-column-count: 2;
-        -webkit-column-count: 2;
-        column-count: 2;
-        width: 635px; }
-        @media screen and (min-width: 635px) and (max-width: 959px) {
-          body .graphics-container .column-container.two-column {
-            display: block; } }
-      body .graphics-container .column-container.one-column {
-        -moz-column-count: 1;
-        -webkit-column-count: 1;
-        column-count: 1;
-        width: 310px; }
-        @media screen and (max-width: 634px) {
-          body .graphics-container .column-container.one-column {
-            display: block; } }
-      body .graphics-container .column-container .graphic {
-        width: 308px;
-        height: 308px;
-        border: 1px solid #222;
-        margin-bottom: 15px;
-        position: relative;
-        break-inside: avoid; }
-        body .graphics-container .column-container .graphic .title {
-          position: absolute;
-          top: 10px;
-          left: 10px;
-          width: calc(100% - 20px);
-          font-size: 18px;
-          line-height: 20px; }
-        body .graphics-container .column-container .graphic .cutout {
-          opacity: 0.2;
-          width: 100%;
-          height: 100%;
-          background-color: #ccc; }
-        body .graphics-container .column-container .graphic.static {
-          height: 146.5px; }
-          body .graphics-container .column-container .graphic.static .cutout {
-            height: 146.5px; }
-        body .graphics-container .column-container .graphic:hover .cutout {
-          opacity: 1; }
-        body .graphics-container .column-container .graphic:hover .title {
-          color: #fff;
-          background-color: #222; }
+  body .intro {
+    text-align: left;
+    padding-bottom: 15px;
+    line-height: 1.4; }
+    body .intro h1 {
+      font-weight: 700;
+      margin: 0px;
+      font-size: 34px; }
+      @media screen and (max-width: 375px) {
+        body .intro h1 {
+          font-size: 30px; } }
+    body .intro p {
+      margin-top: 0px;
+      font-size: 18px; }
+      @media screen and (max-width: 375px) {
+        body .intro p {
+          font-size: 16px; } }
+  body .top-container {
+    display: inline-block; }
+    @media screen and (min-width: 1289px) {
+      body .top-container {
+        width: 1289px; } }
+    @media screen and (min-width: 963px) and (max-width: 1288px) {
+      body .top-container {
+        width: 963px; } }
+    @media screen and (min-width: 637px) and (max-width: 962px) {
+      body .top-container {
+        width: 637px; } }
+    @media screen and (max-width: 636px) {
+      body .top-container {
+        width: 100%; } }
+    body .top-container .graphics-container {
+      height: 100%;
+      display: inline-block; }
+      body .top-container .graphics-container .column-container {
+        display: none;
+        -moz-column-gap: 15px;
+        -webkit-column-gap: 15px;
+        column-gap: 15px; }
+        body .top-container .graphics-container .column-container.four-column {
+          -moz-column-count: 4;
+          -webkit-column-count: 4;
+          column-count: 4;
+          width: 1289px; }
+          @media screen and (min-width: 1289px) {
+            body .top-container .graphics-container .column-container.four-column {
+              display: block; } }
+        body .top-container .graphics-container .column-container.three-column {
+          -moz-column-count: 3;
+          -webkit-column-count: 3;
+          column-count: 3;
+          width: 963px; }
+          @media screen and (min-width: 963px) and (max-width: 1288px) {
+            body .top-container .graphics-container .column-container.three-column {
+              display: block; } }
+        body .top-container .graphics-container .column-container.two-column {
+          -moz-column-count: 2;
+          -webkit-column-count: 2;
+          column-count: 2;
+          width: 637px; }
+          @media screen and (min-width: 637px) and (max-width: 962px) {
+            body .top-container .graphics-container .column-container.two-column {
+              display: block; } }
+        body .top-container .graphics-container .column-container.one-column {
+          -moz-column-count: 1;
+          -webkit-column-count: 1;
+          column-count: 1;
+          width: 311px; }
+          @media screen and (max-width: 636px) {
+            body .top-container .graphics-container .column-container.one-column {
+              display: block; } }
+        body .top-container .graphics-container .column-container .graphic {
+          width: 309px;
+          height: 309px;
+          border: 1px solid #222;
+          margin-bottom: 15px;
+          position: relative;
+          break-inside: avoid; }
+          body .top-container .graphics-container .column-container .graphic .title {
+            text-align: left;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: calc(100% - 20px);
+            font-size: 18px;
+            line-height: 20px; }
+          body .top-container .graphics-container .column-container .graphic .cutout {
+            opacity: 0.2;
+            width: 100%;
+            height: 100%;
+            background-color: #ccc; }
+          body .top-container .graphics-container .column-container .graphic.static {
+            height: 146px; }
+            body .top-container .graphics-container .column-container .graphic.static .cutout {
+              height: 146px; }
+          body .top-container .graphics-container .column-container .graphic:hover .cutout {
+            opacity: 1; }
+          body .top-container .graphics-container .column-container .graphic:hover .title {
+            opacity: 0; }
