@@ -19,7 +19,7 @@ gulp.task('webserver', function() {
 gulp.task('jade', function() {
 
   var locals = {
-    data: require('./data/test.json'),
+    data: require('./data/data.json'),
     _: _
   }
  

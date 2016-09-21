@@ -5,4 +5,9 @@ html
     link(rel='stylesheet', href='app.css')
   body
     h1 Reuben Fischer-Baum!
-    h2 #{data[0].team1}
+
+    - data = _.sortBy(data, date).reverse()
+    for graphic in data
+      .graphic-container
+        | #{graphic.date}
+      
