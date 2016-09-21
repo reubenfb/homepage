@@ -3,7 +3,10 @@ var deploy = require('gulp-gh-pages');
 var webserver = require('gulp-webserver')
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
+var concat = require('gulp-concat');
+
 var _ = require('underscore');
+var utils = require('./src/js/utils.js');
 
 
 gulp.task('webserver', function() {
@@ -20,7 +23,8 @@ gulp.task('jade', function() {
 
   var locals = {
     data: require('./data/data.json'),
-    _: _
+    _: _,
+    utils: utils
   }
  
   gulp.src('./src/templates/*.jade')
@@ -36,10 +40,20 @@ gulp.task('sass', function () {
     .pipe(gulp.dest('./public/'));
 });
 
+gulp.task('scripts', function() {
+  return gulp.src('./src/js/*.js')
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest('./public/'));
+});
+
 gulp.task('deploy', ['build'], function () {
   return gulp.src("./public/**/*")
     .pipe(deploy())
 });
 
-gulp.task('build', ['jade', 'sass'])
-gulp.task('default', ['build', 'webserver']);
+gulp.task('watch', function() {
+    gulp.watch('./src/stylesheets/*.scss', ['sass']);
+});
+
+gulp.task('build', ['jade', 'sass', 'scripts'])
+gulp.task('default', ['build', 'watch', 'webserver']);

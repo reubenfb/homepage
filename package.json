@@ -21,6 +21,7 @@
   "homepage": "https://github.com/reubenfb/homepage#readme",
   "dependencies": {
     "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-jade": "^1.1.0",
     "gulp-sass": "^2.3.2",
     "tabletop": "^1.4.3",

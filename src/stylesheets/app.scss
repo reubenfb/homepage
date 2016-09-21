@@ -1,3 +1,83 @@
-h1 {
-  color: red;
+@import url('https://fonts.googleapis.com/css?family=Catamaran');
+
+body {
+  font-family: 'Catamaran';
+  //-webkit-font-smoothing: antialiased;
+  a {
+    color: #222;
+  }
+  h1 {
+    font-weight: 700;
+  }
+  .graphics-container {
+    height: 100%;
+    .column-container {
+      display: none;
+      column-gap: 15px;
+      &.four-column {
+        width: 1285px;
+        column-count: 4;
+        @media screen and (min-width: 1285px) {
+          display: block;
+        }
+      }
+      &.three-column {
+        width: 960px;
+        column-count: 3;
+        @media screen and (min-width: 960px) and (max-width: 1284px) {
+          display: block;
+        }
+      }
+      &.two-column {
+        width: 635px;
+        column-count: 2;
+        @media screen and (min-width: 635px) and (max-width: 959px) {
+          display: block;
+        }
+      }
+      &.one-column {
+        column-count: 1;
+        @media screen and (max-width: 634px) {
+          display: block;
+        }
+      }
+      .graphic {
+        width: 308px;
+        height: 308px;
+        border: 1px solid #222;
+        margin-bottom: 15px;
+        position: relative;
+        break-inside: avoid;
+        .title {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: calc(100% - 20px);
+          font-size: 18px;
+          line-height: 20px;
+        }
+        .cutout {
+          opacity: 0.2;
+          width: 100%;
+          height: 100%;
+          background-color: #ccc;
+        }
+        &.static {
+          height: 146.5px;
+          .cutout {
+            height: 146.5px;
+          }
+        }
+        &:hover {
+          .cutout {
+            opacity: 1;
+          }
+          .title {
+            color: #fff;
+            background-color: #222;
+          }
+        }
+      }
+    }
+  }
 }
