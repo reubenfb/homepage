@@ -4,6 +4,7 @@ var webserver = require('gulp-webserver')
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
+var image = require('gulp-image');
 
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
@@ -46,6 +47,12 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./public/'));
 });
 
+gulp.task('images', function () {
+  gulp.src('./src/images/*')
+    .pipe(image())
+    .pipe(gulp.dest('./public/images/'));
+});
+
 gulp.task('deploy', ['build'], function () {
   return gulp.src("./public/**/*")
     .pipe(deploy())
@@ -55,5 +62,5 @@ gulp.task('watch', function() {
     gulp.watch('./src/stylesheets/*.scss', ['sass']);
 });
 
-gulp.task('build', ['jade', 'sass', 'scripts'])
+gulp.task('build', ['sass', 'scripts', 'images', 'jade'])
 gulp.task('default', ['build', 'watch', 'webserver']);
