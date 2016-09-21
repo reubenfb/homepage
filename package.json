@@ -20,7 +20,10 @@
   },
   "homepage": "https://github.com/reubenfb/homepage#readme",
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-sass": "^2.3.2",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "gulp-gh-pages": "^0.5.4",

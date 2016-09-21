@@ -1,6 +1,9 @@
 var gulp = require('gulp');
 var deploy = require('gulp-gh-pages');
 var webserver = require('gulp-webserver')
+var jade = require('gulp-jade');
+var sass = require('gulp-sass');
+var _ = require('underscore');
 
 
 gulp.task('webserver', function() {
@@ -13,9 +16,30 @@ gulp.task('webserver', function() {
     }));
 });
 
-gulp.task('deploy', function () {
+gulp.task('jade', function() {
+
+  var locals = {
+    data: require('./data/test.json'),
+    _: _
+  }
+ 
+  gulp.src('./src/templates/*.jade')
+    .pipe(jade({
+      locals: locals
+    }))
+    .pipe(gulp.dest('./public/'))
+});
+
+gulp.task('sass', function () {
+  return gulp.src('./src/stylesheets/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(gulp.dest('./public/'));
+});
+
+gulp.task('deploy', ['build'], function () {
   return gulp.src("./public/**/*")
     .pipe(deploy())
 });
 
-gulp.task('default', ['webserver']);
+gulp.task('build', ['jade', 'sass'])
+gulp.task('default', ['build', 'webserver']);
