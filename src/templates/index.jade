@@ -5,28 +5,32 @@ html
     link(rel='stylesheet', href='app.css')
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
   body
-    h1 Reuben Fischer-Baum!
+    .top-container
+      .intro
+        h1 Reuben Fischer-Baum
+        p
+          | I'm a visual journalist at FiveThirtyEight, and previously worked at Deadspin. You can find me @reubenfb or reach me at reuben.fischerbaum [at] gmail.com. I report, make graphics and design interactives -- some of my projects are below.
 
-    - data = _.sortBy(data, date).reverse()
+      - data = _.sortBy(data, date).reverse()
 
-    mixin charts(data)
-      each graphic in data
-        a(href = "#{graphic.link}" target="_blank")
-          .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
-            .title
-              span #{graphic.title}
-            image.cutout(src="./images/#{graphic.image}")
-  
-    .graphics-container
-      .four-column.column-container
-        - fourData = utils.reorderData(data, 4)
-        +charts(fourData)
-      .three-column.column-container
-        - threeData = utils.reorderData(data, 3)
-        +charts(threeData)
-      .two-column.column-container
-        - twoData = utils.reorderData(data, 2)
-        +charts(twoData)
-      .one-column.column-container
-        +charts(data)
-            
+      mixin charts(data)
+        each graphic in data
+          a(href = "#{graphic.link}" target="_blank")
+            .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
+              .title
+                span #{graphic.title}
+              image.cutout(src="./images/#{graphic.image}")
+    
+      .graphics-container
+        .four-column.column-container
+          - fourData = utils.reorderData(data, 4)
+          +charts(fourData)
+        .three-column.column-container
+          - threeData = utils.reorderData(data, 3)
+          +charts(threeData)
+        .two-column.column-container
+          - twoData = utils.reorderData(data, 2)
+          +charts(twoData)
+        .one-column.column-container
+          +charts(data)
+              
