@@ -1,2 +1,74 @@
-h1 {
-  color: red; }
+@import url("https://fonts.googleapis.com/css?family=Catamaran");
+body {
+  font-family: 'Catamaran'; }
+  body a {
+    color: #222; }
+  body h1 {
+    font-weight: 700; }
+  body .graphics-container {
+    height: 100%; }
+    body .graphics-container .column-container {
+      display: none;
+      -moz-column-gap: 15px;
+      -webkit-column-gap: 15px;
+      column-gap: 15px; }
+      body .graphics-container .column-container.four-column {
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
+        column-count: 4;
+        width: 1285px; }
+        @media screen and (min-width: 1285px) {
+          body .graphics-container .column-container.four-column {
+            display: block; } }
+      body .graphics-container .column-container.three-column {
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
+        column-count: 3;
+        width: 960px; }
+        @media screen and (min-width: 960px) and (max-width: 1284px) {
+          body .graphics-container .column-container.three-column {
+            display: block; } }
+      body .graphics-container .column-container.two-column {
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
+        column-count: 2;
+        width: 635px; }
+        @media screen and (min-width: 635px) and (max-width: 959px) {
+          body .graphics-container .column-container.two-column {
+            display: block; } }
+      body .graphics-container .column-container.one-column {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
+        column-count: 1;
+        width: 310px; }
+        @media screen and (max-width: 634px) {
+          body .graphics-container .column-container.one-column {
+            display: block; } }
+      body .graphics-container .column-container .graphic {
+        width: 308px;
+        height: 308px;
+        border: 1px solid #222;
+        margin-bottom: 15px;
+        position: relative;
+        break-inside: avoid; }
+        body .graphics-container .column-container .graphic .title {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          width: calc(100% - 20px);
+          font-size: 18px;
+          line-height: 20px; }
+        body .graphics-container .column-container .graphic .cutout {
+          opacity: 0.2;
+          width: 100%;
+          height: 100%;
+          background-color: #ccc; }
+        body .graphics-container .column-container .graphic.static {
+          height: 146.5px; }
+          body .graphics-container .column-container .graphic.static .cutout {
+            height: 146.5px; }
+        body .graphics-container .column-container .graphic:hover .cutout {
+          opacity: 1; }
+        body .graphics-container .column-container .graphic:hover .title {
+          color: #fff;
+          background-color: #222; }
