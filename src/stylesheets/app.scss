@@ -13,9 +13,13 @@ body {
     height: 100%;
     .column-container {
       display: none;
+      -moz-column-gap: 15px;
+      -webkit-column-gap: 15px;
       column-gap: 15px;
       &.four-column {
         width: 1285px;
+        -moz-column-count: 4;
+        -webkit-column-count: 4;
         column-count: 4;
         @media screen and (min-width: 1285px) {
           display: block;
@@ -23,6 +27,8 @@ body {
       }
       &.three-column {
         width: 960px;
+        -moz-column-count: 3;
+        -webkit-column-count: 3;
         column-count: 3;
         @media screen and (min-width: 960px) and (max-width: 1284px) {
           display: block;
@@ -30,12 +36,16 @@ body {
       }
       &.two-column {
         width: 635px;
+        -moz-column-count: 2;
+        -webkit-column-count: 2;
         column-count: 2;
         @media screen and (min-width: 635px) and (max-width: 959px) {
           display: block;
         }
       }
       &.one-column {
+        -moz-column-count: 1;
+        -webkit-column-count: 1;
         column-count: 1;
         @media screen and (max-width: 634px) {
           display: block;
