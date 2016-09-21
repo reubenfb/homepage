@@ -4,7 +4,7 @@
   -moz-column-count: $colNum;
   -webkit-column-count: $colNum;
   column-count: $colNum;
-  width: $colNum * 310px + 15px * ($colNum - 1);
+  width: $colNum * 311px + 15px * ($colNum - 1);
 }
 
 body {
@@ -25,31 +25,31 @@ body {
       column-gap: 15px;
       &.four-column {
         @include colParams(4);
-        @media screen and (min-width: 1285px) {
+        @media screen and (min-width: 1289px) {
           display: block;
         }
       }
       &.three-column {
         @include colParams(3);
-        @media screen and (min-width: 960px) and (max-width: 1284px) {
+        @media screen and (min-width: 963px) and (max-width: 1288px) {
           display: block;
         }
       }
       &.two-column {
         @include colParams(2);
-        @media screen and (min-width: 635px) and (max-width: 959px) {
+        @media screen and (min-width: 637px) and (max-width: 962px) {
           display: block;
         }
       }
       &.one-column {
         @include colParams(1);
-        @media screen and (max-width: 634px) {
+        @media screen and (max-width: 636px) {
           display: block;
         }
       }
       .graphic {
-        width: 308px;
-        height: 308px;
+        width: 309px;
+        height: 309px;
         border: 1px solid #222;
         margin-bottom: 15px;
         position: relative;
@@ -69,9 +69,9 @@ body {
           background-color: #ccc;
         }
         &.static {
-          height: 146.5px;
+          height: 146px;
           .cutout {
-            height: 146.5px;
+            height: 146px;
           }
         }
         &:hover {
