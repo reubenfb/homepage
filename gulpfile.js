@@ -5,7 +5,7 @@ var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var image = require('gulp-image');
-var del = require('del');
+var runSequence = require('run-sequence');
 
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
@@ -48,21 +48,19 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('clean:images', function() {
-  return del([
-    './public/images/*.png'
-  ])
-});
-
-gulp.task('images', ['clean:images'], function () {
+gulp.task('images', function () {
   gulp.src('./src/images/*.png')
     .pipe(image())
     .pipe(gulp.dest('./public/images/'));
 });
 
-gulp.task('deploy', ['build', 'images'], function () {
+gulp.task('git', function (done) {
   return gulp.src("./public/**/*")
     .pipe(deploy())
+});
+
+gulp.task('deploy', function(done){
+  runSequence('images', 'build', 'git', done);
 });
 
 gulp.task('watch', function() {
