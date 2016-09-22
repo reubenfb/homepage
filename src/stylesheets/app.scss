@@ -19,8 +19,8 @@ body {
   }
   .intro {
     text-align: left;
-    padding: 40px 0px;
-    line-height: 1.4;
+    padding: 45px 0px 30px 0px;
+    line-height: 1.5;
     h1 {
       font-family: 'Roboto Mono';
       font-weight: 700;
@@ -32,9 +32,10 @@ body {
       }
     }
     p {
-      max-width: 950px;
-      margin-top: 15px;
-      font-size: 18px;
+      max-width: 850px;
+      margin-top: 10px;
+      font-size: 21px;
+      padding-left: 3px;
       @media screen and (max-width: 375px){
         font-size: 16px;
       }
