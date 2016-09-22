@@ -15,7 +15,7 @@ module.exports = {
 
       if(i === 0){
         colArray[0].push(chart);
-        counter[0] = chart.interactive === "TRUE" ? counter[0] + 2 : counter[columnCount] + 1;
+        counter[0] = chart.highlight === "TRUE" ? counter[0] + 2 : counter[columnCount] + 1;
       }
       else {
         assignColumn();
@@ -27,7 +27,7 @@ module.exports = {
 
         if(counter[columnCount] < counter[prevColumn] || (columnCount === 0 && counter[columnCount] === counter[prevColumn])){
           colArray[columnCount].push(chart);
-          counter[columnCount] = chart.interactive === "TRUE" ? counter[columnCount] + 2 : counter[columnCount] + 1;
+          counter[columnCount] = chart.highlight === "TRUE" ? counter[columnCount] + 2 : counter[columnCount] + 1;
           columnCount = columnCount + 1 < columns ? columnCount + 1 : 0;
           return;
         } else {

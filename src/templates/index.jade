@@ -16,7 +16,7 @@ html
       mixin charts(data)
         each graphic in data
           a(href = "#{graphic.link}" target="_blank")
-            .graphic(class = "#{graphic.interactive === 'TRUE' ? 'interactive' : 'static'}")
+            .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'}")
               .title
                 span #{graphic.title}
               image.cutout(src="./images/#{graphic.image}")
