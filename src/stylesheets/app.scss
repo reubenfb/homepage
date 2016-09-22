@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,700');
-@import url('https://fonts.googleapis.com/css?family=Cousine:400,700');
-
-$mono: 'Cousine';
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:700');
 
 @mixin colParams($colNum){
   -moz-column-count: $colNum;
@@ -29,7 +27,7 @@ body {
       padding: 25px 0px 20px 0px;
     }
     h1 {
-      font-family: $mono;
+      font-family: 'Roboto Mono';
       font-weight: 700;
       margin: 0px;
       font-size: 48px;
@@ -44,6 +42,7 @@ body {
       margin-top: 20px;
       font-size: 21px;
       padding-left: 3px;
+      font-weight: 300;
       .orange {
         color: #ff5a00;
         font-weight: 700;
@@ -121,7 +120,7 @@ body {
             position: absolute;
           }
           .title {
-            font-family: $mono;
+            //font-family: $mono;
             font-weight: 400;
             text-align: left;
             position: absolute;
