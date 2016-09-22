@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Lato:300,400");
-@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:700");
+@import url("https://fonts.googleapis.com/css?family=Cousine:400,700");
 body {
   text-align: center;
   font-family: 'Lato';
@@ -18,7 +18,7 @@ body {
       body .intro {
         padding: 25px 0px 20px 0px; } }
     body .intro h1 {
-      font-family: 'Roboto Mono';
+      font-family: "Cousine";
       font-weight: 700;
       margin: 0px;
       font-size: 48px;
@@ -112,7 +112,7 @@ body {
             width: 100%;
             position: absolute; }
           body .top-container .graphics-container .column-container .graphic .title {
-            font-weight: 400;
+            font-family: "Cousine";
             text-align: left;
             position: absolute;
             top: 12px;
