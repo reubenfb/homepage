@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:300,700");
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400");
 @import url("https://fonts.googleapis.com/css?family=Roboto+Mono:700");
 body {
   text-align: center;
@@ -31,7 +31,8 @@ body {
       max-width: 1030px;
       margin-top: 20px;
       font-size: 21px;
-      padding-left: 3px; }
+      padding-left: 3px;
+      font-weight: 300; }
       body .intro p .orange {
         color: #ff5a00;
         font-weight: 700; }
@@ -97,33 +98,39 @@ body {
             body .top-container .graphics-container .column-container.one-column {
               display: block; } }
         body .top-container .graphics-container .column-container .graphic {
-          border-radius: 10px;
+          border-radius: 12px;
           overflow: hidden;
           width: 309px;
           height: 309px;
-          border: 2px solid #999;
+          border: 2px solid #ccc;
           margin-bottom: 15px;
           position: relative;
           break-inside: avoid; }
+          body .top-container .graphics-container .column-container .graphic .filter {
+            background-color: rgba(255, 255, 255, 0.8);
+            height: 100%;
+            width: 100%;
+            position: absolute; }
           body .top-container .graphics-container .column-container .graphic .title {
-            font-weight: 700;
+            font-weight: 400;
             text-align: left;
             position: absolute;
-            top: 10px;
-            left: 10px;
-            width: calc(100% - 20px);
-            font-size: 16px;
-            line-height: 20px; }
+            top: 12px;
+            left: 12px;
+            width: calc(100% - 24px);
+            font-size: 17px;
+            line-height: 1.4;
+            color: #000; }
           body .top-container .graphics-container .column-container .graphic .cutout {
-            opacity: 0.2;
             width: 100%;
-            height: 100%;
-            background-color: #ccc; }
+            height: 100%; }
           body .top-container .graphics-container .column-container .graphic.small {
             height: 145px; }
             body .top-container .graphics-container .column-container .graphic.small .cutout {
               height: 145px; }
-          body .top-container .graphics-container .column-container .graphic:hover .cutout {
-            opacity: 1; }
-          body .top-container .graphics-container .column-container .graphic:hover .title {
-            opacity: 0; }
+          body .top-container .graphics-container .column-container .graphic:hover {
+            border-color: #000; }
+            body .top-container .graphics-container .column-container .graphic:hover .filter {
+              background-color: rgba(255, 255, 255, 0); }
+            body .top-container .graphics-container .column-container .graphic:hover .title {
+              opacity: 0; }
