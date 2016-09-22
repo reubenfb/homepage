@@ -1,35 +1,39 @@
-@import url('https://fonts.googleapis.com/css?family=Catamaran:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:700');
 
 @mixin colParams($colNum){
   -moz-column-count: $colNum;
   -webkit-column-count: $colNum;
   column-count: $colNum;
-  width: $colNum * 311px + 15px * ($colNum - 1);
+  width: $colNum * 313px + 15px * ($colNum - 1);
 }
 
 body {
   text-align: center;
-  font-family: 'Catamaran';
+  font-family: 'Lato';
   @media screen and (max-width: 374px){
-    margin: 5px;
+    margin: 3px;
   }
   a {
     color: #222;
   }
   .intro {
     text-align: left;
-    padding-bottom: 15px;
+    padding: 40px 0px;
     line-height: 1.4;
     h1 {
+      font-family: 'Roboto Mono';
       font-weight: 700;
       margin: 0px;
-      font-size: 34px;
+      font-size: 48px;
+      text-transform: uppercase;
       @media screen and (max-width: 375px){
         font-size: 30px;
       }
     }
     p {
-      margin-top: 0px;
+      max-width: 950px;
+      margin-top: 15px;
       font-size: 18px;
       @media screen and (max-width: 375px){
         font-size: 16px;
@@ -38,16 +42,16 @@ body {
   }
   .top-container {
     display: inline-block;
-    @media screen and (min-width: 1289px) {
-      width: 1289px;
+    @media screen and (min-width: 1297px) {
+      width: 1297px;
     }
-    @media screen and (min-width: 963px) and (max-width: 1288px) {
-      width: 963px;
+    @media screen and (min-width: 969px) and (max-width: 1296px) {
+      width: 969px;
     }
-    @media screen and (min-width: 637px) and (max-width: 962px) {
-      width: 637px;
+    @media screen and (min-width: 641px) and (max-width: 968px) {
+      width: 641px;
     }
-    @media screen and (max-width: 636px) {
+    @media screen and (max-width: 640px) {
       width: 100%;
     }
     .graphics-container {
@@ -83,19 +87,22 @@ body {
           }
         }
         .graphic {
+          border-radius: 10px;
+          overflow: hidden;
           width: 309px;
           height: 309px;
-          border: 1px solid #222;
+          border: 2px solid #999;
           margin-bottom: 15px;
           position: relative;
           break-inside: avoid;
           .title {
+            font-weight: 700;
             text-align: left;
             position: absolute;
             top: 10px;
             left: 10px;
             width: calc(100% - 20px);
-            font-size: 18px;
+            font-size: 16px;
             line-height: 20px;
           }
           .cutout {
@@ -105,9 +112,9 @@ body {
             background-color: #ccc;
           }
           &.static {
-            height: 146px;
+            height: 145px;
             .cutout {
-              height: 146px;
+              height: 145px;
             }
           }
           &:hover {
