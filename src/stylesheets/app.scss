@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,700');
-@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:700');
+@import url('https://fonts.googleapis.com/css?family=Cousine:400,700');
+
+$mono: 'Cousine';
 
 @mixin colParams($colNum){
   -moz-column-count: $colNum;
@@ -27,7 +29,7 @@ body {
       padding: 25px 0px 20px 0px;
     }
     h1 {
-      font-family: 'Roboto Mono';
+      font-family: $mono;
       font-weight: 700;
       margin: 0px;
       font-size: 48px;
@@ -104,29 +106,35 @@ body {
           }
         }
         .graphic {
-          border-radius: 10px;
+          border-radius: 12px;
           overflow: hidden;
           width: 309px;
           height: 309px;
-          border: 2px solid #999;
+          border: 2px solid #ccc;
           margin-bottom: 15px;
           position: relative;
           break-inside: avoid;
+          .filter {
+            background-color: rgba(255, 255, 255, 0.85);
+            height: 100%;
+            width: 100%;
+            position: absolute;
+          }
           .title {
-            font-weight: 700;
+            font-family: $mono;
+            font-weight: 400;
             text-align: left;
             position: absolute;
-            top: 10px;
-            left: 10px;
-            width: calc(100% - 20px);
-            font-size: 16px;
-            line-height: 20px;
+            top: 12px;
+            left: 12px;
+            width: calc(100% - 24px);
+            font-size: 17px;
+            line-height: 1.4;
+            color: #000;
           }
           .cutout {
-            opacity: 0.2;
             width: 100%;
             height: 100%;
-            background-color: #ccc;
           }
           &.small {
             height: 145px;
@@ -135,8 +143,9 @@ body {
             }
           }
           &:hover {
-            .cutout {
-              opacity: 1;
+            border-color: #000;
+            .filter {
+              background-color: rgba(255,255,255,0);
             }
             .title {
               opacity: 0;

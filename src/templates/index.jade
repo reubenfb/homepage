@@ -23,6 +23,7 @@ html
         each graphic in data
           a(href = "#{graphic.link}" target="_blank")
             .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'}")
+              .filter
               .title
                 span #{graphic.title}
               image.cutout(src="./images/#{graphic.image}")
