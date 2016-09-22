@@ -5,6 +5,7 @@ var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var image = require('gulp-image');
+var del = require('del');
 
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
@@ -47,7 +48,13 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('images', function () {
+gulp.task('clean:images', function() {
+  return del([
+    './public/images/*.png'
+  ])
+});
+
+gulp.task('images', ['clean:images'], function () {
   gulp.src('./src/images/*.png')
     .pipe(image())
     .pipe(gulp.dest('./public/images/'));
