@@ -9,7 +9,13 @@ html
       .intro
         h1 Reuben Fischer-Baum
         p
-          | I'm a visual journalist at FiveThirtyEight, and previously worked at Deadspin. You can find me @reubenfb or reach me at reuben.fischerbaum [at] gmail.com. I report, make graphics and design interactives -- some of my projects are below.
+          | I'm a visual journalist at 
+          a.orange(href = 'http://fivethirtyeight.com/' target='_blank') FiveThirtyEight
+          | , previously at  
+          a.orange(href = 'http://deadspin.com/' target='_blank') Deadspin
+          | . You can find me 
+          a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
+          |  or reach me at reuben.fischerbaum [at] gmail.com. I write, make graphics, and develop interactives — some of my projects are below.
 
       - data = _.sortBy(data, date).reverse()
 
