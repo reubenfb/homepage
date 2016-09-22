@@ -37,7 +37,7 @@
   {
     "date": "5/9/2013",
     "title": "Is Your State's Highest-Paid Employee A Coach? (Probably)",
-    "image": "se-asia.png",
+    "image": "highest-paid.png",
     "link": "http://deadspin.com/infographic-is-your-states-highest-paid-employee-a-co-489635228",
     "highlight": "TRUE"
   },
@@ -65,7 +65,7 @@
   {
     "date": "10/18/2013",
     "title": "Six Decades of the Most Popular Names for Girls, State-by-State",
-    "image": "se-asia.png",
+    "image": "popular-names.png",
     "link": "http://jezebel.com/map-sixty-years-of-the-most-popular-names-for-girls-s-1443501909",
     "highlight": "TRUE"
   },
@@ -86,7 +86,7 @@
   {
     "date": "1/29/2014",
     "title": "This Is the Williamsburg of Your City: A Map of Hip America",
-    "image": "se-asia.png",
+    "image": "williamsburg.png",
     "link": "http://gawker.com/this-is-the-williamsburg-of-your-city-a-map-of-hip-ame-1460243062",
     "highlight": "FALSE"
   },
@@ -114,7 +114,7 @@
   {
     "date": "5/8/2014",
     "title": "Which Words Are Used To Describe White And Black NFL Prospects?",
-    "image": "se-asia.png",
+    "image": "draft-words.png",
     "link": "http://deadspin.com/which-words-are-used-to-describe-white-and-black-nfl-pr-1573683214",
     "highlight": "TRUE"
   },
@@ -135,7 +135,7 @@
   {
     "date": "8/19/2014",
     "title": "Nobody Knows How Many Americans The Police Kill Each Year",
-    "image": "se-asia.png",
+    "image": "police-killings.png",
     "link": "http://fivethirtyeight.com/features/how-many-americans-the-police-kill-each-year/",
     "highlight": "TRUE"
   },
@@ -156,7 +156,7 @@
   {
     "date": "11/4/2014",
     "title": "2014 Senate Forecast",
-    "image": "se-asia.png",
+    "image": "senate-forecast.png",
     "link": "http://fivethirtyeight.com/interactives/senate-forecast/",
     "highlight": "FALSE"
   },
@@ -184,21 +184,21 @@
   {
     "date": "2/25/2015",
     "title": "How Madden Ratings Are Made",
-    "image": "se-asia.png",
+    "image": "madden-ratings.png",
     "link": "http://fivethirtyeight.com/features/madden/#interact",
     "highlight": "TRUE"
   },
   {
     "date": "5/21/2015",
     "title": "The Complete History Of The NBA",
-    "image": "se-asia.png",
+    "image": "nba-history.png",
     "link": "http://projects.fivethirtyeight.com/complete-history-of-the-nba/#cavaliers",
     "highlight": "TRUE"
   },
   {
     "date": "8/4/2015",
     "title": "Should Prison Sentences Be Based On Crimes That Haven’t Been Committed Yet?",
-    "image": "se-asia.png",
+    "image": "risk-assessment.png",
     "link": "http://fivethirtyeight.com/features/prison-reform-risk-assessment/#marshallvizproxyquiz",
     "highlight": "TRUE"
   },
@@ -212,63 +212,63 @@
   {
     "date": "10/13/2015",
     "title": "Uber Is Taking Millions Of Manhattan Rides Away From Taxis",
-    "image": "se-asia.png",
+    "image": "uber-manhattan.png",
     "link": "http://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/",
     "highlight": "TRUE"
   },
   {
     "date": "11/1/2015",
     "title": "The Sports Equinox Is Upon Us",
-    "image": "se-asia.png",
+    "image": "sports-equinox.png",
     "link": "http://fivethirtyeight.com/datalab/the-sports-equinox-is-upon-us/",
     "highlight": "FALSE"
   },
   {
     "date": "3/13/2016",
     "title": "2016 March Madness Predictions",
-    "image": "se-asia.png",
+    "image": "march-madness.png",
     "link": "http://projects.fivethirtyeight.com/2016-march-madness-predictions/",
     "highlight": "TRUE"
   },
   {
     "date": "4/18/2016",
     "title": "The Facebook Primary",
-    "image": "se-asia.png",
+    "image": "facebook-primary.png",
     "link": "http://projects.fivethirtyeight.com/facebook-primary/",
     "highlight": "TRUE"
   },
   {
     "date": "4/25/2016",
     "title": "The Complete History Of MLB",
-    "image": "se-asia.png",
+    "image": "mlb-history.png",
     "link": "http://projects.fivethirtyeight.com/complete-history-of-mlb/",
     "highlight": "TRUE"
   },
   {
     "date": "5/9/2016",
     "title": "The Best MLB Teams Of All-Time, According To Elo",
-    "image": "se-asia.png",
+    "image": "best-mlb.png",
     "link": "http://fivethirtyeight.com/features/the-best-mlb-teams-of-all-time-according-to-elo/",
     "highlight": "FALSE"
   },
   {
     "date": "6/29/2016",
     "title": "2016 Election Forecast",
-    "image": "se-asia.png",
+    "image": "general-forecast.png",
     "link": "http://projects.fivethirtyeight.com/2016-election-forecast/",
     "highlight": "TRUE"
   },
   {
     "date": "7/13/2016",
     "title": "Gun Deaths In America",
-    "image": "se-asia.png",
+    "image": "gun-deaths.png",
     "link": "http://fivethirtyeight.com/features/gun-deaths/",
     "highlight": "TRUE"
   },
   {
     "date": "8/10/2016",
     "title": "Which Olympic Sport Is Hardest On Its Goalies?",
-    "image": "se-asia.png",
+    "image": "olympic-goalies.png",
     "link": "http://fivethirtyeight.com/features/which-olympic-sport-is-hardest-on-its-goalies/",
     "highlight": "FALSE"
   },
@@ -282,7 +282,7 @@
   {
     "date": "9/7/2016",
     "title": "Can Anyone In The AFC East Challenge The Patriots (For Once)?",
-    "image": "se-asia.png",
+    "image": "afc-east.png",
     "link": "http://fivethirtyeight.com/features/can-anyone-in-the-afc-east-challenge-the-patriots-for-once/",
     "highlight": "FALSE"
   }
