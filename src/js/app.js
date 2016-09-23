@@ -1,8 +1,6 @@
 'use strict'
 
 var d3 = require('d3-selection');
-var data = require('../../data/data.json').reverse();
-var newArray = data.slice();
 
 d3.selectAll('.graphic')
   .on('mouseover', function(){
@@ -13,21 +11,19 @@ d3.selectAll('.graphic')
   });
 
 
-function randomSelect() {
+/* SAFARI UGH */
 
-  d3.selectAll('.graphic').classed('chosen', false);
-  var chosen =  newArray[0].image.replace('.png', '');
-  d3.selectAll('.' + chosen).classed('chosen', true);
+var multiColumn = d3.select('.one-column').node().getBoundingClientRect().height == 0;
 
-  newArray.shift();
-
-  if(newArray.length == 0){
-    newArray = data.slice();
-  }
-
+if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('Chrome') == -1 && multiColumn) {
+  d3.selectAll('.graphic').style('border-radius', '0px');
+  var introHeight = d3.select('.intro').node().getBoundingClientRect().height;
+  var graphicsHeight = d3.select('.graphics-container').node().getBoundingClientRect().height;
+  d3.select('.top-container').style('height', introHeight + graphicsHeight + 'px');
 }
 
-setInterval(randomSelect, 750);
+
+
 
 
 

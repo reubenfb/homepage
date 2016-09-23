@@ -64,6 +64,7 @@ body {
   }
   .top-container {
     display: inline-block;
+    overflow: hidden;
     @media screen and (min-width: 1297px) {
       width: 1297px;
     }
@@ -120,6 +121,8 @@ body {
           border: 2px solid #ccc;
           margin-bottom: 15px;
           position: relative;
+          -webkit-column-break-inside: avoid;
+          page-break-inside: avoid;
           break-inside: avoid;
           .filter {
             background-color: rgba(255, 255, 255, 0.8);
