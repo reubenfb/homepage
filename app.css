@@ -12,21 +12,24 @@ body {
     text-decoration: none; }
   body .intro {
     text-align: left;
-    padding: 45px 0px 35px 0px;
+    padding: 40px 0px 30px 0px;
     line-height: 1.5; }
     @media screen and (max-width: 580px) {
       body .intro {
-        padding: 25px 0px 10px 0px; } }
+        padding: 20px 0px 10px 0px; } }
     body .intro h1 {
       font-family: "Cousine";
       font-weight: 700;
       margin: 0px;
       font-size: 48px;
       text-transform: uppercase;
-      line-height: 1.2; }
+      line-height: 1.2;
+      display: inline; }
       @media screen and (max-width: 580px) {
         body .intro h1 {
           font-size: 30px; } }
+      body .intro h1 .space {
+        font-size: 0.6em; }
     body .intro p {
       max-width: 1030px;
       margin-top: 20px;
@@ -113,7 +116,8 @@ body {
             width: 100%;
             position: absolute; }
           body .top-container .graphics-container .column-container .graphic .title {
-            font-family: "Cousine";
+            font-family: Lato;
+            font-weight: 400;
             text-align: left;
             position: absolute;
             top: 12px;
@@ -129,9 +133,9 @@ body {
             height: 145px; }
             body .top-container .graphics-container .column-container .graphic.small .cutout {
               height: 145px; }
-          body .top-container .graphics-container .column-container .graphic:hover {
+          body .top-container .graphics-container .column-container .graphic.chosen, body .top-container .graphics-container .column-container .graphic.userHover {
             border-color: #000; }
-            body .top-container .graphics-container .column-container .graphic:hover .filter {
+            body .top-container .graphics-container .column-container .graphic.chosen .filter, body .top-container .graphics-container .column-container .graphic.userHover .filter {
               background-color: rgba(255, 255, 255, 0); }
-            body .top-container .graphics-container .column-container .graphic:hover .title {
+            body .top-container .graphics-container .column-container .graphic.chosen .title, body .top-container .graphics-container .column-container .graphic.userHover .title {
               opacity: 0; }
