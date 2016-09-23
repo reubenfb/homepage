@@ -8,7 +8,9 @@ var image = require('gulp-imagemin');
 var runSequence = require('run-sequence');
 var del = require('del');
 var browserify = require('browserify');
+var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
@@ -41,7 +43,7 @@ gulp.task('jade', function() {
 
 gulp.task('sass', function () {
   return gulp.src('./src/stylesheets/*.scss')
-    .pipe(sass().on('error', sass.logError))
+    .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./public/'));
 });
 
@@ -49,6 +51,8 @@ gulp.task('scripts', function() {
   return browserify('./src/js/app.js')
     .bundle()
     .pipe(source('bundle.js'))
+    .pipe(buffer())
+    .pipe(uglify())
     .pipe(gulp.dest('./public/'));
 });
 
@@ -75,7 +79,6 @@ gulp.task('deploy', function(done){
 
 gulp.task('watch', function() {
   gulp.watch('./src/stylesheets/*.scss', ['sass']);
-  //gulp.watch('./src/js/*.js', ['scripts']);
   gulp.watch('./src/templates/*.jade', ['jade']);
 });
 

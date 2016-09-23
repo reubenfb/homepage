@@ -1,7 +1,6 @@
 'use strict'
 
 var d3 = require('d3-selection');
-var _ = require('underscore');
 var data = require('../../data/data.json').reverse();
 var newArray = data.slice();
 
