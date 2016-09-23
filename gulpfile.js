@@ -65,7 +65,7 @@ gulp.task('images', function () {
 gulp.task('git', function () {
   return gulp.src("./public/**/*")
     .pipe(deploy({
-      cname: 'www.reubenfb.com'
+      cname: 'reubenfb.com'
     }))
 });
 
