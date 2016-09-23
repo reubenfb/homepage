@@ -7,6 +7,8 @@ var concat = require('gulp-concat');
 var image = require('gulp-imagemin');
 var runSequence = require('run-sequence');
 var del = require('del');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
 
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
@@ -44,8 +46,9 @@ gulp.task('sass', function () {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src('./src/js/*.js')
-    .pipe(concat('app.js'))
+  return browserify('./src/js/app.js')
+    .bundle()
+    .pipe(source('bundle.js'))
     .pipe(gulp.dest('./public/'));
 });
 
