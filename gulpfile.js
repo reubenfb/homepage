@@ -75,7 +75,7 @@ gulp.task('deploy', function(done){
 
 gulp.task('watch', function() {
   gulp.watch('./src/stylesheets/*.scss', ['sass']);
-  gulp.watch('./src/js/*.js', ['scripts']);
+  //gulp.watch('./src/js/*.js', ['scripts']);
   gulp.watch('./src/templates/*.jade', ['jade']);
 });
 
