@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var deploy = require('gulp-gh-pages');
+var deploy = require('gulp-gh-pages-cname');
 var webserver = require('gulp-webserver')
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
@@ -64,7 +64,9 @@ gulp.task('images', function () {
 
 gulp.task('git', function () {
   return gulp.src("./public/**/*")
-    .pipe(deploy())
+    .pipe(deploy({
+      cname: 'www.reubenfb.com'
+    }))
 });
 
 gulp.task('clean', function(){
