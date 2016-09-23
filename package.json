@@ -21,6 +21,7 @@
   "homepage": "https://github.com/reubenfb/homepage#readme",
   "dependencies": {
     "browserify": "^13.1.0",
+    "d3-selection": "^1.0.2",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.0",
