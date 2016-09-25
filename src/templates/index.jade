@@ -20,7 +20,7 @@ html
           a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
           |  or reach me at reuben.fischerbaum [at] gmail.com. I write, make graphics, and develop interactives — some of my projects are below.
 
-      - data = _.sortBy(data, date).reverse()
+      - data = _.sortBy(data, date);
 
       mixin charts(data)
         each graphic in data
