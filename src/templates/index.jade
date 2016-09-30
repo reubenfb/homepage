@@ -36,7 +36,7 @@ html
               .filter
               .title
                 span #{graphic.title}
-              img.cutout(src="./images/#{graphic.image}")
+              img.cutout(src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
     
       .graphics-container
         .four-column.column-container
