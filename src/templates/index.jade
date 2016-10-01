@@ -2,7 +2,6 @@ doctype html
 html
   head
     title Reuben Fischer-Baum
-    link(rel='stylesheet', href='app.css')
     link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
     link(rel='icon', type='image/x-icon', href='images/favicon.ico')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
@@ -11,6 +10,8 @@ html
     meta(name='description', content="Reuben Fischer-Baum's personal website")
     meta(name='author', content='Reuben Fischer-Baum')
     link(rel='canonical', href='http://www.reubenfb.com')
+    style
+      include ../stylesheets/compiled/app.css
   body
     .top-container
       .intro
@@ -51,5 +52,5 @@ html
         .one-column.column-container
           +charts(data)
 
-    script(src = 'bundle.js')
+    script(async src = 'bundle.js')
               
