@@ -3,3 +3,4 @@ public
 .publish
 apiKeys.json
 .gulp
+src/stylesheets/compiled
