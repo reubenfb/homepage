@@ -4,13 +4,14 @@ var webserver = require('gulp-webserver')
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
-var image = require('gulp-imagemin');
+var tinypng = require('gulp-tinypng');
 var runSequence = require('run-sequence');
 var del = require('del');
 var browserify = require('browserify');
 var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
+var keys = require('./apiKeys.json');
 
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
@@ -57,8 +58,8 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('images', function () {
-  return gulp.src('./src/images/*')
-    .pipe(image())
+  return gulp.src('./src/images/*.png')
+    .pipe(tinypng(keys.tinypng))
     .pipe(gulp.dest('./public/images/'));
 });
 
