@@ -6,7 +6,6 @@ var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var tinypng = require('gulp-tinypng');
 var runSequence = require('run-sequence');
-var del = require('del');
 var browserify = require('browserify');
 var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
@@ -70,14 +69,8 @@ gulp.task('git', function () {
     }))
 });
 
-gulp.task('clean', function(){
-  return del([
-    '.public/**/*'
-  ])
-});
-
 gulp.task('deploy', function(done){
-  runSequence('clean', 'build', 'git', done);
+  runSequence('build', 'git', done);
 });
 
 gulp.task('watch', function() {
