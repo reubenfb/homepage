@@ -77,7 +77,7 @@ gulp.task('clean', function(){
 });
 
 gulp.task('deploy', function(done){
-  runSequence('clean', 'images', 'build', 'git', done);
+  runSequence('clean', 'build', 'git', done);
 });
 
 gulp.task('watch', function() {
