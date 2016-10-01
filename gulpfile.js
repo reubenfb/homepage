@@ -26,7 +26,7 @@ gulp.task('webserver', function() {
     }));
 });
 
-gulp.task('jade', function() {
+gulp.task('jade', ['sass'], function() {
 
   var locals = {
     data: require('./data/data.json'),
@@ -78,8 +78,6 @@ gulp.task('watch', function() {
   gulp.watch('./src/templates/*.jade', ['jade']);
 });
 
-gulp.task('build', function(done){
-  runSequence('sass', 'scripts', 'jade', done);
-});
+gulp.task('build', ['sass', 'scripts', 'jade']);
 
 gulp.task('default', ['build', 'watch', 'webserver']);
