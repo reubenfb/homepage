@@ -3,15 +3,15 @@ var deploy = require('gulp-gh-pages-cname');
 var webserver = require('gulp-webserver')
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
-var concat = require('gulp-concat');
 var tinypng = require('gulp-tinypng');
 var runSequence = require('run-sequence');
 var browserify = require('browserify');
 var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var keys = require('./apiKeys.json');
+var cloudflare = require("gulp-cloudflare");
 
+var keys = require('./apiKeys.json');
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
 
@@ -69,8 +69,18 @@ gulp.task('git', function () {
     }))
 });
 
+gulp.task('purge-cdn-cache', function() {
+  var options = {
+      token  : keys.cloudflare.token,
+      email  : keys.cloudflare.email,
+      domain : 'reubenfb.com'
+  };
+
+  cloudflare(options);
+})
+
 gulp.task('deploy', function(done){
-  runSequence('build', 'git', done);
+  runSequence('build', 'git', 'purge-cdn-cache', done);
 });
 
 gulp.task('watch', function() {
