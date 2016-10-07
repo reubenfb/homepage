@@ -80,7 +80,7 @@ gulp.task('purge-cdn-cache', function() {
 })
 
 gulp.task('deploy', function(done){
-  runSequence('build', 'git', 'purge-cdn-cache', done);
+  runSequence('build', 'git', done);
 });
 
 gulp.task('watch', function() {
