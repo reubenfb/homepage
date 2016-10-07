@@ -151,6 +151,9 @@ body {
               height: 145px;
             }
           }
+          &.blank {
+            visibility: hidden;
+          }
           &.chosen, &.userHover {
             border-color: #000;
             .filter {

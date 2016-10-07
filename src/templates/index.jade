@@ -32,12 +32,15 @@ html
 
       mixin charts(data)
         each graphic in data
-          a(href = "#{graphic.link}" target="_blank")
-            .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'} #{graphic.image.replace('.png', '')}")
-              .filter
-              .title
-                span #{graphic.title}
-              img.cutout(src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
+          if _.isNull(graphic.title)
+            .graphic.small.blank
+          else
+            a(href = "#{graphic.link}" target="_blank")
+              .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'} #{graphic.image.replace('.png', '')}")
+                .filter
+                .title
+                  span #{graphic.title}
+                img.cutout(src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
     
       .graphics-container
         .four-column.column-container

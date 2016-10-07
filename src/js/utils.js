@@ -11,6 +11,10 @@ module.exports = {
     var newData = [];
     var columnCount = 0;
 
+    var blank = {
+      title: null
+    }
+
     _.each(data, function(chart, i){
 
       if(i === 0){
@@ -36,6 +40,20 @@ module.exports = {
         }
 
       }
+    });
+
+    _.each(counter, function(num, i){
+
+        (function fillBlank() {
+          var diff = counter[0] - num;
+          if(diff === 0){return}
+          else {
+            colArray[i].push(blank);
+            num++;
+            fillBlank();
+          }
+        })();
+        
     });
 
     return colArray[0].concat(colArray[1]).concat(colArray[2]).concat(colArray[3])
