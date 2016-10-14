@@ -20,7 +20,7 @@ gulp.task('webserver', function() {
   gulp.src('./public')
     .pipe(webserver({
       fallback: 'index.html',
-      livereload: true,
+      livereload: false,
       open: false,
       port: 5380
     }));
