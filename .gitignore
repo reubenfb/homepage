@@ -5,3 +5,6 @@ apiKeys.json
 .gulp
 src/stylesheets/compiled
 src/stylesheets/compiled/*
+.DS_Store
+src/.DS_Store
+src/images/.DS_Store
