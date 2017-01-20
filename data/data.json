@@ -1,17 +1,52 @@
 [
   {
-    "date": "1/1/2016",
+    "date": "1/19/2017",
+    "title": "2016-17 Club Soccer Predictions",
+    "image": "soccer-predictions.png",
+    "link": "https://projects.fivethirtyeight.com/soccer-predictions/",
+    "highlight": "FALSE"
+  },
+  {
+    "date": "1/18/2017",
+    "title": "How America's Thinking Changed Under Obama",
+    "image": "obama-trends.png",
+    "link": "https://projects.fivethirtyeight.com/obama-polling-trends/",
+    "highlight": "TRUE"
+  },
+  {
+    "date": "12/28/2016",
+    "title": "The Week 17 Games That Actually Matter",
+    "image": "nfl-matter.png",
+    "link": "https://fivethirtyeight.com/features/the-week-17-games-that-actually-matter/",
+    "highlight": "FALSE"
+  },
+  {
+    "date": "12/14/2016",
+    "title": "2016 NFL Predictions",
+    "image": "2016-nfl.png",
+    "link": "https://projects.fivethirtyeight.com/2016-nfl-predictions/",
+    "highlight": "FALSE"
+  },
+  {
+    "date": "11/1/2016",
     "title": "2016 College Football Predictions",
     "image": "college-football.png",
     "link": "http://projects.fivethirtyeight.com/2016-college-football-predictions/",
     "highlight": "TRUE"
   },
   {
+    "date": "10/20/2016",
+    "title": "Can Anthony Davis Bounce Back?",
+    "image": "anthony-davis.png",
+    "link": "https://fivethirtyeight.com/features/can-anthony-davis-bounce-back/",
+    "highlight": "FALSE"
+  },
+  {
     "date": "10/12/2016",
     "title": "Where Do Clinton And Trump Have The Most Upside?",
     "image": "vote-shift.png",
     "link": "https://projects.fivethirtyeight.com/clinton-trump-vote-maps-2016/",
-    "highlight": "FALSE"
+    "highlight": "TRUE"
   },
   {
     "date": "9/30/2016",
