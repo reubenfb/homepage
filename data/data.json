@@ -1,5 +1,12 @@
 [
   {
+    "date": "5/3/2017",
+    "title": "Trump's First 100 Days",
+    "image": "trump-100-days.png",
+    "link": "./pdfs/trump-100-days.pdf",
+    "highlight": "TRUE"
+  },
+  {
     "date": "4/24/2017",
     "title": "Does your team botch the NFL draft? Find out here",
     "image": "nfl-draft-values.png",
