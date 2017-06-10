@@ -11,7 +11,7 @@ var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var cloudflare = require("gulp-cloudflare");
 
-var keys = require('./apiKeys.json');
+//var keys = require('./apiKeys.json');
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
 
