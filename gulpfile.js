@@ -63,7 +63,7 @@ gulp.task('compress-images', function () {
 });
 
 gulp.task('images', function () {
-  return gulp.src('./src/images/compressed/*.png')
+  return gulp.src('./src/images/compressed/*.{png,jpg}')
     .pipe(gulp.dest('./public/images/'));
 });
 
