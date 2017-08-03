@@ -1,10 +1,17 @@
 [
   {
+    "date": "8/3/2017",
+    "title": "‘This deal will make me look terrible’: Full transcripts of Trump’s calls with Mexico and Australia",
+    "image": "trump-transcripts.jpg",
+    "link": "https://www.washingtonpost.com/graphics/2017/politics/australia-mexico-transcripts/",
+    "highlight": "TRUE"
+  },
+  {
     "date": "7/21/2017",
     "title": "Trump Jr.’s Russia meeting: What we know and when we learned it",
     "image": "trump-jr.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/politics/russia-meeting/",
-    "highlight": "TRUE"
+    "highlight": "FALSE"
   },
   {
     "date": "7/12/2017",
