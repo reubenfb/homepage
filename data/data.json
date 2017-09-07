@@ -1,5 +1,19 @@
 [
   {
+    "date": "9/7/2017",
+    "title": "The Colin Kaepernick tracker",
+    "image": "kaepernick-tracker.png",
+    "link": "https://www.washingtonpost.com/graphics/2017/sports/kaepernick-tracker/",
+    "highlight": "FALSE"
+  },
+  {
+    "date": "9/5/2017",
+    "title": "How big is Hurricane Irma?",
+    "image": "irma-size.png",
+    "link": "https://www.washingtonpost.com/graphics/2017/national/how-big-is-hurricane-irma/",
+    "highlight": "FALSE"
+  },
+  {
     "date": "8/29/2017",
     "title": "Houston’s ‘Wild West’ growth",
     "image": "houston-planning.png",
