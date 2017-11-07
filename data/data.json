@@ -1,534 +1,618 @@
 [
   {
+    "date": "11/6/2017",
+    "title": "How Virginia went from blue to red and back again",
+    "image": "va-gov.png",
+    "link": "https://www.washingtonpost.com/graphics/2017/politics/virginia-election-history/",
+    "highlight": "TRUE",
+    "hide": ""
+  },
+  {
     "date": "10/19/2017",
     "title": "The least distinguished careers in NBA history",
     "image": "worst-nba.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/sports/worst-nba-careers/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "10/6/2017",
     "title": "How the Nationals built maybe their strongest roster ever, piece by piece",
     "image": "nats-roster.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/sports/nationals-roster/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "9/27/2017",
     "title": "Some tax breaks are for the rich. Others for the poor. Which are for you?",
     "image": "tax-breaks.png",
     "link": "https://www.washingtonpost.com/graphics/2017/politics/tax-breaks/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "9/20/2017",
     "title": "11 days after a major quake, Mexico battered again",
     "image": "mex-quake.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/world/mexico-quake/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "9/13/2017",
     "title": "New driver’s license requirements are coming to U.S. airports. Is your state ready?",
     "image": "realid.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/national/real-ids/?utm_term=.39a9c4979ce7",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "9/7/2017",
     "title": "The Colin Kaepernick tracker",
     "image": "kaepernick-tracker.png",
     "link": "https://www.washingtonpost.com/graphics/2017/sports/kaepernick-tracker/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "9/5/2017",
     "title": "How big is Hurricane Irma?",
     "image": "irma-size.png",
     "link": "https://www.washingtonpost.com/graphics/2017/national/how-big-is-hurricane-irma/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "8/29/2017",
     "title": "Houston’s ‘Wild West’ growth",
     "image": "houston-planning.png",
     "link": "https://www.washingtonpost.com/graphics/2017/investigations/harvey-urban-planning/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "8/18/2017",
     "title": "Can you guess where these Confederate monuments were built?",
     "image": "monument-quiz.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/national/confederate-monuments-quiz/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "8/3/2017",
     "title": "‘This deal will make me look terrible’: Full transcripts of Trump’s calls with Mexico and Australia",
     "image": "trump-transcripts.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/politics/australia-mexico-transcripts/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "7/21/2017",
     "title": "Trump Jr.’s Russia meeting: What we know and when we learned it",
     "image": "trump-jr.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/politics/russia-meeting/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "7/12/2017",
     "title": "How Trump is changing America’s foreign policy",
     "image": "trump-alliances.png",
     "link": "https://www.washingtonpost.com/graphics/2017/world/trump-shifting-alliances/?utm_term=.415ee89bd108",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "6/30/2017",
     "title": "Which family members can visit under the travel ban",
     "image": "travel-ban-families.jpg",
     "link": "https://www.washingtonpost.com/graphics/2017/world/travel-ban-who-is-close-family/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "6/22/2017",
     "title": "Which GOP senators have concerns with the health-care bill",
     "image": "health-care-vote.png",
     "link": "https://www.washingtonpost.com/graphics/2017/politics/ahca-senate-whip-count/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "6/7/2017",
     "title": "What we now know about Comey’s interactions with Trump",
     "image": "trumpcomey.png",
     "link": "https://www.washingtonpost.com/graphics/2017/politics/comey-testimony-timeline/?utm_term=.252389204625",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "5/3/2017",
     "title": "Trump's First 100 Days",
     "image": "trump-100-days.png",
     "link": "./pdfs/trump-100-days.pdf",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "4/24/2017",
     "title": "Does your team botch the NFL draft? Find out here",
     "image": "nfl-draft-values.png",
     "link": "https://www.washingtonpost.com/graphics/sports/nfl-draft-values/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "2/2/2017",
     "title": "Tom Brady Doesn’t Need Gronk — Or Moss, Or Welker — To Win",
     "image": "tom-brady.png",
     "link": "http://fivethirtyeight.com/features/tom-brady-doesnt-need-gronk-or-moss-or-welker-to-win/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "1/19/2017",
     "title": "2016-17 Club Soccer Predictions",
     "image": "soccer-predictions.png",
     "link": "https://projects.fivethirtyeight.com/soccer-predictions/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "1/18/2017",
     "title": "How America's Thinking Changed Under Obama",
     "image": "obama-trends.png",
     "link": "https://projects.fivethirtyeight.com/obama-polling-trends/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "12/28/2016",
     "title": "The Week 17 Games That Actually Matter",
     "image": "nfl-matter.png",
     "link": "https://fivethirtyeight.com/features/the-week-17-games-that-actually-matter/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "12/14/2016",
     "title": "2016 NFL Predictions",
     "image": "2016-nfl.png",
     "link": "https://projects.fivethirtyeight.com/2016-nfl-predictions/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "11/1/2016",
     "title": "2016 College Football Predictions",
     "image": "college-football.png",
     "link": "http://projects.fivethirtyeight.com/2016-college-football-predictions/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "10/20/2016",
     "title": "Can Anthony Davis Bounce Back?",
     "image": "anthony-davis.png",
     "link": "https://fivethirtyeight.com/features/can-anthony-davis-bounce-back/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "10/12/2016",
     "title": "Where Do Clinton And Trump Have The Most Upside?",
     "image": "vote-shift.png",
     "link": "https://projects.fivethirtyeight.com/clinton-trump-vote-maps-2016/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "9/30/2016",
     "title": "Ricky Williams’s Awful NFL Contract Never Gave Him A Chance",
     "image": "ricky-williams.png",
     "link": "http://fivethirtyeight.com/features/ricky-williams-awful-nfl-contract-never-gave-him-a-chance/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "9/7/2016",
     "title": "Can Anyone In The AFC East Challenge The Patriots (For Once)?",
     "image": "afc-east.png",
     "link": "http://fivethirtyeight.com/features/can-anyone-in-the-afc-east-challenge-the-patriots-for-once/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "8/19/2016",
     "title": "Southeast Asia Is Having Its Best Olympics Ever",
     "image": "se-asia.png",
     "link": "http://fivethirtyeight.com/features/southeast-asia-is-having-its-best-olympics-ever/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "8/10/2016",
     "title": "Which Olympic Sport Is Hardest On Its Goalies?",
     "image": "olympic-goalies.png",
     "link": "http://fivethirtyeight.com/features/which-olympic-sport-is-hardest-on-its-goalies/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "7/13/2016",
     "title": "Gun Deaths In America",
     "image": "gun-deaths.png",
     "link": "http://fivethirtyeight.com/features/gun-deaths/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "6/29/2016",
     "title": "2016 Election Forecast",
     "image": "general-forecast.png",
     "link": "http://projects.fivethirtyeight.com/2016-election-forecast/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "5/9/2016",
     "title": "The Best MLB Teams Of All-Time, According To Elo",
     "image": "best-mlb.png",
     "link": "http://fivethirtyeight.com/features/the-best-mlb-teams-of-all-time-according-to-elo/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "4/25/2016",
     "title": "The Complete History Of MLB",
     "image": "mlb-history.png",
     "link": "http://projects.fivethirtyeight.com/complete-history-of-mlb/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "4/18/2016",
     "title": "The Facebook Primary",
     "image": "facebook-primary.png",
     "link": "http://projects.fivethirtyeight.com/facebook-primary/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "3/13/2016",
     "title": "2016 March Madness Predictions",
     "image": "march-madness.png",
     "link": "http://projects.fivethirtyeight.com/2016-march-madness-predictions/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "12/9/2015",
     "title": "Is Uber Making Rush Hour Traffic Worse?",
     "image": "uber-rushhour.png",
     "link": "http://fivethirtyeight.com/features/is-uber-making-nyc-rush-hour-traffic-worse/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "10/27/2015",
     "title": "2015-16 NBA Predictions",
     "image": "nba-predictions.png",
     "link": "http://projects.fivethirtyeight.com/2016-nba-picks/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "10/13/2015",
     "title": "Uber Is Taking Millions Of Manhattan Rides Away From Taxis",
     "image": "uber-manhattan.png",
     "link": "http://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "9/16/2015",
     "title": "The Complete History Of The NFL",
     "image": "nfl-history.png",
     "link": "http://projects.fivethirtyeight.com/complete-history-of-the-nfl/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "8/27/2015",
     "title": "Why The Plan To Shrink New Orleans Failed",
     "image": "nola-flood.png",
     "link": "http://fivethirtyeight.com/features/why-the-plan-to-shrink-new-orleans-after-katrina-failed/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "8/10/2015",
     "title": "Uber Is Serving New York’s Outer Boroughs More Than Taxis Are",
     "image": "uber-boroughs.png",
     "link": "http://fivethirtyeight.com/features/uber-is-serving-new-yorks-outer-boroughs-more-than-taxis-are/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "8/4/2015",
     "title": "Should Prison Sentences Be Based On Crimes That Haven’t Been Committed Yet?",
     "image": "risk-assessment.png",
     "link": "http://fivethirtyeight.com/features/prison-reform-risk-assessment/#marshallvizproxyquiz",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "5/21/2015",
     "title": "The Complete History Of The NBA",
     "image": "nba-history.png",
     "link": "http://projects.fivethirtyeight.com/complete-history-of-the-nba/#cavaliers",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "3/15/2015",
     "title": "2015 March Madness Predictions",
     "image": "2015-madness.png",
     "link": "http://fivethirtyeight.com/interactives/march-madness-predictions-2015/#mens",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "2/25/2015",
     "title": "How Madden Ratings Are Made",
     "image": "madden-ratings.png",
     "link": "http://fivethirtyeight.com/features/madden/#interact",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "12/24/2014",
     "title": "The NFC South Isn’t The Worst Division In NFL History",
     "image": "worst-division.png",
     "link": "http://fivethirtyeight.com/features/skeptical-football-the-nfc-south-isnt-the-worst-division-in-nfl-history/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "12/4/2014",
     "title": "Which City Has The Most Unpredictable Weather?",
     "image": "predictable-weather.png",
     "link": "http://fivethirtyeight.com/features/which-city-has-the-most-unpredictable-weather/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "11/25/2014",
     "title": "Allegations Of Police Misconduct Rarely Result In Charges",
     "image": "police-misconduct.png",
     "link": "http://fivethirtyeight.com/datalab/allegations-of-police-misconduct-rarely-result-in-charges/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "11/4/2014",
     "title": "2014 Senate Forecast",
     "image": "senate-forecast.png",
     "link": "http://fivethirtyeight.com/interactives/senate-forecast/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "10/16/2014",
     "title": "NFL Playoff Implications",
     "image": "playoff-implications.png",
     "link": "http://fivethirtyeight.com/features/the-playoff-implications-of-every-game-for-every-nfl-team/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "10/1/2014",
     "title": "Reexamining Residency Requirements For Police Officers",
     "image": "residency-requirements.png",
     "link": "http://fivethirtyeight.com/features/reexamining-residency-requirements-for-police-officers/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "8/26/2014",
     "title": "The Poorest Corner Of Town",
     "image": "ferguson.png",
     "link": "http://fivethirtyeight.com/features/ferguson-missouri/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "8/19/2014",
     "title": "Nobody Knows How Many Americans The Police Kill Each Year",
     "image": "police-killings.png",
     "link": "http://fivethirtyeight.com/features/how-many-americans-the-police-kill-each-year/",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "7/31/2014",
     "title": "How Your City’s Public Transit Stacks Up",
     "image": "public-transit.png",
     "link": "http://fivethirtyeight.com/datalab/how-your-citys-public-transit-stacks-up/",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "6/26/2014",
     "title": "When Did Nazi Insults Spike On Twitter During USA-Germany?",
     "image": "nazi-soccer.png",
     "link": "http://deadspin.com/when-did-nazi-insults-spike-on-twitter-during-usa-germa-1596610394",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "5/8/2014",
     "title": "Which Words Are Used To Describe White And Black NFL Prospects?",
     "image": "draft-words.png",
     "link": "http://deadspin.com/which-words-are-used-to-describe-white-and-black-nfl-pr-1573683214",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "4/30/2014",
     "title": "Feel Old With Our \"How Many Pro Athletes Are Younger Than You?\" Tool",
     "image": "sports-ages.png",
     "link": "http://deadspin.com/feel-old-with-our-how-many-pro-athletes-are-younger-th-1565829499",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "4/11/2014",
     "title": "Whose Good Life Are These Coffee Shops \"Positive Markers\" Of?",
     "image": "coffee-shops.png",
     "link": "http://gawker.com/whose-good-life-are-these-coffee-shops-positive-marker-1561899283",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "3/19/2014",
     "title": "How Hollywood Has Destroyed America",
     "image": "hollywood-disasters.png",
     "link": "http://theconcourse.deadspin.com/map-how-hollywood-has-destroyed-america-1542969906",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "2/14/2014",
     "title": "Has Figure Skating Maxed Out In Difficulty?",
     "image": "figure-skating.png",
     "link": "http://deadspin.com/has-figure-skating-maxed-out-in-difficulty-1522941275",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "2/5/2014",
     "title": "The Durant-LeBron Arms Race Is Real—And Statistically Unprecedented",
     "image": "durant-lebron.png",
     "link": "http://deadspin.com/the-durant-lebron-arms-race-is-real-and-statistically-u-1515940922",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "1/31/2014",
     "title": "Superbowl: What Time Is the Super Bowl in One Amazing Chart",
     "image": "superbowl-time.png",
     "link": "http://gawker.com/what-time-is-the-super-bowl-in-one-amazing-chart-1513231876",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "1/29/2014",
     "title": "This Is the Williamsburg of Your City: A Map of Hip America",
     "image": "williamsburg.png",
     "link": "http://gawker.com/this-is-the-williamsburg-of-your-city-a-map-of-hip-ame-1460243062",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "1/11/2014",
     "title": "Do Colder NFL Games Have Fewer Penalties?",
     "image": "cold-weather.png",
     "link": "http://deadspin.com/do-colder-nfl-games-have-fewer-penalties-1498766262",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "12/11/2013",
     "title": "Vote For Mike Timlin, World Champion Of Baseball",
     "image": "mike-timlin.png",
     "link": "http://deadspin.com/vote-for-mike-timlin-world-champion-of-baseball-1479775875",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "11/11/2013",
     "title": "How The Braves' Atlanta Exodus Compares With Other MLB Moves",
     "image": "stadium-moves.png",
     "link": "http://deadspin.com/chart-how-the-braves-atlanta-exodus-compares-to-other-1462494338",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "10/18/2013",
     "title": "Six Decades of the Most Popular Names for Girls, State-by-State",
     "image": "popular-names.png",
     "link": "http://jezebel.com/map-sixty-years-of-the-most-popular-names-for-girls-s-1443501909",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "9/17/2013",
     "title": "Are College Sports In The Midst Of A \"Shaq Boom\"?",
     "image": "shaq.png",
     "link": "http://deadspin.com/infographic-are-college-sports-in-the-midst-of-a-shaq-1333430710",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "6/6/2013",
     "title": "Stop Calling Gezi Park A \"Small Green Space\"",
     "image": "gezi.png",
     "link": "http://gawker.com/stop-calling-gezi-park-a-small-green-space-511660654",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "5/31/2013",
     "title": "Do You Live In IHOP America Or Waffle House America?",
     "image": "ihop.png",
     "link": "http://deadspin.com/map-do-you-live-in-ihop-america-or-waffle-house-americ-510668232",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "5/20/2013",
     "title": "Women Didn't Abandon Rom-Coms, Roms-Coms Abandoned Women",
     "image": "rom-coms.png",
     "link": "http://jezebel.com/women-didnt-abandon-rom-coms-roms-coms-abandoned-wome-506779390",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": "TRUE"
   },
   {
     "date": "5/9/2013",
     "title": "Is Your State's Highest-Paid Employee A Coach? (Probably)",
     "image": "highest-paid.png",
     "link": "http://deadspin.com/infographic-is-your-states-highest-paid-employee-a-co-489635228",
-    "highlight": "TRUE"
+    "highlight": "TRUE",
+    "hide": ""
   },
   {
     "date": "1/29/2013",
     "title": "The Story Of The Small Regional Conference That Swallowed Up The Continent",
     "image": "conference-swallowed.png",
     "link": "http://deadspin.com/5978363/how-the-ncaa-causes-gigantism-the-story-of-the-small-regional-conference-that-swallowed-up-the-continent",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "12/4/2012",
     "title": "Watch As America's Stadiums Pile Up On The Backs Of Taxpayers Through The Years",
     "image": "public-stadiums.png",
     "link": "http://deadspin.com/5964116/animated-infographic-watch-as-americas-stadiums-pile-up-on-the-backs-of-taxpayers",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "10/29/2012",
     "title": "A Map Of The Most Absurd Team-Name Migrations In Sports",
     "image": "migrations.png",
     "link": "http://deadspin.com/5955349/mapping-the-sports-worlds-most-absurd-team-name-migrations",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   },
   {
     "date": "10/25/2012",
     "title": "See The Big East Get Much Bigger And Much Less Eastern",
     "image": "big-east.png",
     "link": "http://deadspin.com/5954550/see-the-big-east-get-much-bigger-and-much-less-eastern-with-conference-realignment-visualizations",
-    "highlight": "FALSE"
+    "highlight": "FALSE",
+    "hide": ""
   }
 ]

@@ -35,6 +35,7 @@ html
           |  or reach me at reuben.fischerbaum [at] gmail.com. I write, make graphics, and develop interactives — some of my projects are below.
 
       - data = _.sortBy(data, date);
+      - data = _.filter(data, function(graphic){ return graphic.hide != 'TRUE' });
 
       mixin charts(data)
         each graphic in data
