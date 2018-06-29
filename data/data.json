@@ -1,5 +1,29 @@
 [
   {
+    "date": "6/26/2018",
+    "title": "Will the 2018 midterms flip the House?",
+    "image": "midterm-waves.jpg",
+    "link": "http://www.washingtonpost.com/graphics/2018/politics/how-to-flip-the-house-2018/",
+    "highlight": "FALSE",
+    "hide": ""
+  },
+  {
+    "date": "6/15/2018",
+    "title": "Every U.S. county’s World Cup backup team",
+    "image": "wc-backups.png",
+    "link": "http://www.washingtonpost.com/graphics/2018/sports/world-cup-backup-countries/",
+    "highlight": "FALSE",
+    "hide": ""
+  },
+  {
+    "date": "6/13/2018",
+    "title": "California took a radical step to fix gerrymandering. Did it work?",
+    "image": "gerrymandering.png",
+    "link": "http://www.washingtonpost.com/graphics/2018/national/gerrymandering-in-california-where-do-you-draw-the-lines/",
+    "highlight": "FALSE",
+    "hide": ""
+  },
+  {
     "date": "3/16/2018",
     "title": "How many days has it been since a high-profile departure from the Trump administration?",
     "image": "trump-turnover.jpg",
