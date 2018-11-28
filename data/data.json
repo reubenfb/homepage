@@ -1,5 +1,21 @@
 [
   {
+    "date": "11/6/2018",
+    "title": "2018 Election results",
+    "image": "2018-election.png",
+    "link": "https://www.washingtonpost.com/election-results/maine/",
+    "highlight": "TRUE",
+    "hide": ""
+  },
+  {
+    "date": "10/20/2018",
+    "title": "Information+ 2018 keynote",
+    "image": "information-plus.png",
+    "link": "https://vimeo.com/301938339",
+    "highlight": "TRUE",
+    "hide": ""
+  },
+  {
     "date": "9/24/2018",
     "title": "This underdog candidate ran in nine Senate primaries and lost them all",
     "image": "rocky-de-la-fuente.jpg",
