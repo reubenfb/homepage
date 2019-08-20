@@ -34,33 +34,38 @@ html
           a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
           |  or reach me at reuben.fischerbaum [at] gmail.com. I do more editing nowadays, but some of the projects I helped make are below.
 
-      - data = _.sortBy(data, date);
-      - data = _.filter(data, function(graphic){ return graphic.hide != 'TRUE' });
+      - editData = _.sortBy(data.edit, date);
+      - madeData = _.sortBy(data.made, date);
+      - madeData = _.filter(madeData, function(graphic){ return graphic.hide != 'TRUE' });
 
-      mixin charts(data)
+      .edit-container
+        p.links
+          each project in editData
+            a(href = "#{project.link}" target="_blank") #{project.title}
+
+      mixin graphicImage(data)
         each graphic in data
           if _.isNull(graphic.title)
             .graphic.small.blank
           else
             a(href = "#{graphic.link}" target="_blank")
               .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'} #{graphic.image.replace('.png', '')}")
-                .filter
                 .title
                   span #{graphic.title}
                 img.cutout(src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
     
-      .graphics-container
+      .made-container
         .four-column.column-container
-          - fourData = utils.reorderData(data, 4)
-          +charts(fourData)
+          - fourData = utils.reorderData(madeData, 4)
+          +graphicImage(fourData)
         .three-column.column-container
-          - threeData = utils.reorderData(data, 3)
-          +charts(threeData)
+          - threeData = utils.reorderData(madeData, 3)
+          +graphicImage(threeData)
         .two-column.column-container
-          - twoData = utils.reorderData(data, 2)
-          +charts(twoData)
+          - twoData = utils.reorderData(madeData, 2)
+          +graphicImage(twoData)
         .one-column.column-container
-          +charts(data)
+          +graphicImage(madeData)
 
     script(async src = 'bundle.js')
               
