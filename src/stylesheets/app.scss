@@ -82,6 +82,9 @@ body {
       font-size: 15px;
       font-weight: 300;
       text-transform: uppercase;
+      .whitespace {
+        display: inline-block;
+      }
       a {
         margin-left: 5px;
         color: #000;

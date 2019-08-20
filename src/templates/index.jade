@@ -36,11 +36,18 @@ html
       - editData = _.sortBy(data.edit, date);
       - madeData = _.sortBy(data.made, date);
       - madeData = _.filter(madeData, function(graphic){ return graphic.hide != 'TRUE' });
+      - rowCount = 3;
 
       .edit-container
-        p.links
-          each project in editData
-            a(href = "#{project.link}" target="_blank") #{project.title}
+        for row, i in Array(rowCount)
+          if(i > 0)
+            - randomBreak = _.random(0, 300);
+          else
+            - randomBreak = 0;
+          marquee.links
+            span.whitespace(style="width:#{randomBreak}px")
+            each project in _.shuffle(editData)
+              a(href = "#{project.link}" target="_blank") #{project.title}
 
       mixin graphicImage(data)
         each graphic in data

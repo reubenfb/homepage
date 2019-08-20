@@ -10,7 +10,7 @@ module.exports = {
 
     var newData = [];
     var columnCount = 0;
-    
+
     _.each(data, function(chart, i){
 
       if(i === 0){
