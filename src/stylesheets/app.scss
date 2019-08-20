@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:300,700|Cousine:700');
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Cousine:700');
 
 @mixin colParams($colNum){
   -moz-column-count: $colNum;
@@ -77,13 +77,22 @@ body {
       width: 100%;
     }
     .edit-container {
-      text-align: left;
+      padding-bottom: 20px;
+      text-align: justify;
+      font-size: 15px;
+      font-weight: 300;
+      text-transform: uppercase;
       a {
-        color: blue;
         margin-left: 5px;
+        color: #000;
+        &:hover {
+          color: #ff5a00;
+          font-weight: 700;
+        }
         &:after {
           content: '•';
           margin-left: 5px;
+          font-size: 10px;
         }
         &:first-of-type {
           margin-left: 0px;

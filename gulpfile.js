@@ -44,7 +44,7 @@ gulp.task('jade', ['sass'], function() {
 gulp.task('sass', function () {
   return gulp.src('./src/stylesheets/*.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(gulp.dest('./src/stylesheets/compiled/'));
+    .pipe(gulp.dest('./public/'));
 });
 
 gulp.task('scripts', function() {
