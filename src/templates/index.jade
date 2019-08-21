@@ -31,7 +31,7 @@ html
           a.orange(href = 'https://kinja.com/reubenfb' target='_blank') Deadspin
           | . You can find me 
           a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
-          |  or reach me at reuben.fischerbaum [at] gmail.com. I do more editing nowadays, but some of the projects I helped make are below.
+          |  or reach me at reuben.fischerbaum [at] gmail.com.
 
       - editData = _.sortBy(data.edit, date);
       - madeData = _.sortBy(data.made, date);
@@ -39,6 +39,8 @@ html
       - rowCount = 3;
 
       .edit-container
+        .intro
+          p I manage a team focused on politics, and occasionally sports. Here is a marquee of some projects I edited.
         for row, i in Array(rowCount)
           if(i > 0)
             - randomBreak = _.random(0, 300);
@@ -61,6 +63,8 @@ html
                 img.cutout(src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
     
       .made-container
+        .intro
+          p Here are some projects that I worked on myself.
         .four-column.column-container
           - fourData = utils.reorderData(madeData, 4)
           +graphicImage(fourData)
