@@ -24,10 +24,6 @@ body {
   }
   .intro {
     text-align: left;
-    padding: 40px 0px 30px 0px;
-    @media screen and (max-width: 580px){
-      padding: 20px 0px 10px 0px;
-    }
     h1 {
       font-family: 'Cousine';
       font-weight: 700;
@@ -37,7 +33,7 @@ body {
       line-height: 1.2;
       display: inline;
       @media screen and (max-width: 580px){
-        font-size: 30px;
+        font-size: 35px;
       }
       .space {
         font-size: 0.6em;
@@ -64,20 +60,21 @@ body {
   }
   .top-container {
     display: inline-block;
-    @media screen and (min-width: 1297px) {
-      width: 1297px;
-    }
-    @media screen and (min-width: 969px) and (max-width: 1296px) {
-      width: 969px;
-      p {
-        max-width: 900px;
+    padding-top: 20px;
+    @media screen and (min-width: 1330px) {
+      width: 1305px;
+      p, marquee {
+        max-width: 975px;
       }
     }
-    @media screen and (min-width: 641px) and (max-width: 968px) {
-      width: 641px;
+    @media screen and (min-width: 999px) and (max-width: 1329px) {
+      width: 975px;
     }
-    @media screen and (max-width: 640px) {
-      width: 100%;
+    @media screen and (min-width: 665px) and (max-width: 998px) {
+      width: 645px;
+    }
+    @media screen and (max-width: 664px) {
+      width: 320px;
     }
     .edit-container {
       text-align: justify;
@@ -91,9 +88,14 @@ body {
       }
       a {
         margin-left: 5px;
-        color: #000;
-        &:hover {
+        &.even {
           color: #ff5a00;
+        }
+        &.odd {
+          color: #4D93D1;
+        }
+        &:hover {
+          color: #000;
           font-weight: 700;
         }
         &:after {
@@ -123,25 +125,25 @@ body {
         column-gap: 15px;
         &.four-column {
           @include colParams(4);
-          @media screen and (min-width: 1289px) {
+          @media screen and (min-width: 1330px) {
             display: block;
           }
         }
         &.three-column {
           @include colParams(3);
-          @media screen and (min-width: 963px) and (max-width: 1288px) {
+          @media screen and (min-width: 999px) and (max-width: 1329px) {
             display: block;
           }
         }
         &.two-column {
           @include colParams(2);
-          @media screen and (min-width: 637px) and (max-width: 962px) {
+          @media screen and (min-width: 665px) and (max-width: 998px) {
             display: block;
           }
         }
         &.one-column {
           @include colParams(1);
-          @media screen and (max-width: 636px) {
+          @media screen and (max-width: 664px) {
             display: block;
           }
         }
