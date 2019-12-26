@@ -83,25 +83,43 @@ body {
       .whitespace {
         display: inline-block;
       }
-      marquee {
-        padding-bottom: 3px;
+      .marquee {
+        margin-left: 5px;
+        height: 27px;
+        width: 12500px;
+        overflow: hidden;
+        position: relative;
+        div {
+          display: block;
+          width: 200%;
+          height: 28px;
+          position: absolute;
+          overflow: hidden;
+          animation: marquee 120s linear infinite;
+        }
+        span {
+          float: left;
+          width: 50%;
+        }
       }
       a {
-        margin-left: 5px;
-        &.even {
+        padding: 5px 3px;
+        display: inline-block;
+        &.one {
           color: #ff5a00;
         }
-        &.odd {
+        &.two {
           color: #4D93D1;
         }
         &:hover {
+          background-color: #ffedab;
           color: #000;
-          font-weight: 700;
+          border-radius: 5px;
         }
         &:after {
-          content: '•';
-          margin-left: 5px;
-          font-size: 10px;
+          content: '|';
+          margin-left: 6px;
+          color: rgba(0,0,0,0.1);
         }
         &:first-of-type {
           margin-left: 0px;
@@ -148,7 +166,7 @@ body {
           }
         }
         .graphic {
-          border-radius: 8px;
+          border-radius: 5px;
           width: 309px;
           height: 309px;
           border: 1px solid #ccc;
@@ -158,8 +176,8 @@ body {
           page-break-inside: avoid;
           break-inside: avoid;
           .title {
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
             font-family: Lato;
             font-weight: 400;
             text-align: left;
@@ -193,4 +211,9 @@ body {
       }
     }
   }
+}
+
+@keyframes marquee {
+  0% { left: 0; }
+  100% { left: -100%; }
 }

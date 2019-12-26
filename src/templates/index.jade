@@ -23,20 +23,20 @@ html
           span.space  
           | Fischer-Baum
         p
-          | I'm an assignment editor on the graphics team at 
+          | I’m an assignment editor on the graphics team at 
           a.orange(href = 'https://www.washingtonpost.com/people/reuben-fischer-baum/' target='_blank') The Washington Post
           | . I previously worked at  
           a.orange(href = 'http://fivethirtyeight.com/contributors/reuben-fischer-baum/' target='_blank') FiveThirtyEight 
           | and 
           a.orange(href = 'https://kinja.com/reubenfb' target='_blank') Deadspin
-          | . Reach me 
+          | . I’m at 
           a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
-          |  or at reuben.fischerbaum [at] gmail.com.
+          |  and reuben.fischerbaum [at] gmail.com.
 
       - editData = _.sortBy(data.edit, date);
       - madeData = _.sortBy(data.made, date);
       - madeData = _.filter(madeData, function(graphic){ return graphic.hide != 'TRUE' });
-      - rowCount = 3;
+      - rowCount = 2;
 
       .edit-container
         .intro
@@ -46,11 +46,13 @@ html
             - randomBreak = _.random(0, 300);
           else
             - randomBreak = 0;
-          marquee.links
-            span.whitespace(style="width:#{randomBreak}px")
-            each project, i in _.shuffle(editData)
-              - colorClass = j == 1 ? i % 2 == 0 ? 'odd' : 'even' : i % 2 == 0 ? 'even' : 'odd';
-              a(href = "#{project.link}" target="_blank" class = "#{colorClass}") #{project.title}
+          .marquee.links
+            div
+              span
+                each project, i in _.shuffle(editData)
+                  - colorNumber = i + j
+                  - colorClass = colorNumber % 3 == 0 ? 'one' : colorNumber % 2 == 0 ? 'two' : 'three'
+                  a(href = "#{project.link}" target="_blank" class = "#{colorClass}") #{project.title}
 
       mixin graphicImage(data)
         each graphic in data
