@@ -22,18 +22,6 @@ html
           | Reuben
           span.space  
           | Fischer-Baum
-        p
-          | I’m an assignment editor on the graphics team at 
-          a.orange(href = 'https://www.washingtonpost.com/people/reuben-fischer-baum/' target='_blank') The Washington Post
-          | . I previously worked at  
-          a.orange(href = 'http://fivethirtyeight.com/contributors/reuben-fischer-baum/' target='_blank') FiveThirtyEight 
-          | and 
-          a.orange(href = 'https://kinja.com/reubenfb' target='_blank') Deadspin
-          | . I’m at 
-          a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
-          |  and reuben.fischerbaum [at] gmail.com.
-
-
 
       - editData = _.filter(data.projects, graphic => graphic.cat == 'edit' && graphic.hide != 'TRUE');
       - madeData = _.filter(data.projects, graphic => graphic.cat == 'made' && graphic.hide != 'TRUE');
@@ -47,12 +35,23 @@ html
               .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'} #{graphic.image.replace('.png', '')}")
                 .title
                   span #{graphic.title}
-                img.cutout(src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
+                img.cutout.lazy(data-src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
 
 
       .project-container.edit
         .intro
-          p I manage a team focused on political graphics. Here’s a marquee of some projects I edited.
+          p
+            | I’m an assignment editor on the graphics team at 
+            a.orange(href = 'https://www.washingtonpost.com/people/reuben-fischer-baum/' target='_blank') The Washington Post
+            | . I previously worked at  
+            a.orange(href = 'http://fivethirtyeight.com/contributors/reuben-fischer-baum/' target='_blank') FiveThirtyEight 
+            | and 
+            a.orange(href = 'https://kinja.com/reubenfb' target='_blank') Deadspin
+            | . I’m at 
+            a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
+            |  and reuben.fischerbaum [at] gmail.com.
+          p I've been an editor at the Post since 2018, leading a team of graphics reporters. I spent the past three years covering elections and the Trump administration. Recently I switched my focus to business and technology.
+          p Here are some of the projects I'm most proud of editing.
         .four-column.column-container
           - fourData = utils.reorderData(editData, 4)
           +graphicImage(fourData)
@@ -67,7 +66,7 @@ html
 
       .project-container.made
         .intro
-          p Here are some projects that I worked on myself.
+          p Here are some projects I actually made myself. Most are from 2013 to 2017. Some are more recent!
         .four-column.column-container
           - fourData = utils.reorderData(madeData, 4)
           +graphicImage(fourData)

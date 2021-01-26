@@ -1,6 +1,9 @@
 'use strict'
 
-var d3 = require('d3-selection');
+var d3 = require("d3-selection");
+var LazyLoad = require("vanilla-lazyload");
+
+var lazyLoadInstance = new LazyLoad({});
 
 if(window.innerWidth < 500 || ('ontouchstart' in window)|| (navigator.MaxTouchPoints > 0) || (navigator.msMaxTouchPoints > 0)){
   return;

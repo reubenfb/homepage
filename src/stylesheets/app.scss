@@ -11,7 +11,6 @@ body {
   text-align: center;
   font-family: 'Lato';
   font-weight: 300;
-  font-size: 21px;
   @media screen and (max-width: 580px){
     font-size: 17px;
   }
@@ -40,9 +39,8 @@ body {
       }
     }
     p {
-      max-width: 1030px;
       margin-top: 20px;
-      font-size: 21px;
+      font-size: 24px;
       padding-left: 3px;
       font-weight: 300;
       line-height: 1.55;
@@ -63,8 +61,8 @@ body {
     padding-top: 20px;
     @media screen and (min-width: 1330px) {
       width: 1305px;
-      p, marquee {
-        max-width: 975px;
+      p {
+        max-width: 1100px;
       }
     }
     @media screen and (min-width: 999px) and (max-width: 1329px) {
