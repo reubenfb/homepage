@@ -18,8 +18,7 @@ let finalData = {};
 function writeData(data, tabletop){
 
 	let finalData = {
-		made: data.made.elements,
-		edit: data.edit.elements
+		projects: data.projects.elements
 	}
 	
 	fs.writeFileSync('./data/data.json', JSON.stringify(finalData))

@@ -132,7 +132,7 @@ body {
         }
       }
     }
-    .made-container {
+    .project-container {
       height: 100%;
       display: inline-block;
       padding-bottom: 50px;
@@ -166,7 +166,7 @@ body {
           }
         }
         .graphic {
-          border-radius: 5px;
+          border-radius: 2px;
           width: 309px;
           height: 309px;
           border: 1px solid #ccc;
@@ -176,8 +176,8 @@ body {
           page-break-inside: avoid;
           break-inside: avoid;
           .title {
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
+            border-top-left-radius: 2px;
+            border-top-right-radius: 2px;
             font-family: Lato;
             font-weight: 400;
             text-align: left;

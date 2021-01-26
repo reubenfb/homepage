@@ -33,26 +33,10 @@ html
           a.orange(href = 'https://twitter.com/ReubenFB' target='_blank') @reubenfb
           |  and reuben.fischerbaum [at] gmail.com.
 
-      - editData = _.sortBy(data.edit, date);
-      - madeData = _.sortBy(data.made, date);
-      - madeData = _.filter(madeData, function(graphic){ return graphic.hide != 'TRUE' });
-      - rowCount = 2;
 
-      .edit-container
-        .intro
-          p I manage a team focused on political graphics. Here’s a marquee of some projects I edited.
-        for row, j in Array(rowCount)
-          if(j > 0)
-            - randomBreak = _.random(0, 300);
-          else
-            - randomBreak = 0;
-          .marquee.links
-            div
-              span
-                each project, i in _.shuffle(editData)
-                  - colorNumber = i + j
-                  - colorClass = colorNumber % 3 == 0 ? 'one' : colorNumber % 2 == 0 ? 'two' : 'three'
-                  a(href = "#{project.link}" target="_blank" class = "#{colorClass}") #{project.title}
+
+      - editData = _.filter(data.projects, graphic => graphic.cat == 'edit' && graphic.hide != 'TRUE');
+      - madeData = _.filter(data.projects, graphic => graphic.cat == 'made' && graphic.hide != 'TRUE');
 
       mixin graphicImage(data)
         each graphic in data
@@ -64,8 +48,24 @@ html
                 .title
                   span #{graphic.title}
                 img.cutout(src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
-    
-      .made-container
+
+
+      .project-container.edit
+        .intro
+          p I manage a team focused on political graphics. Here’s a marquee of some projects I edited.
+        .four-column.column-container
+          - fourData = utils.reorderData(editData, 4)
+          +graphicImage(fourData)
+        .three-column.column-container
+          - threeData = utils.reorderData(editData, 3)
+          +graphicImage(threeData)
+        .two-column.column-container
+          - twoData = utils.reorderData(editData, 2)
+          +graphicImage(twoData)
+        .one-column.column-container
+          +graphicImage(editData)
+
+      .project-container.made
         .intro
           p Here are some projects that I worked on myself.
         .four-column.column-container
