@@ -8,19 +8,23 @@
 }
 
 body {
+  
   text-align: center;
   font-family: 'Lato';
   font-weight: 300;
+
   @media screen and (max-width: 580px){
     font-size: 17px;
   }
   @media screen and (max-width: 374px){
     margin: 3px;
   }
+
   a {
     color: #222;
     text-decoration: none;
   }
+
   .intro {
     text-align: left;
     h1 {
@@ -38,6 +42,7 @@ body {
         font-size: 0.6em;
       }
     }
+
     p {
       margin-top: 20px;
       font-size: 24px;
@@ -58,6 +63,7 @@ body {
       }
     }
   }
+
   .top-container {
     display: inline-block;
     padding-top: 20px;
@@ -76,62 +82,7 @@ body {
     @media screen and (max-width: 664px) {
       width: 320px;
     }
-    .edit-container {
-      text-align: justify;
-      font-weight: 400;
-      font-size: 16px;
-      .whitespace {
-        display: inline-block;
-      }
-      .marquee {
-        margin-left: 5px;
-        height: 27px;
-        width: 12500px;
-        overflow: hidden;
-        position: relative;
-        div {
-          display: block;
-          width: 200%;
-          height: 28px;
-          position: absolute;
-          overflow: hidden;
-          animation: marquee 120s linear infinite;
-        }
-        span {
-          float: left;
-          width: 50%;
-        }
-      }
-      a {
-        padding: 5px 3px;
-        display: inline-block;
-        &.one {
-          color: #ff5a00;
-        }
-        &.two {
-          color: #4D93D1;
-        }
-        &:hover {
-          background-color: #ffedab;
-          color: #000;
-          border-radius: 5px;
-        }
-        &:after {
-          content: '|';
-          margin-left: 6px;
-          color: rgba(0,0,0,0.1);
-        }
-        &:first-of-type {
-          margin-left: 0px;
-        }
-        &:last-of-type {
-         &:after {
-            content: '';
-            margin-left: 0px;
-         }
-        }
-      }
-    }
+
     .project-container {
       height: 100%;
       display: inline-block;
@@ -141,6 +92,7 @@ body {
         -moz-column-gap: 15px;
         -webkit-column-gap: 15px;
         column-gap: 15px;
+
         &.four-column {
           @include colParams(4);
           @media screen and (min-width: 1330px) {
@@ -218,9 +170,4 @@ body {
       }
     }
   }
-}
-
-@keyframes marquee {
-  0% { left: 0; }
-  100% { left: -100%; }
 }
