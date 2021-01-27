@@ -32,8 +32,8 @@ html
           if _.isNull(graphic.title)
             .graphic.small.blank
           else
-            a(href = "#{graphic.link}" target="_blank")
-              .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'} #{graphic.secret === 'TRUE' ? 'secret' : ''}")
+            a(href = "#{graphic.link}" target="_blank" class= "#{graphic.secret === 'TRUE' ? 'secret' : ''}")
+              .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'}")
                 .title
                   span #{graphic.title}
                 img.cutout.lazy(data-src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
