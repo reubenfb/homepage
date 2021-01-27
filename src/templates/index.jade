@@ -33,7 +33,7 @@ html
             .graphic.small.blank
           else
             a(href = "#{graphic.link}" target="_blank")
-              .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'} #{graphic.image.replace('.png', '')}")
+              .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'} #{graphic.secret === 'TRUE' ? 'secret' : ''}")
                 .title
                   span #{graphic.title}
                 img.cutout.lazy(data-src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
