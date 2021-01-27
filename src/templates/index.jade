@@ -1,11 +1,10 @@
 doctype html
-html
+html(lang='en')
   head
     title Reuben Fischer-Baum projects, articles and visualizations
     link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
     link(rel='icon', type='image/x-icon', href='images/favicon.ico')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
-    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no')
     meta(charset='UTF-8')
     meta(name='description', content="Reuben Fischer-Baum's personal website")
     meta(name='author', content='Reuben Fischer-Baum')
@@ -32,7 +31,7 @@ html
           if _.isNull(graphic.title)
             .graphic.small.blank
           else
-            a(href = "#{graphic.link}" target="_blank" class= "#{graphic.secret === 'TRUE' ? 'secret' : ''}")
+            a(href = "#{graphic.link}" target="_blank" rel='noopener' class= "#{graphic.secret === 'TRUE' ? 'secret' : ''}")
               .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'}")
                 .title
                   span #{graphic.title}
