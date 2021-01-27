@@ -23,8 +23,9 @@ html
           span.space  
           | Fischer-Baum
 
-      - editData = _.filter(data.projects, graphic => graphic.cat == 'edit' && graphic.hide != 'TRUE');
-      - madeData = _.filter(data.projects, graphic => graphic.cat == 'made' && graphic.hide != 'TRUE');
+      - showData = _.filter(data.projects, graphic => graphic.hide != 'TRUE');
+      - editData = _.filter(showData, graphic => graphic.cat == 'edit');
+      - madeData = _.filter(showData, graphic => graphic.cat == 'made');
 
       mixin graphicImage(data)
         each graphic in data
