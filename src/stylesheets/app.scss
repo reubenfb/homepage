@@ -44,9 +44,11 @@ body {
       padding-left: 3px;
       font-weight: 300;
       line-height: 1.55;
+      .bold {
+        font-weight: 700;
+      }
       .orange {
         color: #ff5a00;
-        font-weight: 700;
       }
       a:hover {
         color: #222;

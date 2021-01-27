@@ -43,16 +43,18 @@ html(lang='en')
         .intro
           p
             | I’m an assignment editor on the graphics team at 
-            a.orange(href = 'https://www.washingtonpost.com/people/reuben-fischer-baum/') The Washington Post
+            a.orange.bold(href = 'https://www.washingtonpost.com/people/reuben-fischer-baum/') The Washington Post
             | . I previously worked at  
-            a.orange(href = 'http://fivethirtyeight.com/contributors/reuben-fischer-baum/') FiveThirtyEight 
+            a.orange.bold(href = 'http://fivethirtyeight.com/contributors/reuben-fischer-baum/') FiveThirtyEight 
             | and 
-            a.orange(href = 'https://kinja.com/reubenfb') Deadspin
+            a.orange.bold(href = 'https://kinja.com/reubenfb') Deadspin
             | . I’m at 
-            a.orange(href = 'https://twitter.com/ReubenFB') @reubenfb
+            a.orange.bold(href = 'https://twitter.com/ReubenFB') @reubenfb
             |  and reuben.fischerbaum [at] gmail.com.
           p I’ve been an editor at the Post since 2018, leading a team of graphics reporters. I spent the past three years covering elections and the Trump administration. Recently I switched my focus to business and technology.
-          p Here are some of the projects I’m most proud of editing.
+          p Here are some of the projects 
+            a.bold  I’m most proud of editing
+            | .
         .four-column.column-container
           - fourData = utils.reorderData(editData, 4)
           +graphicImage(fourData)
@@ -67,7 +69,9 @@ html(lang='en')
 
       .project-container.made
         .intro
-          p Here are some projects I actually made myself. Most are from 2012 to 2018. Some are more recent!
+          p Here are some projects
+            a.bold  I made myself
+            | . Most are from 2012 to 2018. Some are more recent!
         .four-column.column-container
           - fourData = utils.reorderData(madeData, 4)
           +graphicImage(fourData)
