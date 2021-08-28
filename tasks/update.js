@@ -1,26 +1,38 @@
 #!/usr/bin/env node
+const fs = require('fs');
+const { GoogleSpreadsheet } = require('google-spreadsheet');
 
-var tabletop = require('tabletop');
-var fs = require('fs');
-require('colors');
+let config = JSON.parse(fs.readFileSync('./config.json'));
+const doc = new GoogleSpreadsheet(config.sheet);
+doc.useApiKey(config.key);
 
-console.error(('spreadsheet.js').green.inverse);
+(async function() {
 
-tabletop.init({ 
-  key: 'https://docs.google.com/spreadsheets/d/1nbqzUvQCPOOT-gubvmmICjMheZJAwUKkZF8KnrUY6Ts/edit?usp=sharing',
-  callback: writeData,
-  simpleSheet: false
-});
+		await doc.loadInfo();
+		let rows = await doc.sheetsByIndex[0].getRows();
 
-let finalData = {};
+		let rowArray = [];
 
+		rows.forEach(row => {
 
-function writeData(data, tabletop){
+			let rowObj = {
+				date: row.date,
+				cat: row.cat,
+				title: row.title,
+				image: row.image,
+				link: row.link,
+				highlight: row.highlight,
+				hide: row.hide
+			}
 
-	let finalData = {
-		projects: data.projects.elements
-	}
-	
-	fs.writeFileSync('./data/data.json', JSON.stringify(finalData))
-}
+			rowArray.push(rowObj);
+		})
+
+		let finalData = {
+			projects: rowArray
+		}
+
+		fs.writeFileSync('./data/data.json', JSON.stringify(finalData))
+
+}());
 
