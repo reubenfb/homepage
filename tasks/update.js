@@ -9,9 +9,8 @@ doc.useApiKey(config.key);
 (async function() {
 
 		await doc.loadInfo();
-		let rows = await doc.sheetsByIndex[0].getRows();
-
 		let rowArray = [];
+		let rows = await doc.sheetsByIndex[0].getRows();
 
 		rows.forEach(row => {
 
@@ -26,13 +25,9 @@ doc.useApiKey(config.key);
 			}
 
 			rowArray.push(rowObj);
-		})
+		});
 
-		let finalData = {
-			projects: rowArray
-		}
-
-		fs.writeFileSync('./data/data.json', JSON.stringify(finalData))
+		fs.writeFileSync('./data/data.json', JSON.stringify({projects: rowArray}))
 
 }());
 
