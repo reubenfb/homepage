@@ -6,3 +6,4 @@ apiKeys.json
 .DS_Store
 src/.DS_Store
 src/images/.DS_Store
+config.json
