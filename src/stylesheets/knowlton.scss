@@ -14,7 +14,7 @@
     position: relative;
     display: inline-block;
     background-color: #000;
-    padding: 20px;
+    padding: 20px 0px 20px 20px;
     div {
       position: absolute;
       padding-left: inherit;
@@ -30,7 +30,7 @@
     display: inline-block;
     canvas {
       padding: 20px;
-      background-color: #ccc;
+      background-color: #000;
     }
   }
 }
