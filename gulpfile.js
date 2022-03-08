@@ -48,6 +48,13 @@ gulp.task('sass', function () {
 });
 
 gulp.task('scripts', function() {
+
+  // TO DO CLEAN THIS UP
+  browserify('./src/js/misc/knowlton.js')
+    .bundle().pipe(source('knowlton.js'))
+    //.pipe(buffer()).pipe(uglify())
+    .pipe(gulp.dest('./public/'));
+
   return browserify('./src/js/app.js')
     .bundle()
     .pipe(source('bundle.js'))
@@ -96,6 +103,7 @@ gulp.task('deploy', function(done){
 gulp.task('watch', function() {
   gulp.watch('./src/stylesheets/*.scss', ['sass']);
   gulp.watch('./src/templates/*.jade', ['jade']);
+  gulp.watch('./src/js/**/*.js', ['scripts']);
 });
 
 gulp.task('build', ['sass', 'scripts', 'jade', 'images', 'pdfs']);

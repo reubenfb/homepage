@@ -28,10 +28,3 @@ if (navigator.userAgent.indexOf('Safari') != -1 && navigator.userAgent.indexOf('
   var graphicsHeight = d3.select('.graphics-container').node().getBoundingClientRect().height;
   d3.select('.top-container').style('height', introHeight + graphicsHeight + 'px');
 }
-
-
-
-
-
-
-
