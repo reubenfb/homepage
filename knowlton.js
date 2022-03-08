@@ -6077,7 +6077,8 @@ let lineHeight = fontSize * 0.75;
 let width = Math.round(fontSize/30*602);
 let height = Math.round(fontSize/30*610);
 let cols = 40;
-let rows = text.length/cols;
+let rows = Math.ceil(text.length/cols);
+let avgLum;
 
 let canvas = d3.select('#canvas').append('canvas')
 	.attr('width', width)
@@ -6085,6 +6086,7 @@ let canvas = d3.select('#canvas').append('canvas')
 
 let context = canvas.node().getContext('2d');
 drawImage();
+
 
 function drawImage() {
 
@@ -6096,16 +6098,16 @@ function drawImage() {
   	let scaleY = height/base_image.height;
     context.drawImage(base_image, 0, 0, base_image.width * scaleX, base_image.height * scaleY);
 
-
-	let imgData = context.getImageData(0, 0, width, height);
-	let data = imgData.data;
-
 	// create an array of arrays to store our lum values
 	let charValues = [];
 	for(let i = 0; i<cols*rows; i++){
 		let newArray = [];
 		charValues.push(newArray);
 	}
+
+    // get image data
+	let imgData = context.getImageData(0, 0, width, height);
+	let data = imgData.data;
 
 	// loop through the pixels
 	for(let i = 0; i < data.length; i+=4){
@@ -6114,35 +6116,35 @@ function drawImage() {
 		let g = data[i+1];
 		let b = data[i+2];
 
-		// calculcate lum
+		// calculate perceived lum
 		let lum = 0.299*r + 0.587*g + 0.114*b;
 
-		// assign the pixel to poem characters
+		// assign the pixel to a poem character by 
+		// pretending the chars are a grid of rectangles
 		let pixel = i/4;
 		let x = pixel % width;
 		let y = Math.floor(pixel/width);
 
 		let gridX = Math.floor(x/width*cols);
 		let gridY = Math.floor(y/height*rows);
-		let gridIndex = gridY * cols + gridX;
+		let poemChar = gridY * cols + gridX;
 
-		charValues[gridIndex].push(lum);
+		charValues[poemChar].push(lum);
 	}
 
 	// find the average lum per character;
-	let avgLum = charValues.map(function(pixelArray){
+	avgLum = charValues.map(function(pixelArray){
 		return pixelArray.reduce((a, b) => a + b) / pixelArray.length;
 	});
 
-	drawPoem(avgLum, '#poem1', 2.2);
-	//drawPoem(avgLum, '#poem2', 2.5);
+	drawPoem('#poem1', 2.2);
+	//drawPoem('#poem2', 2.5);
   }
 }
 
-function drawPoem(avgLum, sel, pow){
+function drawPoem(sel, pow){
 
-	let startX = 1;
-	let xPos = startX;
+	let xPos = 0;
 	let yPos = -5;
 
 	// after playing around with it with some side-by-sides
@@ -6164,18 +6166,20 @@ function drawPoem(avgLum, sel, pow){
 		.domain([lumMin, lumMax])
 		.range([0.2, 1]);
 
+	// draw each character as an
+	// absoutely positioned div
 	for(let i = 0; i < text.length; i++){
 
-	  let div = poem.append('div').html(text.charAt(i));
+	  let div = poem.append('div').html(text.charAt(i))
+	  	.style('font-size', `${fontSize}px`)
+	 	.style('left', `${xPos}px`)
+	  	.style('top', `${yPos}px`)
+	  	.style('font-weight', weightScale(avgLum[i]))
+	  	.style('opacity', opacityScale(avgLum[i]));
 
-	  div.style('font-size', `${fontSize}px`);
-	  div.style('left', `${xPos}px`);
-	  div.style('top', `${yPos}px`);
-	  div.style('font-weight', Math.round(weightScale(avgLum[i])));
-	  div.style('opacity', opacityScale(avgLum[i]))
-
+	  // increment x and y pos of next character
 	  if((i + 1) % cols == 0){
-	    xPos = startX;
+	    xPos = 0;
 	    yPos = yPos + lineHeight;
 	  }
 	  else {
