@@ -6,12 +6,31 @@
   font-weight: 200 900;
 }
 
-.poem {
-  position: relative;
-  div {
-    position: absolute;
+.art-container {
+  .poem, #canvas {
+    vertical-align: top;
+  }
+  .poem {
+    position: relative;
     display: inline-block;
-    font-family: Inconsolata;
-    font-size: 16px;
+    background-color: #000;
+    padding: 20px;
+    div {
+      position: absolute;
+      padding-left: inherit;
+      padding-top: inherit;
+      display: inline-block;
+      font-family: Inconsolata;
+      font-size: 16px;
+      color: #fff;
+    }
+  }
+
+  #canvas {
+    display: inline-block;
+    canvas {
+      padding: 20px;
+      background-color: #ccc;
+    }
   }
 }
