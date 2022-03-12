@@ -10,6 +10,9 @@ var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var cloudflare = require("gulp-cloudflare");
+var merge = require('merge-stream');
+var glob = require('glob');
+var path = require('path');
 
 //var keys = require('./apiKeys.json');
 var _ = require('underscore');
@@ -49,12 +52,17 @@ gulp.task('sass', function () {
 
 gulp.task('scripts', function() {
 
-  // TO DO CLEAN THIS UP
-  browserify('./src/js/misc/knowlton.js')
-    .bundle().pipe(source('knowlton.js'))
-    //.pipe(buffer()).pipe(uglify())
-    .pipe(gulp.dest('./public/'));
+  let miscFiles = glob.sync('./src/js/misc/*.js');
 
+  // do the assorted scripts first
+  merge(miscFiles.map(function(file){
+    return browserify(`${file}`)
+      .bundle()
+      .pipe(source((path.basename(file, '.js') + '.js')))
+      .pipe(gulp.dest('./public/'));
+    }));
+
+  // then the main script (with uglify)
   return browserify('./src/js/app.js')
     .bundle()
     .pipe(source('bundle.js'))
