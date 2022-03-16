@@ -30,13 +30,13 @@ function averageImages(){
 
 		files = files.filter(file => file.includes('.png'));
 
-		files.forEach((img,i)=>{
+		files.forEach((img)=>{
 			sharp(`us_cropped/output/${img}`)
 			.raw()
 			.toBuffer({resolveWithObject: true})
 			.then(buffer => {
-				let adder = buffer.data.length == 2700000 ? 3 : 4;
-				for(let j = 0; j<1200*750*adder; j+=adder){
+				let adder = buffer.data.length/(1200*750);
+				for(let j = 0; j<buffer.data.length; j+=adder){
 					imageData[j/adder].r += buffer.data[j];
 					imageData[j/adder].g += buffer.data[j+1];
 					imageData[j/adder].b += buffer.data[j+2];
