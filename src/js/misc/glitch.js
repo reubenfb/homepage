@@ -10,7 +10,7 @@ const sketch = ( s ) => {
 		keyboard = s.loadImage('images/keyboard.jpg', image => image.resize(width,width));
 
 		// generate a new glitch instance for each image
-		for(let i = 0; i<25; i++){
+		for(let i = 0; i<8; i++){
 			s.glitches[i] = new Glitch(s);
 		}
 	};
