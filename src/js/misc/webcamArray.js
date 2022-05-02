@@ -3,16 +3,24 @@ const sketch = (s) => {
 	let width = 320;
 	let capture;
 	let canvas;
+	let tracker;
 	let triggered = false;
 
 	// s.preload = () => {
 	// }
 
 	s.setup = () => {
-		canvas = s.createCanvas(width, width* 0.75);
 		s.pixelDensity(1);
 		capture = s.createCapture(s.VIDEO);
+		capture.elt.setAttribute('playsinline', '');
+		canvas = s.createCanvas(width, width* 0.75);
+		capture.size(320,240);
 		capture.hide();
+
+		tracker = new clm.tracker();
+		tracker.init();
+		tracker.start(capture.elt);
+
 		canvas.mouseClicked(switchVideos);
 	};
 
@@ -22,6 +30,34 @@ const sketch = (s) => {
 		s.scale(-1,1);
 		s.image(capture,0, 0, width, width*0.75);
 		s.pop();
+
+		let positions = tracker.getCurrentPosition();
+
+		if(positions){
+
+			let eyeOne = [23, 63, 24, 64, 25, 65, 26, 66];
+			let eyeTwo = [30, 68, 29, 67, 28, 70, 31, 69];
+
+			s.noStroke();
+			s.fill(255,0,0);
+
+			s.beginShape();
+				for(let i = 0; i < eyeOne.length; i++){
+					let pos = positions[eyeOne[i]];
+					// inverting X
+					s.vertex(-(pos[0] - 320), pos[1]);
+				}
+			s.endShape(s.CLOSE)
+
+			s.beginShape();
+				for(let i = 0; i < eyeTwo.length; i++){
+					let pos = positions[eyeTwo[i]];
+					s.vertex(-(pos[0] - 320), pos[1]);
+				}
+			s.endShape(s.CLOSE)
+
+		}
+		
 	};
 
 	function switchVideos(){
