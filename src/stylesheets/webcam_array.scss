@@ -18,48 +18,15 @@
 #container {
   width: 960px;
   height: 960px;
-  position: relative;
   margin: 0 auto;
+  flex-flow: row wrap;
+  display: flex;
+  align-content: flex-start;
 
-  canvas {
-    position: absolute;
-    left: 640px;
-    top: 240px;
+  #canvas-container {
+    height: 240px;
+    width: 320px;
+    background-color: #ccc;
   }
 
-  .video {
-    position: absolute;
-    &#vid1 {
-      left: 0;
-      top: 0;
-    }
-    &#vid2 {
-      left: 320px;
-      top: 0;
-    }
-    &#vid3 {
-      left: 640px;
-      top: 0;
-    }
-    &#vid4 {
-      left: 0;
-      top: 240px;
-    }
-    &#vid5 {
-      left: 320px;
-      top: 240px;
-    }
-    &#vid6 {
-      left: 0px;
-      top: 480px;
-    }
-    &#vid7 {
-      left: 320px;
-      top: 480px;
-    }
-    &#vid8 {
-      left: 640px;
-      top: 480px;
-    }
-  }
 }
