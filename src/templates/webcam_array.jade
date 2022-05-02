@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+  head
+    title Recreating the Past – Avert Your Eyes
+    link(rel='shortcut icon', type='image/x-icon', href='images/favicon.ico')
+    link(rel='icon', type='image/x-icon', href='images/favicon.ico')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='UTF-8')
+    link(rel = 'stylesheet' type='text/css' href = 'webcam_array.css')
+    script(src = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js')
+  body
+    .top-container
+      .intro
+        h1 Avert Your Eyes
+        h2 Recreating the Past – MIT Spring 2022
+        #container
+          video.video#vid1(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid1')
+          video.video#vid2(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid2')
+          video.video#vid3(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid3')
+          video.video#vid4(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid4')
+          video.video#vid5(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid5')
+          video.video#vid6(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid6')
+          video.video#vid7(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid7')
+          video.video#vid8(width='320', height='240', autoplay loop muted)
+            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid8')
+    script(src = 'webcamArray.js')

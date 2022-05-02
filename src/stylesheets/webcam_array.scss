@@ -1,0 +1,65 @@
+@import 'app.scss';
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('/fonts/Inconsolata-VariableFont_wdth,wght.ttf') format("truetype-variations");
+  font-weight: 200 900;
+}
+
+.intro {
+  text-align: center !important;
+  h2 {
+    font-weight: 300;
+    margin-top: 0px;
+    margin-bottom: 30px;
+  }
+}
+
+#container {
+  width: 960px;
+  height: 960px;
+  position: relative;
+  margin: 0 auto;
+
+  canvas {
+    position: absolute;
+    left: 640px;
+    top: 240px;
+  }
+
+  .video {
+    position: absolute;
+    &#vid1 {
+      left: 0;
+      top: 0;
+    }
+    &#vid2 {
+      left: 320px;
+      top: 0;
+    }
+    &#vid3 {
+      left: 640px;
+      top: 0;
+    }
+    &#vid4 {
+      left: 0;
+      top: 240px;
+    }
+    &#vid5 {
+      left: 320px;
+      top: 240px;
+    }
+    &#vid6 {
+      left: 0px;
+      top: 480px;
+    }
+    &#vid7 {
+      left: 320px;
+      top: 480px;
+    }
+    &#vid8 {
+      left: 640px;
+      top: 480px;
+    }
+  }
+}
