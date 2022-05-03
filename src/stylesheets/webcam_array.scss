@@ -19,6 +19,7 @@
   position: relative;
   margin: 0 auto;
   width: 960px;
+  height: 720px;
   padding-bottom: 50px;
 
   .mosaic-container, .webcam-container {
@@ -31,7 +32,7 @@
     position: absolute;
 
     video {
-      transition: opacity .25s ease-in-out;
+      transition: opacity .3s ease-in-out;
     }
 
     #canvas-container, #fake-container {

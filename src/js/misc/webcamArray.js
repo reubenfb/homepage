@@ -106,7 +106,7 @@ const sketch = (s) => {
 		}
 
 		let vids = [1,2,3,4,5,6,7,8];
-		let randomCount = randomIntFromInterval(1,4);
+		let randomCount = randomIntFromInterval(1,3);
 		let randomVids = vids.sort(() => .5 - Math.random()).slice(0,randomCount);
 		let vidsEnded = 0;
 
