@@ -125,9 +125,7 @@ const sketch = (s) => {
 				eyesHiddenStart = 0;
 				eyesTimeHidden = 0;
 			}
-
 		}
-
 	}
 
 	function randomIntFromInterval(min, max) { 
