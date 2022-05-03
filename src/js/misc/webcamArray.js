@@ -4,10 +4,14 @@ const sketch = (s) => {
 	let capture;
 	let canvas;
 	let tracker;
+
+	// logic for controlling video trigger
+	const hiddenThreshold = 2000;
+	let eyesRevealed = false;
+	let eyesHiddenStart = 0;
+	let eyesTimeHidden = 0;
 	let triggered = false;
 
-	// s.preload = () => {
-	// }
 
 	s.setup = () => {
 		s.pixelDensity(1);
@@ -21,7 +25,7 @@ const sketch = (s) => {
 		tracker.init();
 		tracker.start(capture.elt);
 
-		canvas.mouseClicked(switchVideos);
+		//canvas.mouseClicked(switchVideos);
 	};
 
 	s.draw = () => {
@@ -35,11 +39,14 @@ const sketch = (s) => {
 
 		if(positions){
 
+			eyesRevealed = true;
+			eyesHiddenStart = 0;
+			eyesTimeHidden = 0;
+
 			let eyeOne = [23, 63, 24, 64, 25, 65, 26, 66];
 			let eyeTwo = [30, 68, 29, 67, 28, 70, 31, 69];
 
-			s.noStroke();
-			s.fill(255,0,0);
+			s.noFill();
 
 			s.beginShape();
 				for(let i = 0; i < eyeOne.length; i++){
@@ -54,8 +61,39 @@ const sketch = (s) => {
 					let pos = positions[eyeTwo[i]];
 					s.vertex(-(pos[0] - 320), pos[1]);
 				}
-			s.endShape(s.CLOSE)
+			s.endShape(s.CLOSE);
 
+			s.textSize(20);
+			s.textFont('Courier New');
+			s.fill(255);
+			let margin = 8;
+
+			s.textAlign(s.LEFT, s.TOP);
+			s.text('PLEASE', margin, margin);
+
+			s.textAlign(s.RIGHT, s.TOP);
+			s.text('HIDE', 320-margin, margin);
+
+			s.textAlign(s.LEFT, s.BOTTOM);
+			s.text('YOUR', margin, 240-margin);
+
+			s.textAlign(s.RIGHT, s.BOTTOM);
+			s.text('EYES', 320-margin, 240-margin);
+
+
+		}
+		else {
+
+			if(eyesHiddenStart == 0){
+				eyesHiddenStart = new Date();
+			}
+
+			eyesTimeHidden = new Date() - eyesHiddenStart;
+
+			if(!triggered && eyesRevealed && eyesTimeHidden > hiddenThreshold){
+				switchVideos();
+			}
+			
 		}
 		
 	};
@@ -71,18 +109,23 @@ const sketch = (s) => {
 		let randomVids = vids.sort(() => .5 - Math.random()).slice(0,randomCount);
 
 		for(let i = 0; i<randomVids.length; i++){
-			let vid = document.getElementById(`vid${randomVids[i]}`);
-			vid.setAttribute('src', 'images/mp4s/try_start_small2.mp4');
-			vid.removeAttribute('loop');
+			let mosaic = document.getElementById(`mosaic${randomVids[i]}`);
+			let webcam = document.getElementById(`webcam${randomVids[i]}`);
+			mosaic.style.opacity = 0;
+			webcam.play();
+			mosaic.pause();
+			mosaic.currentTime = 0;
 			triggered = true;
 
-			vid.onended = (event) => {
-				vid.setAttribute('src', 'images/mp4s/test_mosaic.mp4');
-				vid.setAttribute('loop', true);
+			webcam.onended = (event) => {
+				mosaic.style.opacity = 1;
+				mosaic.play();
 				triggered = false;
+				eyesRevealed = false;
+				eyesHiddenStart = 0;
+				eyesTimeHidden = 0;
 			}
 
-			vid.load();
 		}
 
 	}

@@ -14,22 +14,45 @@ html(lang='en')
       .intro
         h1 Avert Your Eyes
         h2 Recreating the Past – MIT Spring 2022
-        #container
-          video.video#vid1(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid1')
-          video.video#vid2(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid2')
-          video.video#vid3(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid3')
-          video.video#vid4(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid4')
-          video.video#vid5(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid5')
+
+      .video-container
+
+        .webcam-container
+          video#webcam1(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam1.mp4', type='video/mp4')
+          video#webcam2(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam2.mp4', type='video/mp4')
+          video#webcam3(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam3.mp4', type='video/mp4')
+          video#webcam4(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam4.mp4', type='video/mp4')
+          video#webcam5(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam5.mp4', type='video/mp4')
+          #fake-container
+          video#webcam6(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam6.mp4', type='video/mp4')
+          video#webcam7(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam7.mp4', type='video/mp4')
+          video#webcam8(width='320', height='240', muted preload='auto')
+            source(src='images/webcam_array/webcam8.mp4', type='video/mp4')
+
+        .mosaic-container
+          video#mosaic1(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic1.mp4', type='video/mp4')
+          video#mosaic2(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic2.mp4', type='video/mp4')
+          video#mosaic3(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic3.mp4', type='video/mp4')
+          video#mosaic4(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic4.mp4', type='video/mp4')
+          video#mosaic5(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic5.mp4', type='video/mp4')
           #canvas-container
-          video.video#vid6(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid6')
-          video.video#vid7(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid7')
-          video.video#vid8(width='320', height='240', autoplay loop muted)
-            source(src='images/mp4s/test_mosaic.mp4', type='video/mp4', id='vid8')
+          video#mosaic6(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic6.mp4', type='video/mp4')
+          video#mosaic7(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic7.mp4', type='video/mp4')
+          video#mosaic8(width='320', height='240', autoplay loop muted preload='auto')
+            source(src='images/webcam_array/mosaic8.mp4', type='video/mp4')
+
     script(src = 'webcamArray.js')
