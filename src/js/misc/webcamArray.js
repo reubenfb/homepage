@@ -14,7 +14,7 @@ const sketch = (s) => {
 
 
 	s.setup = () => {
-		s.pixelDensity(1);
+		//s.pixelDensity(1);
 		capture = s.createCapture(s.VIDEO);
 		capture.elt.setAttribute('playsinline', '');
 		canvas = s.createCanvas(width, width* 0.75);
@@ -46,40 +46,41 @@ const sketch = (s) => {
 			let eyeOne = [23, 63, 24, 64, 25, 65, 26, 66];
 			let eyeTwo = [30, 68, 29, 67, 28, 70, 31, 69];
 
-			s.noFill();
+			if(!triggered){
+				s.noFill();
 
-			s.beginShape();
-				for(let i = 0; i < eyeOne.length; i++){
-					let pos = positions[eyeOne[i]];
-					// inverting X
-					s.vertex(-(pos[0] - 320), pos[1]);
-				}
-			s.endShape(s.CLOSE)
+				s.beginShape();
+					for(let i = 0; i < eyeOne.length; i++){
+						let pos = positions[eyeOne[i]];
+						// inverting X
+						s.vertex(-(pos[0] - 320), pos[1]);
+					}
+				s.endShape(s.CLOSE)
 
-			s.beginShape();
-				for(let i = 0; i < eyeTwo.length; i++){
-					let pos = positions[eyeTwo[i]];
-					s.vertex(-(pos[0] - 320), pos[1]);
-				}
-			s.endShape(s.CLOSE);
+				s.beginShape();
+					for(let i = 0; i < eyeTwo.length; i++){
+						let pos = positions[eyeTwo[i]];
+						s.vertex(-(pos[0] - 320), pos[1]);
+					}
+				s.endShape(s.CLOSE);
 
-			s.textSize(20);
-			s.textFont('Courier New');
-			s.fill(255);
-			let margin = 8;
+				s.textSize(20);
+				s.textFont('Courier New');
+				s.fill(255);
+				let margin = 8;
 
-			s.textAlign(s.LEFT, s.TOP);
-			s.text('PLEASE', margin, margin);
+				s.textAlign(s.LEFT, s.TOP);
+				s.text('PLEASE', margin, margin);
 
-			s.textAlign(s.RIGHT, s.TOP);
-			s.text('HIDE', 320-margin, margin);
+				s.textAlign(s.RIGHT, s.TOP);
+				s.text('HIDE', 320-margin, margin);
 
-			s.textAlign(s.LEFT, s.BOTTOM);
-			s.text('YOUR', margin, 240-margin);
+				s.textAlign(s.LEFT, s.BOTTOM);
+				s.text('YOUR', margin, 240-margin);
 
-			s.textAlign(s.RIGHT, s.BOTTOM);
-			s.text('EYES', 320-margin, 240-margin);
-
+				s.textAlign(s.RIGHT, s.BOTTOM);
+				s.text('EYES', 320-margin, 240-margin);
+			}
 
 		}
 		else {
@@ -107,6 +108,7 @@ const sketch = (s) => {
 		let vids = [1,2,3,4,5,6,7,8];
 		let randomCount = randomIntFromInterval(1,4);
 		let randomVids = vids.sort(() => .5 - Math.random()).slice(0,randomCount);
+		let vidsEnded = 0;
 
 		for(let i = 0; i<randomVids.length; i++){
 			let mosaic = document.getElementById(`mosaic${randomVids[i]}`);
@@ -120,10 +122,15 @@ const sketch = (s) => {
 			webcam.onended = (event) => {
 				mosaic.style.opacity = 1;
 				mosaic.play();
-				triggered = false;
-				eyesRevealed = false;
-				eyesHiddenStart = 0;
-				eyesTimeHidden = 0;
+				vidsEnded++;
+
+				if(vidsEnded == randomCount){
+					triggered = false;
+					eyesRevealed = false;
+					eyesHiddenStart = 0;
+					eyesTimeHidden = 0;		
+				}
+
 			}
 		}
 	}
