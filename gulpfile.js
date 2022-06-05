@@ -37,7 +37,7 @@ gulp.task('jade', ['sass'], function() {
     utils: utils
   }
  
-  gulp.src('./src/templates/*.jade')
+  gulp.src('./src/templates/**/*.jade')
     .pipe(jade({
       locals: locals
     }))
@@ -45,21 +45,21 @@ gulp.task('jade', ['sass'], function() {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./src/stylesheets/*.scss')
+  return gulp.src('./src/stylesheets/**/*.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest('./public/'));
 });
 
 gulp.task('scripts', function() {
 
-  let miscFiles = glob.sync('./src/js/misc/*.js');
+  let miscFiles = glob.sync('./src/js/misc/**/*.js');
 
   // do the assorted scripts first
   merge(miscFiles.map(function(file){
     return browserify(`${file}`)
       .bundle()
       .pipe(source((path.basename(file, '.js') + '.js')))
-      .pipe(gulp.dest('./public/'));
+      .pipe(gulp.dest('./public/js/'));
     }));
 
   // then the main script (with uglify)
@@ -109,8 +109,8 @@ gulp.task('deploy', function(done){
 });
 
 gulp.task('watch', function() {
-  gulp.watch('./src/stylesheets/*.scss', ['sass']);
-  gulp.watch('./src/templates/*.jade', ['jade']);
+  gulp.watch('./src/stylesheets/**/*.scss', ['sass']);
+  gulp.watch('./src/templates/**/*.jade', ['jade']);
   gulp.watch('./src/js/**/*.js', ['scripts']);
 });
 

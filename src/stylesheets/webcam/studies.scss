@@ -1,0 +1,34 @@
+@import '../app.scss';
+
+.top-container {
+  max-width: 1240px;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.studies-container {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-bottom: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .study {
+    font-family: Cousine;
+    font-weight: 400;
+    padding-bottom: 5px;
+    .title {
+      margin-bottom: 0px;
+      font-size: 24px;
+      text-transform: uppercase;
+    }
+    .date {
+      margin-top: 2px;
+      margin-bottom: 7px;
+      font-size: 18px;
+    }
+    img {
+      max-width: 400px;
+    }
+  }
+}
