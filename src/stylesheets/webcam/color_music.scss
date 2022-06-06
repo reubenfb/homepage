@@ -1,0 +1,17 @@
+@import '../app.scss';
+
+#button {
+  width: 180px;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  padding: 10px 5px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: Cousine;
+  font-size: 18px;
+  margin: 50px auto 0px;
+  line-height: 1.3;
+  &:hover {
+    background-color: #ccc;
+  }
+}

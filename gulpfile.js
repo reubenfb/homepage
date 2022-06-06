@@ -3,13 +3,11 @@ var deploy = require('gulp-gh-pages-cname');
 var webserver = require('gulp-webserver')
 var jade = require('gulp-jade');
 var sass = require('gulp-sass');
-var tinypng = require('gulp-tinypng');
 var runSequence = require('run-sequence');
 var browserify = require('browserify');
 var uglify = require('gulp-uglify');
 var source = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
-var cloudflare = require("gulp-cloudflare");
 var merge = require('merge-stream');
 var glob = require('glob');
 var path = require('path');
@@ -52,10 +50,10 @@ gulp.task('sass', function () {
 
 gulp.task('scripts', function() {
 
-  let miscFiles = glob.sync('./src/js/misc/**/*.js');
+  let misc = glob.sync('./src/js/misc/**/*.js');
 
   // do the assorted scripts first
-  merge(miscFiles.map(function(file){
+  merge(misc.map(function(file){
     return browserify(`${file}`)
       .bundle()
       .pipe(source((path.basename(file, '.js') + '.js')))
@@ -71,20 +69,14 @@ gulp.task('scripts', function() {
     .pipe(gulp.dest('./public/'));
 });
 
-gulp.task('compress-images', function () {
-  return gulp.src('./src/images/*.png')
-    .pipe(tinypng(keys.tinypng))
-    .pipe(gulp.dest('./src/images/compressed/'));
-});
-
 gulp.task('images', function () {
   return gulp.src('./src/images/compressed/*.{png,jpg,gif,jpeg}')
     .pipe(gulp.dest('./public/images/'));
 });
 
-gulp.task('pdfs', function () {
-  return gulp.src('./src/pdfs/*.pdf')
-    .pipe(gulp.dest('./public/pdfs/'));
+gulp.task('miscFiles', function () {
+  return gulp.src('./src/miscFiles/*.pdf')
+    .pipe(gulp.dest('./public/miscFiles/'));
 });
 
 gulp.task('git', function () {
@@ -93,16 +85,6 @@ gulp.task('git', function () {
       cname: 'www.reubenfb.com'
     }))
 });
-
-gulp.task('purge-cdn-cache', function() {
-  var options = {
-      token  : keys.cloudflare.token,
-      email  : keys.cloudflare.email,
-      domain : 'reubenfb.com'
-  };
-
-  cloudflare(options);
-})
 
 gulp.task('deploy', function(done){
   runSequence('build', 'git', done);
@@ -114,6 +96,6 @@ gulp.task('watch', function() {
   gulp.watch('./src/js/**/*.js', ['scripts']);
 });
 
-gulp.task('build', ['sass', 'scripts', 'jade', 'images', 'pdfs']);
+gulp.task('build', ['sass', 'scripts', 'jade', 'images', 'miscFiles']);
 
 gulp.task('default', ['build', 'watch', 'webserver']);

@@ -7,16 +7,23 @@
 }
 
 .studies-container {
-  max-width: 1240px;
+  max-width: 1260px;
   margin: 0 auto;
   padding-bottom: 100px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   .study {
     font-family: Cousine;
     font-weight: 400;
     padding-bottom: 5px;
+    padding: 10px;
+    &:hover {
+      color: blue;
+      img {
+        opacity: 0.8;
+      }
+    }
     .title {
       margin-bottom: 0px;
       font-size: 24px;

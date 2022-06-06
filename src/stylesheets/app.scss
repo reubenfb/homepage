@@ -179,7 +179,11 @@ body {
   }
   h2 {
     font-weight: 300;
-    margin-top: 0px;
-    margin-bottom: 30px;
+    margin: 0px auto 30px auto;
+    max-width: 600px;
   }
+}
+
+#p5_loading {
+  display: none;
 }
