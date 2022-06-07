@@ -1,13 +1,13 @@
 @import '../app.scss';
 
 .top-container {
-  max-width: 1240px;
+  max-width: 1000px;
   border-bottom: 1px solid #ccc;
   margin-bottom: 20px;
 }
 
 .studies-container {
-  max-width: 1260px;
+  max-width: 1020px;
   margin: 0 auto;
   padding-bottom: 100px;
   display: flex;
@@ -35,7 +35,7 @@
       font-size: 18px;
     }
     img {
-      max-width: 400px;
+      max-width: 320px;
     }
   }
 }

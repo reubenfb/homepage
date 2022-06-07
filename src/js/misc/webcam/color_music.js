@@ -27,7 +27,6 @@ const sketch = (s) => {
 		s.scale(-1, 1);
 		s.image(capture, 0, 0, s.width, s.height);
 		s.pop();
-		//
 
 		// loop through pixels to count colorful ones
 		s.loadPixels();
