@@ -39,23 +39,23 @@ module.exports = {
     });
 
     // you need to balance the columns with blanks to make sure the sorting works
-    let  maxCount = Math.max(...counter);
+    // let  maxCount = Math.max(...counter);
 
-    let fakeChart = {
-      title: 'You found my secret column-balancing chart',
-      image: 'reuben.jpg',
-      link: 'reubenfb.com',
-      highlight: '',
-      secret: 'TRUE'
-    }
+    // let fakeChart = {
+    //   title: 'You found my secret column-balancing chart',
+    //   image: 'reuben.jpg',
+    //   link: 'reubenfb.com',
+    //   highlight: '',
+    //   secret: 'TRUE'
+    // }
 
-    _.each(counter, function(count,i){
+    // _.each(counter, function(count,i){
 
-      if(count < maxCount){
-        colArray[i].push(fakeChart);
-      }
+    //   if(count < maxCount){
+    //     colArray[i].push(fakeChart);
+    //   }
 
-    });
+    // });
 
     return colArray[0].concat(colArray[1]).concat(colArray[2]).concat(colArray[3])
 
