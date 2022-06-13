@@ -23,7 +23,7 @@ gulp.task('webserver', function() {
       fallback: 'index.html',
       livereload: false,
       open: false,
-      port: 5000
+      port: 3000
     }));
 });
 
