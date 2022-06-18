@@ -67,16 +67,20 @@ const sketch = (s) => {
 
 		// calculate percent of pixels that are colorful and write it to screen
 		let perc = colorful/(s.width*s.height);
+
+		// display percentage based on the volume scale
+		let displayPerc = s.min(s.round(perc * 100 * 10), 100);
+
 		s.fill(s.color(255));
-		s.text(s.round(perc * 100) + '%', 10, s.height - 10);
+		s.text(displayPerc + '%', 10, s.height - 10);
 
 		// use perc to tweak song volume, with smoothing
-		let volumeTarget = s.map(perc, 0, 0.08, 0.003, 1, true);
+		let volumeTarget = s.map(perc, 0, 0.1, 0.004, 1, true);
 		volume = volume * 0.7 + volumeTarget * 0.3;
 		song.amp(volume);
 
 		// also tweak song speed
-		let rateTarget = s.map(perc, 0, 0.03, 0.3, 1, true);
+		let rateTarget = s.map(perc, 0, 0.035, 0.3, 1, true);
 		rate = rate * 0.7 + rateTarget * 0.3;
 		song.rate(rate);
 	};
