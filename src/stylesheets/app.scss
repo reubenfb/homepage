@@ -202,3 +202,14 @@ body {
     bottom: 0px;
   }
 }
+
+.back-button {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 20px;
+  color: #666;
+  &:hover {
+    color: #1a0dab;
+  }
+}
