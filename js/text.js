@@ -5143,7 +5143,7 @@ const sketch = (s) => {
 		weightScale.domain([0, lumMax]);
 		opacityScale.domain([0, lumMax]);
 
-		for(i = 0; i < textChars.length; i++){
+		for(i = 0; i < len; i++){
 			textChars[i].style.opacity = opacityScale(lums[i]);
 			textChars[i].style.fontWeight = Math.round(weightScale(lums[i]));
 		}
@@ -5154,10 +5154,15 @@ const sketch = (s) => {
 		let xPos = 0;
 		let yPos = 0;
 		text = text.replace(/\s/g, '');
-		let length = Math.min(len, text.length);
+
+		// repeat text inputs that are too short
+		while(text.length < len){
+			text += text;
+		}
+
 		parent.innerHTML = "";
 
-		for(let i = 0; i < length; i++){
+		for(let i = 0; i < len; i++){
 
 			let newChar = document.createElement('div');
 			newChar.innerHTML = text.charAt(i);
