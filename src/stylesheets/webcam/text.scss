@@ -1,0 +1,33 @@
+@import '../app.scss';
+
+@font-face {
+  font-family: 'Inconsolata';
+  src: url('/fonts/Inconsolata-VariableFont_wdth,wght.ttf') format("truetype-variations");
+  font-weight: 200 900;
+}
+
+.art-container {
+  #text {
+    vertical-align: top;
+    position: relative;
+    display: inline-block;
+    background-color: #000;
+    padding: 5px 12px 15px;
+    //padding: 20px 0px 20px 20px;
+    div {
+      position: absolute;
+      padding-left: inherit;
+      padding-top: inherit;
+      display: inline-block;
+      font-family: Inconsolata;
+      font-size: 25px;
+      color: #fff;
+    }
+  }
+  textarea {
+    width: 600px;
+    height: 150px;
+    margin-top: 30px;
+    padding: 0px 10px;
+  }
+}

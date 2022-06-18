@@ -104,7 +104,7 @@ function drawPoem(sel, pow){
 
 	  let div = poem.append('div').html(text.charAt(i))
 	  	.style('font-size', `${fontSize}px`)
-	 	.style('left', `${xPos}px`)
+	 		.style('left', `${xPos}px`)
 	  	.style('top', `${yPos}px`)
 	  	.style('font-weight', weightScale(avgLum[i]))
 	  	.style('opacity', opacityScale(avgLum[i]));

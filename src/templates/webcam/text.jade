@@ -6,15 +6,23 @@ html(lang='en')
     link(rel='icon', type='image/x-icon', href='../images/favicon.ico')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(charset='UTF-8')
-    link(rel = 'stylesheet' type='text/css' href = '../app.css')
+    link(rel = 'stylesheet' type='text/css' href = 'text.css')
     script(src = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js')
   body
     .top-container
       .topper
-        h1 Pixelated
-        h2 First time doing this with live webcam vs. image/video files.
+        h1 Text
+        h2 Inspired by Ken Knowlton, using variable weight fonts.
 
+    .art-container
+      #text
       #canvas-container
         .blocker
+        .form-container
+          textarea(form = 'textform')
+            | Enter your own text here (only first 1,250 characters will be used, minus whitespace)
+          form#textform
+            input(type='submit')
 
-    script(src = '../js/pixelated.js')
+
+    script(src = '../js/text.js')
