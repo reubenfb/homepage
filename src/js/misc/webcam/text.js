@@ -16,7 +16,7 @@ const sketch = (s) => {
 		.range([200, 900]);
 
 	let opacityScale = scale.scaleLinear()
-		.range([0.15, 1]);
+		.range([0.05, 1]);
 
 	if(height % charHeight != 0 || width % charWidth != 0){
 		console.error("Character size doesn't fit cam dimensions");
