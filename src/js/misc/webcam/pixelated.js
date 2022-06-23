@@ -1,3 +1,5 @@
+let makeMosaic = require('./makeMosaic.js');
+
 const sketch = (s) => {
 
 	let capture;
@@ -29,7 +31,7 @@ const sketch = (s) => {
 		let pixels = s.pixels;
 		pixels = pixels.slice(pixels.length/2, pixels.length);
 
-		let squares = makeMosaic(size, width, height, pixels);
+		let squares = makeMosaic(size, size, width, height, pixels);
 
 		s.noStroke();
 		let xPos = 0;
@@ -49,41 +51,6 @@ const sketch = (s) => {
 		}
 	};
 
-	function makeMosaic(size, width, height, pixels){
-
-		let len = (width/size) * (height/size);
-
-		let finalPixels = [];
-		for(let i = 0; i < len; i++){
-			finalPixels.push([0, 0, 0]);
-		}
-
-		for(let i = 0; i < pixels.length; i+=4){
-
-			let r = pixels[i];
-			let g = pixels[i+1];
-			let b = pixels[i+2];
-
-			let pixel = i/4;
-			//console.log(pixel)
-			let x = pixel % width;
-			let y = s.floor(pixel/width);
-			let gridX = s.floor(x/size);
-			let gridY = s.floor(y/size);
-			let pos = gridX + gridY*(width/size);
-
-			finalPixels[pos][0] += r;
-			finalPixels[pos][1] += g;
-			finalPixels[pos][2] += b;
-
-		}
-
-		return finalPixels.map(px => {
-			return px.map(num => s.round(num/(size * size)))
-		});
-	}
-
 };
 
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
-

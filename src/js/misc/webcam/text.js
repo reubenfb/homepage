@@ -1,4 +1,5 @@
-var scale = require("d3-scale");
+let scale = require("d3-scale");
+let makeMosaic = require('./makeMosaic.js');
 
 const sketch = (s) => {
 
@@ -104,37 +105,6 @@ const sketch = (s) => {
 		}
 
 		textChars = document.querySelectorAll('.char');
-	}
-
-	function makeMosaic(charWidth, charHeight, width, height, pixels){
-
-		let finalPixels = [];
-		for(let i = 0; i < len; i++){
-			finalPixels.push([0, 0, 0]);
-		}
-
-		for(let i = 0; i < pixels.length; i+=4){
-
-			let r = pixels[i];
-			let g = pixels[i+1];
-			let b = pixels[i+2];
-
-			let pixel = i/4;
-			let x = pixel % width;
-			let y = s.floor(pixel/width);
-			let gridX = s.floor(x/charWidth);
-			let gridY = s.floor(y/charHeight);
-			let pos = gridX + gridY*(width/charWidth);
-
-			finalPixels[pos][0] += r;
-			finalPixels[pos][1] += g;
-			finalPixels[pos][2] += b;
-
-		}
-
-		return finalPixels.map(px => {
-			return px.map(num => s.round(num/(charWidth * charHeight)))
-		});
 	}
 
 };
