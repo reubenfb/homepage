@@ -5075,7 +5075,48 @@ Object.defineProperty(exports, '__esModule', { value: true });
 })));
 
 },{"d3-array":2}],8:[function(require,module,exports){
-var scale = require("d3-scale");
+module.exports = function makeMosaic(itemWidth, itemHeight, totalWidth, totalHeight, pixels){
+
+	if(totalWidth % itemWidth != 0 || totalHeight % itemHeight != 0){
+		console.error("Mosaic size doesn't fit cam dimensions");
+		return;
+	}
+
+	let finalPixels = [];
+	let len = totalWidth/itemWidth * totalHeight/itemHeight;
+
+	for(let i = 0; i < len; i++){
+		finalPixels.push([0, 0, 0]);
+	}
+
+	for(let i = 0; i < pixels.length; i+=4){
+
+		let r = pixels[i];
+		let g = pixels[i+1];
+		let b = pixels[i+2];
+
+		let pixel = i/4;
+		let x = pixel % totalWidth;
+		let y = Math.floor(pixel/totalWidth);
+		let gridX = Math.floor(x/itemWidth);
+		let gridY = Math.floor(y/itemHeight);
+		let pos = gridX + gridY*(totalWidth/itemWidth);
+
+		finalPixels[pos][0] += r;
+		finalPixels[pos][1] += g;
+		finalPixels[pos][2] += b;
+
+	}
+
+	return finalPixels.map(px => {
+		return px.map(num => Math.round(num/(itemWidth * itemHeight)))
+	});
+}
+
+
+},{}],9:[function(require,module,exports){
+let scale = require('d3-scale');
+let makeMosaic = require('./makeMosaic.js');
 
 const sketch = (s) => {
 
@@ -5094,11 +5135,6 @@ const sketch = (s) => {
 
 	let opacityScale = scale.scaleLinear()
 		.range([0.05, 1]);
-
-	if(height % charHeight != 0 || width % charWidth != 0){
-		console.error("Character size doesn't fit cam dimensions");
-		return;
-	}
 
 	s.setup = () => {
 		s.createCanvas(width, height*2);
@@ -5183,38 +5219,7 @@ const sketch = (s) => {
 		textChars = document.querySelectorAll('.char');
 	}
 
-	function makeMosaic(charWidth, charHeight, width, height, pixels){
-
-		let finalPixels = [];
-		for(let i = 0; i < len; i++){
-			finalPixels.push([0, 0, 0]);
-		}
-
-		for(let i = 0; i < pixels.length; i+=4){
-
-			let r = pixels[i];
-			let g = pixels[i+1];
-			let b = pixels[i+2];
-
-			let pixel = i/4;
-			let x = pixel % width;
-			let y = s.floor(pixel/width);
-			let gridX = s.floor(x/charWidth);
-			let gridY = s.floor(y/charHeight);
-			let pos = gridX + gridY*(width/charWidth);
-
-			finalPixels[pos][0] += r;
-			finalPixels[pos][1] += g;
-			finalPixels[pos][2] += b;
-
-		}
-
-		return finalPixels.map(px => {
-			return px.map(num => s.round(num/(charWidth * charHeight)))
-		});
-	}
-
 };
 
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
-},{"d3-scale":1}]},{},[8]);
+},{"./makeMosaic.js":8,"d3-scale":1}]},{},[9]);
