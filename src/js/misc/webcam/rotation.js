@@ -5,16 +5,20 @@ const sketch = (s) => {
 	let capture;
 	let width = 600;
 	let height = width * 0.75;
-	let size = 30;
+	let size = 15;
+	let speeds = Array(width/size * height/size).fill(0);
 
 	s.setup = () => {
 		s.createCanvas(width, height*2);
 		s.pixelDensity(1);
 		capture = s.createCapture(s.VIDEO);
 		capture.hide();
+		s.angleMode(s.DEGREES);
+		s.rectMode(s.CENTER);
 	};
 
 	s.draw = () => {
+
 		s.push();
 		// flip video
 		s.translate(width,0);
@@ -28,15 +32,42 @@ const sketch = (s) => {
 
 		let squares = makeMosaic(size, size, width, height, pixels);
 
-		s.noStroke();
 		let xPos = 0;
 		let yPos = 0;
 
+		s.noStroke();
+		s.clear();
+
+		let pow = 4;
+		let lums = squares.map(char => 0.299*char[0] + 0.587*char[1] + 0.114*char[2]);
+		lums = lums.map(lum => Math.pow(lum, pow));
+		let lumMax = Math.max(...lums);
+		let lumMin = Math.min(...lums);
+
 		for(let i = 0; i < squares.length; i++){
 
-			//fill(0.299*squares[i][0] + 0.587*squares[i][1] + 0.114*squares[i][2]);
-			s.fill(squares[i][0], squares[i][1], squares[i][2])
-			s.square(xPos, yPos, size);
+			if(lumMax == 0){
+				break;
+			}
+			
+			let speed = s.map(lums[i], lumMin, lumMax, 0, 15, true);
+
+			if(speed < 0.75) {
+				speed = 360 - speeds[i];
+			}
+
+			speeds[i] = (speeds[i] + speed) % 360;
+
+			let centerX = xPos + size/2;
+			let centerY = yPos + size/2;
+
+			s.push();
+			s.fill(50);
+			s.translate(centerX, centerY);
+			s.rotate(speeds[i]);
+			s.square(0,0,size);
+			s.pop();
+
 			xPos += size;
 
 			if(xPos >= width){

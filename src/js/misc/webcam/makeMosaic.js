@@ -1,5 +1,10 @@
 module.exports = function makeMosaic(itemWidth, itemHeight, totalWidth, totalHeight, pixels){
 
+	if(totalWidth % itemWidth != 0 || totalHeight % itemHeight != 0){
+		console.error("Mosaic size doesn't fit cam dimensions");
+		return;
+	}
+
 	let finalPixels = [];
 	let len = totalWidth/itemWidth * totalHeight/itemHeight;
 

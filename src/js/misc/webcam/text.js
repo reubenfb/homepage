@@ -1,4 +1,4 @@
-let scale = require("d3-scale");
+let scale = require('d3-scale');
 let makeMosaic = require('./makeMosaic.js');
 
 const sketch = (s) => {
@@ -18,11 +18,6 @@ const sketch = (s) => {
 
 	let opacityScale = scale.scaleLinear()
 		.range([0.05, 1]);
-
-	if(height % charHeight != 0 || width % charWidth != 0){
-		console.error("Character size doesn't fit cam dimensions");
-		return;
-	}
 
 	s.setup = () => {
 		s.createCanvas(width, height*2);
