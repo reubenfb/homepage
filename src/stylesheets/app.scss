@@ -192,23 +192,23 @@ body {
 .top-container {
     padding-top: 20px;
 
-  #canvas-container {
-    position: relative;
-    // This is hardcoded for now
-    .blocker {
-      height: 50%;
-      padding-top: 2px;
-      width: 100%;
-      background-color: #fff;
-      position: absolute;
-      bottom: 0px;
-    }
-  }
-
   #p5_loading {
     display: none;
   }
 
+}
+
+#canvas-container {
+  position: relative;
+  transform-origin: top;
+  .blocker {
+    height: 50%;
+    padding-top: 2px;
+    width: 100%;
+    background-color: #fff;
+    position: absolute;
+    bottom: 0px;
+  }
 }
 
 .back-button {
