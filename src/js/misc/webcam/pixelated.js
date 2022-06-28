@@ -3,8 +3,17 @@ let makeMosaic = require('./makeMosaic.js');
 const sketch = (s) => {
 
 	let capture;
-	let width = 600;
-	let height = width * 0.75;
+	let height = 450;
+	let width = height * 4/3;
+	let offset = 0;
+	let vidWidth = width;
+
+	// checking for 16:9
+	if(capture.width/capture.height > 1.5){
+		vidWidth = height * 16/9;
+		offset = -height*(16/9-4/3)/2;
+	}
+	
 	let size = 30;
 
 	s.setup = () => {
@@ -19,7 +28,7 @@ const sketch = (s) => {
 		// flip video
 		s.translate(width,0);
 		s.scale(-1, 1);
-		s.image(capture, 0, height, width, height);
+		s.image(capture, offset, height, vidWidth, height);
 		s.pop();
 
 		s.loadPixels();
