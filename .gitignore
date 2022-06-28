@@ -1,6 +1,5 @@
 node_modules
 public
-!public/images/studies/*.png
 .publish
 apiKeys.json
 .gulp

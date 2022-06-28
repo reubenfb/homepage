@@ -60,6 +60,7 @@ body {
       }
       @media screen and (max-width: 580px){
         margin-top: 15px;
+        font-size: 20px;
       }
     }
   }
@@ -80,6 +81,9 @@ body {
       width: 645px;
     }
     @media screen and (max-width: 664px) {
+      width: 340px;
+    }
+    @media screen and (max-width: 359px) {
       width: 320px;
     }
 
