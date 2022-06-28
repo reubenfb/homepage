@@ -63,14 +63,17 @@ const sketch = (s) => {
 	s.setup = () => {
 		s.createCanvas(width, height*2);
 		s.pixelDensity(1);
-		capture = s.createCapture(s.VIDEO);
+		capture = s.createCapture(s.VIDEO, () =>{
+			// checking for 16:9
+			if(capture.width/capture.height > 1.5){
+				vidWidth = height * 16/9;
+				offset = -height*(16/9-4/3)/2;
+			}
+		});
+
 		capture.hide();
 
-		// checking for 16:9
-		if(capture.width/capture.height > 1.5){
-			vidWidth = height * 16/9;
-			offset = -height*(16/9-4/3)/2;
-		}
+
 	};
 
 	s.draw = () => {
