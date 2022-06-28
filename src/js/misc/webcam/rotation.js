@@ -7,10 +7,11 @@ const sketch = (s) => {
 	let height = width * 0.75;
 	let size = 15;
 	let speeds = Array(width/size * height/size).fill(0);
+	let pixelDensity = 2;
 
 	s.setup = () => {
 		s.createCanvas(width, height*2);
-		s.pixelDensity(1);
+		s.pixelDensity(pixelDensity);
 		capture = s.createCapture(s.VIDEO);
 		capture.hide();
 		s.angleMode(s.DEGREES);
@@ -30,7 +31,7 @@ const sketch = (s) => {
 		let pixels = s.pixels;
 		pixels = pixels.slice(pixels.length/2, pixels.length);
 
-		let squares = makeMosaic(size, size, width, height, pixels);
+		let squares = makeMosaic(size, size, width, height, pixels, pixelDensity);
 
 		let xPos = 0;
 		let yPos = 0;
