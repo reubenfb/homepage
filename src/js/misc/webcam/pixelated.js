@@ -7,13 +7,6 @@ const sketch = (s) => {
 	let width = height * 4/3;
 	let offset = 0;
 	let vidWidth = width;
-
-	// checking for 16:9
-	if(capture.width/capture.height > 1.5){
-		vidWidth = height * 16/9;
-		offset = -height*(16/9-4/3)/2;
-	}
-	
 	let size = 30;
 
 	s.setup = () => {
@@ -21,6 +14,12 @@ const sketch = (s) => {
 		s.pixelDensity(1);
 		capture = s.createCapture(s.VIDEO);
 		capture.hide();
+
+		// checking for 16:9
+		if(capture.width/capture.height > 1.5){
+			vidWidth = height * 16/9;
+			offset = -height*(16/9-4/3)/2;
+		}
 	};
 
 	s.draw = () => {
