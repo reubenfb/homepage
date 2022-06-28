@@ -9,20 +9,17 @@ const sketch = (s) => {
 	let vidWidth = width;
 	let size = 30;
 
+	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+		vidWidth = height * 3/4;
+		offset = (width - vidWidth)/2;
+		document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
+	}
+
 	s.setup = () => {
 		s.createCanvas(width, height*2);
 		s.pixelDensity(1);
-		capture = s.createCapture(s.VIDEO, () =>{
-			// checking for 16:9
-			if(capture.width/capture.height > 1.5){
-				vidWidth = height * 16/9;
-				offset = -height*(16/9-4/3)/2;
-			}
-		});
-
+		capture = s.createCapture(s.VIDEO);
 		capture.hide();
-
-
 	};
 
 	s.draw = () => {

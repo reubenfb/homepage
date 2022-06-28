@@ -65,7 +65,7 @@ body {
     }
   }
 
-  .top-container {
+  .main-container {
     display: inline-block;
     padding-top: 20px;
     @media screen and (min-width: 1330px) {
@@ -189,22 +189,26 @@ body {
   }
 }
 
-#p5_loading {
-  display: none;
-}
+.top-container {
+    padding-top: 20px;
 
-// this hides video elements without removing them, useful on a couple studies
-#canvas-container {
-  position: relative;
-  // This is hardcoded for now
-  .blocker {
-    height: 50%;
-    padding-top: 2px;
-    width: 100%;
-    background-color: #fff;
-    position: absolute;
-    bottom: 0px;
+  #canvas-container {
+    position: relative;
+    // This is hardcoded for now
+    .blocker {
+      height: 50%;
+      padding-top: 2px;
+      width: 100%;
+      background-color: #fff;
+      position: absolute;
+      bottom: 0px;
+    }
   }
+
+  #p5_loading {
+    display: none;
+  }
+
 }
 
 .back-button {

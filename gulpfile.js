@@ -20,6 +20,8 @@ var utils = require('./src/js/utils.js');
 gulp.task('webserver', function() {
   gulp.src('./public')
     .pipe(webserver({
+      host: '0.0.0.0',
+      //https: true,
       fallback: 'index.html',
       livereload: false,
       open: false,

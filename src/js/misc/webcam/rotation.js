@@ -3,11 +3,19 @@ let makeMosaic = require('./makeMosaic.js');
 const sketch = (s) => {
 
 	let capture;
-	let width = 600;
-	let height = width * 0.75;
+	let height = 450;
+	let width = height * 4/3;
+	let offset = 0;
+	let vidWidth = width;
+
 	let size = 15;
 	let speeds = Array(width/size * height/size).fill(0);
 	let pixelDensity = 2;
+
+	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+		vidWidth = height * 3/4;
+		offset = (width - vidWidth)/2;
+	}
 
 	s.setup = () => {
 		s.createCanvas(width, height*2);
@@ -24,7 +32,7 @@ const sketch = (s) => {
 		// flip video
 		s.translate(width,0);
 		s.scale(-1, 1);
-		s.image(capture, 0, height, width, height);
+		s.image(capture, offset, height, vidWidth, height);
 		s.pop();
 
 		s.loadPixels();

@@ -6,12 +6,20 @@ const sketch = (s) => {
 	let text = "I saw the best minds of my generation destroyed by madness, starving hysterical naked, dragging themselves through the negro streets at dawn looking for an angry fix, angelheaded hipsters burning for the ancient heavenly connection to the starry dynamo in the machinery of night, who poverty and tatters and hollow-eyed and high sat up smoking in the supernatural darkness of cold-water flats floating across the tops of cities contemplating jazz, who bared their brains to Heaven under the El and saw Mohammedan angels staggering on tenement roofs illuminated, who passed through universities with radiant cool eyes hallucinating Arkansas and Blake-light tragedy among the scholars of war, who were expelled from the academies for crazy & publishing obscene odes on the windows of the skull, who cowered in unshaven rooms in underwear, burning their money in wastebaskets and listening to the Terror through the wall, who got busted in their pubic beards returning through Laredo with a belt of marijuana for New York, who ate fire in paint hotels or drank turpentine in Paradise Alley, death, or purgatoried their torsos night after night with dreams, with drugs, with waking nightmares, alcohol and cock and endless balls, incomparable blind streets of shuddering cloud and lightning in the mind leaping toward poles of Canada & Paterson, illuminating all the motionless world of Time between, Peyote solidities of halls, backyard green tree cemetery dawns, wine drunkenness over";
 
 	let capture;
-	let width = 600;
-	let height = width * 0.75;
+	let height = 450;
+	let width = height * 4/3;
+	let offset = 0;
+	let vidWidth = width;
+
 	let charWidth = 12;
 	let charHeight = 18;
 	let textChars;
 	let len = (width/charWidth) * (height/charHeight);
+
+	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+		vidWidth = height * 3/4;
+		offset = (width - vidWidth)/2;
+	}
 
 	let weightScale = scale.scaleLinear()
 		.range([200, 900]);
@@ -45,7 +53,7 @@ const sketch = (s) => {
 		// flip video
 		s.translate(width,0);
 		s.scale(-1, 1);
-		s.image(capture, 0, height, width, height);
+		s.image(capture, offset, height, vidWidth, height);
 		s.pop();
 
 		s.loadPixels();

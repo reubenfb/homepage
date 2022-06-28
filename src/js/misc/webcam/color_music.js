@@ -1,10 +1,20 @@
 const sketch = (s) => {
 
 	let capture;
+	let height = 450;
+	let width = height * 4/3;
+	let offset = 0;
+	let vidWidth = width;
+
 	let sizeMult = 1.5;
 	let song;
 	let volume = 0;
 	let rate = 1;
+
+	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+		vidWidth = height * 3/4;
+		offset = (width - vidWidth)/2;
+	}
 
 	s.preload = () => {
 		song = s.loadSound('../miscFiles/hungarian.mp3');
@@ -25,7 +35,7 @@ const sketch = (s) => {
 		// flip video
 		s.translate(s.width,0);
 		s.scale(-1, 1);
-		s.image(capture, 0, 0, s.width, s.height);
+		s.image(capture, offset, 0, vidWidth, s.height);
 		s.pop();
 
 		// loop through pixels to count colorful ones
