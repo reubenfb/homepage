@@ -135,7 +135,7 @@ body {
           border: 1px solid $border-gray;
           margin-bottom: 17px;
           position: relative;
-          display: flex;
+          display: grid;
           -webkit-column-break-inside: avoid;
           page-break-inside: avoid;
           break-inside: avoid;
