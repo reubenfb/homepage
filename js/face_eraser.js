@@ -37,7 +37,7 @@ const sketch = (s) => {
 	};
 
 	s.draw = () => {
-
+		s.clear();
 		s.push();
 		// flip video
 		s.translate(width,0);
