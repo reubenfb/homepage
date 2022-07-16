@@ -91,7 +91,11 @@ const sketch = (s) => {
 		s.updatePixels();
 		s.noFill();
 		s.strokeWeight(2);
-		s.stroke(255,60,0);
+		s.stroke(120,120,120);
+		if(positions){
+			s.stroke(255,60,0);
+		}
+		
 		s.circle(circleX, circleY, circleSize);
 	};
 
