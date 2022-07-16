@@ -9,7 +9,7 @@ const sketch = (s) => {
 	let vidWidth = width;
 	const pixelDensity = 1;
 	const centerCLMpoint = 33;
-	const circleSize = 225;
+	let circleSize = 225;
 	let circleX = -1000;
 	let circleY = -1000;
 	let faceAppeared = false;
@@ -20,6 +20,7 @@ const sketch = (s) => {
 	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
 		vidWidth = height * 3/4;
 		offset = (width - vidWidth)/2;
+		circleSize = 300;
 		document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
 	}
 
