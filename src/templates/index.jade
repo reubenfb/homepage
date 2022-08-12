@@ -32,7 +32,7 @@ html(lang='en')
           if _.isNull(graphic.title)
             .graphic.small.blank
           else
-            a(href = "#{graphic.link + '?hope-you-enjoy-signed-reuben'}" target="_blank" rel='noopener' class= "#{graphic.secret === 'TRUE' ? 'secret' : ''}")
+            a(href = "#{graphic.link}" target="_blank" rel='noopener' class= "#{graphic.secret === 'TRUE' ? 'secret' : ''}")
               .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'}")
                 .title
                   span #{graphic.title}
