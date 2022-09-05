@@ -37,39 +37,31 @@ const sketch = (s) => {
 
 };
 
-let thresholds = [0, 50, 100, 150, 200, 250, 255];
+let uniqueColors = 6;
+let thresholds = d3.range(0, 255, 255/(uniqueColors));
+
 let svg = d3.select('#svg-container')
 	.append('svg')
-	.attr("width", width)
-	.attr("height", height)
-	.attr("viewBox", [0, 0, width, height])
+	.attr('width', width)
+	.attr('height', height);
 
-let color = d3.scaleSequential([0,1], d3.interpolateMagma);
-
-const projection = d3.geoIdentity().scale(size);
-
-let path = d3.geoPath(projection);
+let color = d3.scaleSequential([0,1], d3.interpolateViridis);
+let path = d3.geoPath(d3.geoIdentity().scale(size));
 
 function drawLines(lums){
 
 	let contours = d3.contours()
-		.size([width/size, height/size])
-		.smooth(true);
+		.size([width/size, height/size]);
 
 	svg.selectAll('*').remove();
 
-	let g = svg.append('g')
-		.attr('stroke', 'white')
+	let g = svg.append('g').attr('stroke', 'white');
 
 	for (const threshold of thresholds) { 
-
 		g.append('path')
 			.attr('d', path(contours.contour(lums, threshold)))
 			.attr('fill', color(threshold/255));
-
 	}
-
-
 }
 
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
