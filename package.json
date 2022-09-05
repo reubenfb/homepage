@@ -36,7 +36,6 @@
     "merge-stream": "^2.0.0",
     "path": "^0.12.7",
     "run-sequence": "^1.2.2",
-    "sharp": "^0.30.3",
     "tabletop": "^1.5.2",
     "underscore": "^1.9.1",
     "vanilla-lazyload": "^17.3.0",

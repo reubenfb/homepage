@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+  head
+    title Contour – Webcam studies
+    link(rel='shortcut icon', type='image/x-icon', href='../images/favicon.ico')
+    link(rel='icon', type='image/x-icon', href='../images/favicon.ico')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(charset='UTF-8')
+    link(rel = 'stylesheet' type='text/css' href = '../app.css')
+    script(src = 'https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.1/p5.js')
+    script(src = 'https://cdn.jsdelivr.net/npm/d3@7')
+    meta(property='og:type', content='website')
+    meta(property='og:title', content='Contour – Webcam studies')
+    meta(property='og:image', content='https://www.reubenfb.com/images/studies/contour.png')
+    meta(property='og:description', content='TK')
+    meta(property='og:url', content='https://www.reubenfb.com/webcam/contour.html')
+  body
+    a.back-button(href='./studies.html') ← More studies
+    .top-container
+      .topper
+        h1 Contour
+        h2 TK
+
+      #svg-container
+      #canvas-container
+        .blocker
+
+    script(src = '../js/contour.js')
