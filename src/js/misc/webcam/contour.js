@@ -10,6 +10,12 @@ const sketch = (s) => {
 	let offset = 0;
 	let vidWidth = width;
 
+	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+		vidWidth = height * 3/4;
+		offset = (width - vidWidth)/2;
+		document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
+	}
+	
 	s.setup = () => {
 		s.createCanvas(width, height*2);
 		s.pixelDensity(1);
