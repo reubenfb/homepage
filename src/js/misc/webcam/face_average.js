@@ -1,5 +1,7 @@
 const sketch = (s) => {
 
+	console.log(faceapi)
+
 	let capture;
 	let tracker;
 	let height = 450;
@@ -12,7 +14,6 @@ const sketch = (s) => {
 	let circleX = -1000;
 	let circleY = -1000;
 	let faceAppeared = false;
-
 
 	let pixelShow = Array(width * height).fill(false);
 
@@ -30,8 +31,6 @@ const sketch = (s) => {
 		capture.elt.setAttribute('playsinline', '');
 		capture.size(width, height);
 		capture.hide();
-
-		console.log(faceapi.nets)
 	};
 
 	s.draw = () => {
