@@ -34,7 +34,7 @@
     "merge-stream": "^2.0.0",
     "path": "^0.12.7",
     "run-sequence": "^1.2.2",
-    "tabletop": "^1.5.2",
+    "tabletop": "^1.6.3",
     "underscore": "^1.9.1",
     "vanilla-lazyload": "^17.3.0",
     "vinyl-buffer": "^1.0.1",
