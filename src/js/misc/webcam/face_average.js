@@ -1,55 +1,103 @@
 const sketch = (s) => {
 
-	console.log(faceapi)
-
-	let capture;
-	let tracker;
 	let height = 450;
 	let width = height * 4/3;
 	let offset = 0;
 	let vidWidth = width;
-	const pixelDensity = 1;
-	const centerCLMpoint = 33;
-	let circleSize = 225;
-	let circleX = -1000;
-	let circleY = -1000;
-	let faceAppeared = false;
+	const pixelDensity = 2;
 
-	let pixelShow = Array(width * height).fill(false);
+	// p5.js canvas and it's HTML <canvas/> element
+	let p5Canvas;
+	let p5CanvasElement;
+	// p5.js capture and it's HTML <video/> element
+	let capture;
+	let captureElement;
+	// store dimenions formatted for faceapi
+	let displaySize;
+	let noseX = 0;
+	let noseY = 0;
+	let faceResult = null;
 
-	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
-		vidWidth = height * 3/4;
-		offset = (width - vidWidth)/2;
-		circleSize = 300;
-		document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
+	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+	// 	vidWidth = height * 3/4;
+	// 	offset = (width - vidWidth)/2;
+	// 	document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
+	// }
+
+	function loadModels(){
+	  Promise.all([
+	  	//faceapi.nets.tinyFaceDetector.load('../miscFiles/face-api-files/'),
+	    faceapi.nets.ssdMobilenetv1.load('../miscFiles/face-api-files/'),
+	    faceapi.nets.faceLandmark68Net.load('../miscFiles/face-api-files/')
+	  ])
+	  // noLoop() was called in setup, pausing draw() while we load, we resume here once models are loaded
+	  .then(()=>{
+	  	s.loop();
+	  })
 	}
 
 	s.setup = () => {
-		s.createCanvas(width, height);
+
+		p5Canvas = s.createCanvas(width, height);
+		p5CanvasElement = p5Canvas.elt;
 		s.pixelDensity(pixelDensity);
 		capture = s.createCapture(s.VIDEO);
-		capture.elt.setAttribute('playsinline', '');
+		captureElement = capture.elt;
+		captureElement.setAttribute('playsinline', '');
 		capture.size(width, height);
 		capture.hide();
+		displaySize = { width: width, height: height };
+		faceapi.matchDimensions(p5Canvas, displaySize);
+
+		// optional: match setInterval(..., 100) -> 10fps from the example
+		s.frameRate(10);
+		// trigger model loading
+		loadModels();
+		// pause P5's update loop until the video is ready ('play' event)
+		s.noLoop();
+
 	};
 
-	s.draw = () => {
+	s.draw = async () => {
+
+		//faceapi.detectAllFaces(captureElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
+		faceapi.detectAllFaces(captureElement).withFaceLandmarks()
+			.then(result => drawFace(faceapi.resizeResults(result, displaySize)))
+
 		s.clear();
 		s.push();
-		// flip video
+		//flip video
 		s.translate(width,0);
 		s.scale(-1, 1);
 		s.image(capture, offset, 0, vidWidth, height);
 		s.pop();
 
+		if(faceResult){
+			for(let pos of faceResult){
+				s.circle(-(pos._x - width), pos._y, 5)
+			}
+		}
+
 		s.loadPixels();
 		let pixels = s.pixels;
 	};
 
-};
+	let fade = 0.2;
 
-let ptDistance = function(pt1, pt2){
-	return Math.sqrt(Math.pow((pt1[0]-pt2[0]), 2) + Math.pow((pt1[1]-pt2[1]), 2));
-}
+	function drawFace(result){
+		if(result[0]){
+			if(!faceResult){
+				faceResult = result[0].landmarks.positions;
+			}
+			else {
+				for(let i = 0; i < result[0].landmarks.positions.length; i++){
+					let newResult = result[0].landmarks.positions[i];
+					faceResult[i]._x = faceResult[i]._x * fade + newResult._x * (1 - fade);
+					faceResult[i]._y = faceResult[i]._y * fade + newResult._y * (1 - fade);
+				}
+			}
+		}
+	}
+};
 
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));

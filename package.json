@@ -4,7 +4,7 @@
   "description": "my homepage",
   "main": "index.js",
   "scripts": {
-    "test": "hello"
+    "preinstall": "cp npm-shrinkwrap.gulp.json npm-shrinkwrap.json"
   },
   "repository": {
     "type": "git",
@@ -18,9 +18,7 @@
   "bugs": {
     "url": "https://github.com/reubenfb/homepage/issues"
   },
-  "homepage": "https://github.com/reubenfb/homepage#readme",
   "dependencies": {
-    "browserify": "^13.3.0",
     "colors": "^1.3.3",
     "d3-scale": "^3.3.0",
     "d3-selection": "^1.4.0",
@@ -43,6 +41,7 @@
     "vinyl-source-stream": "^1.1.2"
   },
   "devDependencies": {
+    "browserify": "^13.3.0",
     "gulp-cloudflare": "^0.1.3",
     "gulp-webserver": "^0.9.1"
   }

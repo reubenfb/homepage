@@ -12,7 +12,6 @@ var merge = require('merge-stream');
 var glob = require('glob');
 var path = require('path');
 
-//var keys = require('./apiKeys.json');
 var _ = require('underscore');
 var utils = require('./src/js/utils.js');
 
@@ -77,7 +76,7 @@ gulp.task('images', function () {
 });
 
 gulp.task('miscFiles', function () {
-  return gulp.src('./src/miscFiles/*.pdf')
+  return gulp.src('./src/miscFiles/**/*')
     .pipe(gulp.dest('./public/miscFiles/'));
 });
 
