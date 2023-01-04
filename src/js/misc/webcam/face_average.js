@@ -21,9 +21,8 @@ const sketch = (s) => {
 	let fade = 0.2;
 	let increment = 0;
 	let heads = [];
-	let maxHeads = 4;
+	let maxHeads = 1;
 	let headNum = 0;
-	let totalRuns = 0;
 
 	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
 	// 	vidWidth = height * 3/4;
@@ -56,6 +55,7 @@ const sketch = (s) => {
 		displaySize = { width: width, height: height };
 		faceapi.matchDimensions(p5Canvas, displaySize);
 
+		s.angleMode(s.DEGREES)
 		// optional: match setInterval(..., 100) -> 10fps from the example
 		s.frameRate(10);
 		// trigger model loading
@@ -87,10 +87,7 @@ const sketch = (s) => {
 			s.line(-(eye1._x -width), eye1._y, -(eye2._x - width), eye2._y)
 			s.circle(-(eye1._x - width), eye1._y, 5)
 			s.circle(-(eye2._x - width), eye2._y, 5)
-			// for(let pos of faceResult){
-			// 	s.circle(-(pos._x - width), pos._y, 5)
-			// 	//s.circle(pos._x, pos._y, 5)
-			// }
+
 		}
 
 		s.loadPixels();
@@ -99,18 +96,25 @@ const sketch = (s) => {
 
 		for(let i = 0; i < heads.length; i++){
 			if(heads[i]){
+				let angle = calculateAngle(heads[0].eye1, heads[0].eye2) - calculateAngle(faceResult[39], faceResult[42])
+				s.push();
+				s.translate(width / 2, height / 2);
+				s.rotate(angle);
+				s.imageMode(s.CENTER);
 				if(i == 0){
-					s.image(heads[0], 0, 0, 120, 120);
+					s.tint(255,128)
+					s.image(heads[0].image, 0, 0, 120, 120);			
 				}
 				else if(i == 1){
-					s.image(heads[1], width - 120, 0, 120, 120);
+					s.image(heads[1].image, width - 120, 0, 120, 120);
 				}
 				else if(i == 2){
-					s.image(heads[2], width - 120, height - 120, 120, 120);
+					s.image(heads[2].image, width - 120, height - 120, 120, 120);
 				}
 				else {
-					s.image(heads[3], 0, height - 120, 120, 120);
+					s.image(heads[3].image, 0, height - 120, 120, 120);
 				}
+				s.pop();
 			}
 		}
 	};
@@ -118,20 +122,6 @@ const sketch = (s) => {
 	function drawFace(result){
 
 		if(result[0]){
-
-			if(increment > 20 + (10 * (totalRuns + 1))){
-
-				let box = result[0].alignedRect._box;
-				let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height)
-
-				heads[headNum] = head;
-				totalRuns++
-				headNum++;
-				if(headNum === maxHeads){
-					headNum = 0;
-				}
-			}
-
 
 			if(!faceResult){
 				faceResult = result[0].landmarks.positions;
@@ -143,8 +133,33 @@ const sketch = (s) => {
 					faceResult[i]._y = faceResult[i]._y * fade + newResult._y * (1 - fade);
 				}
 			}
+
+			if(heads.length < maxHeads && increment > 20 + 10 * (headNum + 1)){
+
+
+				let box = result[0].alignedRect._box;
+				let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height)
+
+				heads[headNum] = {
+					eye1: {
+						_x: faceResult[39]._x,
+						_y: faceResult[39]._y
+					},
+					eye2: {
+						_x: faceResult[42]._x,
+						_y: faceResult[42]._y
+					},
+					image: head
+				};
+
+				headNum++;
+			}
 		}
 	}
 };
+
+function calculateAngle(p1, p2){
+	return Math.atan2(p2._y - p1._y, p2._x - p1._x) * 180 / Math.PI;
+}
 
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
