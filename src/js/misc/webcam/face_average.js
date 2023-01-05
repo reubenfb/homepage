@@ -4,7 +4,7 @@ const sketch = (s) => {
 	let width = height * 4/3;
 	let offset = 0;
 	let vidWidth = width;
-	const pixelDensity = 2;
+	const pixelDensity = 1;
 
 	// p5.js canvas and it's HTML <canvas/> element
 	let p5Canvas;
@@ -24,12 +24,13 @@ const sketch = (s) => {
 	let maxHeads = 8;
 	let headNum = 0;
 	let totalRecordings = 0;
+	let pixelSet = [];
 
-	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
-	// 	vidWidth = height * 3/4;
-	// 	offset = (width - vidWidth)/2;
-	// 	document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
-	// }
+	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+		vidWidth = height * 3/4;
+		offset = (width - vidWidth)/2;
+		document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
+	}
 
 	function loadModels(){
 	  Promise.all([
@@ -56,51 +57,64 @@ const sketch = (s) => {
 		displaySize = { width: width, height: height };
 		faceapi.matchDimensions(p5Canvas, displaySize);
 
-		s.angleMode(s.DEGREES)
-		// optional: match setInterval(..., 100) -> 10fps from the example
 		s.frameRate(10);
-		// trigger model loading
+		s.angleMode(s.DEGREES);
 		loadModels();
-		// pause P5's update loop until the video is ready ('play' event)
 		s.noLoop();
-		s.noFill()
 
 	};
 
 	s.draw = async () => {
 
+		s.clear();
+
 		faceapi.detectAllFaces(captureElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
 		//faceapi.detectAllFaces(captureElement).withFaceLandmarks()
 			.then(result => drawFace(faceapi.resizeResults(result, displaySize)))
 
-		s.clear();
 		s.push();
 		//flip video
 		s.translate(width,0);
 		s.scale(-1, 1);
-		s.tint(255,255 * 0.5)
+		s.tint(255,255 * 0.2)
 		s.image(capture, offset, 0, vidWidth, height);
 		s.pop();
-
-		// 	let eye1 = faceResult[39];
-		// 	let eye2 = faceResult[42];
-		// 	s.line(-(eye1._x -width), eye1._y, -(eye2._x - width), eye2._y)
-		// 	s.circle(-(eye1._x - width), eye1._y, 5)
-		// 	s.circle(-(eye2._x - width), eye2._y, 5)
 		increment++;
+			
+		if(heads.length > 0){
 
-		for(head of heads){
-			let angle = calculateAngle(head.eye1, head.eye2) - calculateAngle(faceResult[39], faceResult[42])
-			let scale = lengthOfLine(faceResult[39], faceResult[42])/lengthOfLine(head.eye1, head.eye2)
-			s.push();
-			s.translate(-(faceResult[39]._x - width), faceResult[39]._y);
-			s.rotate(angle);
-			s.scale(scale);
-			s.imageMode(s.CENTER);
-			s.tint(255,255 * 0.25)
-			s.blendMode(s.SOFT_LIGHT)
-			s.image(head.image, head.translate.transX, head.translate.transY);
-			s.pop();
+			for(let i = 0; i < heads.length; i++){
+
+				// s.loadPixels();
+				// pixelSet[i] = [...s.pixels];
+
+				let angle = calculateAngle(heads[i].eye1, heads[i].eye2) - calculateAngle(faceResult[39], faceResult[42])
+				let scale = lengthOfLine(faceResult[39], faceResult[42])/lengthOfLine(heads[i].eye1, heads[i].eye2)
+				s.push();
+				s.translate(-(faceResult[39]._x - width), faceResult[39]._y);
+				s.rotate(angle);
+				s.scale(-scale, scale);
+				s.tint(255,255*0.2);
+				s.blendMode(s.SOFT_LIGHT)
+				s.imageMode(s.CENTER);
+				s.image(heads[i].image, heads[i].translate.transX, heads[i].translate.transY);
+				s.pop();
+
+			}
+
+			//s.loadPixels();
+
+			// for(let i = 0; i < s.pixels.length; i++){
+			// 	let newValue = s.pixels[i];
+			// 	for(let j = 0; j < pixelSet.length; j++){
+			// 		newValue += pixelSet[j][i];
+			// 	}
+			// 	s.pixels[i] = newValue/(pixelSet.length + 1)
+				
+			// }
+
+			// s.updatePixels();
+
 		}
 	};
 
@@ -119,10 +133,11 @@ const sketch = (s) => {
 				}
 			}
 
-			if(increment > 30 + 20 * totalRecordings){
+			if(increment > 30 + 15 * totalRecordings){
 
 				let box = result[0].alignedRect._box;
-				let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height);
+				//let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height);
+				let head = capture.get(box._x, box._y, box._width, box._height);
 
 				heads[headNum] = {
 					eye1: {
@@ -134,7 +149,7 @@ const sketch = (s) => {
 						_y: faceResult[42]._y
 					},
 					translate: {
-						transX: faceResult[39]._x - (box._x + box._width/2),
+						transX: (box._x + box._width/2) - faceResult[39]._x,
 						transY: (box._y + box._height/2) - faceResult[39]._y
 					},
 					image: head
@@ -142,9 +157,11 @@ const sketch = (s) => {
 
 				totalRecordings++;
 				headNum++;
-				if(headNum === maxHeads){
+
+				if(heads.length === maxHeads){
 					headNum = 0;
 				}
+
 			}
 		}
 	}
@@ -159,5 +176,4 @@ function lengthOfLine(p1, p2){
 	let b = p1._y - p2._y;
 	return Math.sqrt(a*a + b*b);
 }
-
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
