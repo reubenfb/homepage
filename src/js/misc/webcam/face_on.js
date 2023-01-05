@@ -26,11 +26,11 @@ const sketch = (s) => {
 	let totalRecordings = 0;
 	let pixelSet = [];
 
-	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
-		vidWidth = height * 3/4;
-		offset = (width - vidWidth)/2;
-		document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
-	}
+	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+	// 	vidWidth = height * 3/4;
+	// 	offset = (width - vidWidth)/2;
+	// 	document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
+	// }
 
 	function loadModels(){
 	  Promise.all([
