@@ -21,7 +21,7 @@ const sketch = (s) => {
 	let fade = 0.2;
 	let increment = 0;
 	let heads = [];
-	let maxHeads = 1;
+	let maxHeads = 4;
 	let headNum = 0;
 
 	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
@@ -94,28 +94,17 @@ const sketch = (s) => {
 		let pixels = s.pixels;
 		increment++;
 
-		for(let i = 0; i < heads.length; i++){
-			if(heads[i]){
-				let angle = calculateAngle(heads[0].eye1, heads[0].eye2) - calculateAngle(faceResult[39], faceResult[42])
-				s.push();
-				s.translate(width / 2, height / 2);
-				s.rotate(angle);
-				s.imageMode(s.CENTER);
-				if(i == 0){
-					s.tint(255,128)
-					s.image(heads[0].image, 0, 0, 120, 120);			
-				}
-				else if(i == 1){
-					s.image(heads[1].image, width - 120, 0, 120, 120);
-				}
-				else if(i == 2){
-					s.image(heads[2].image, width - 120, height - 120, 120, 120);
-				}
-				else {
-					s.image(heads[3].image, 0, height - 120, 120, 120);
-				}
-				s.pop();
-			}
+		for(head of heads){
+			let angle = calculateAngle(head.eye1, head.eye2) - calculateAngle(faceResult[39], faceResult[42])
+			let scale = lengthOfLine(faceResult[39], faceResult[42])/lengthOfLine(head.eye1, head.eye2)
+			s.push();
+			s.translate(-(faceResult[39]._x - width), faceResult[39]._y);
+			s.rotate(angle);
+			s.scale(scale);
+			s.imageMode(s.CENTER);
+			s.tint(255,255/(maxHeads + 1))
+			s.image(head.image, head.translate.transX, head.translate.transY);
+			s.pop();
 		}
 	};
 
@@ -136,9 +125,8 @@ const sketch = (s) => {
 
 			if(heads.length < maxHeads && increment > 20 + 10 * (headNum + 1)){
 
-
 				let box = result[0].alignedRect._box;
-				let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height)
+				let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height);
 
 				heads[headNum] = {
 					eye1: {
@@ -149,9 +137,12 @@ const sketch = (s) => {
 						_x: faceResult[42]._x,
 						_y: faceResult[42]._y
 					},
+					translate: {
+						transX: faceResult[39]._x - (box._x + box._width/2),
+						transY: (box._y + box._height/2) - faceResult[39]._y
+					},
 					image: head
 				};
-
 				headNum++;
 			}
 		}
@@ -160,6 +151,12 @@ const sketch = (s) => {
 
 function calculateAngle(p1, p2){
 	return Math.atan2(p2._y - p1._y, p2._x - p1._x) * 180 / Math.PI;
+}
+
+function lengthOfLine(p1, p2){
+	let a = p1._x - p2._x;
+	let b = p1._y - p2._y;
+	return Math.sqrt(a*a + b*b);
 }
 
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
