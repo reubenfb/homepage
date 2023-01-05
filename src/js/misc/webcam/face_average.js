@@ -21,8 +21,9 @@ const sketch = (s) => {
 	let fade = 0.2;
 	let increment = 0;
 	let heads = [];
-	let maxHeads = 4;
+	let maxHeads = 8;
 	let headNum = 0;
+	let totalRecordings = 0;
 
 	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
 	// 	vidWidth = height * 3/4;
@@ -77,21 +78,15 @@ const sketch = (s) => {
 		//flip video
 		s.translate(width,0);
 		s.scale(-1, 1);
+		s.tint(255,255 * 0.5)
 		s.image(capture, offset, 0, vidWidth, height);
 		s.pop();
 
-		if(faceResult){
-
-			let eye1 = faceResult[39];
-			let eye2 = faceResult[42];
-			s.line(-(eye1._x -width), eye1._y, -(eye2._x - width), eye2._y)
-			s.circle(-(eye1._x - width), eye1._y, 5)
-			s.circle(-(eye2._x - width), eye2._y, 5)
-
-		}
-
-		s.loadPixels();
-		let pixels = s.pixels;
+		// 	let eye1 = faceResult[39];
+		// 	let eye2 = faceResult[42];
+		// 	s.line(-(eye1._x -width), eye1._y, -(eye2._x - width), eye2._y)
+		// 	s.circle(-(eye1._x - width), eye1._y, 5)
+		// 	s.circle(-(eye2._x - width), eye2._y, 5)
 		increment++;
 
 		for(head of heads){
@@ -102,7 +97,8 @@ const sketch = (s) => {
 			s.rotate(angle);
 			s.scale(scale);
 			s.imageMode(s.CENTER);
-			s.tint(255,255/(maxHeads + 1))
+			s.tint(255,255 * 0.25)
+			s.blendMode(s.SOFT_LIGHT)
 			s.image(head.image, head.translate.transX, head.translate.transY);
 			s.pop();
 		}
@@ -123,7 +119,7 @@ const sketch = (s) => {
 				}
 			}
 
-			if(heads.length < maxHeads && increment > 20 + 10 * (headNum + 1)){
+			if(increment > 30 + 20 * totalRecordings){
 
 				let box = result[0].alignedRect._box;
 				let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height);
@@ -143,7 +139,12 @@ const sketch = (s) => {
 					},
 					image: head
 				};
+
+				totalRecordings++;
 				headNum++;
+				if(headNum === maxHeads){
+					headNum = 0;
+				}
 			}
 		}
 	}
