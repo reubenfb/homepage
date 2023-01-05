@@ -62,6 +62,7 @@ const sketch = (s) => {
 		loadModels();
 		s.noLoop();
 
+
 	};
 
 	s.draw = async () => {
@@ -102,6 +103,7 @@ const sketch = (s) => {
 
 			}
 
+
 			//s.loadPixels();
 
 			// for(let i = 0; i < s.pixels.length; i++){
@@ -133,7 +135,7 @@ const sketch = (s) => {
 				}
 			}
 
-			if(increment > 30 + 15 * totalRecordings){
+			if(increment > 15 + 15 * totalRecordings){
 
 				let box = result[0].alignedRect._box;
 				//let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height);
