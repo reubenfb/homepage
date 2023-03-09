@@ -12,19 +12,13 @@ const sketch = (s) => {
 	// p5.js capture and it's HTML <video/> element
 	let capture;
 	let captureElement;
-	// store dimenions formatted for faceapi
-	// let displaySize;
-	// let noseX = 0;
-	// let noseY = 0;
-	// let faceResult = null;
+	// storage variables for faceapi
+	let faceResult = null;
+	let expressionResult;
+	let mouthSize;
+	let displaySize;
 
 	let fade = 0.2;
-	let increment = 0;
-	let heads = [];
-	let maxHeads = 8;
-	let headNum = 0;
-	let totalRecordings = 0;
-	let pixelSet = [];
 	let positionBounds = [0,180];
 
 	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
@@ -33,20 +27,18 @@ const sketch = (s) => {
 	// 	document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
 	// }
 
-	// function loadModels(){
-	//   Promise.all([
-	//   	faceapi.nets.tinyFaceDetector.load('../miscFiles/face-api-files/'),
-	//     //faceapi.nets.ssdMobilenetv1.load('../miscFiles/face-api-files/'),
-	//     faceapi.nets.faceLandmark68Net.load('../miscFiles/face-api-files/')
-	//   ])
-	//   // noLoop() was called in setup, pausing draw() while we load, we resume here once models are loaded
-	//   .then(()=>{
-	//   	s.loop();
-	//   })
-	// }
-
-
-
+	function loadModels(){
+	  Promise.all([
+	  	faceapi.nets.tinyFaceDetector.load('../miscFiles/face-api-files/'),
+	    //faceapi.nets.ssdMobilenetv1.load('../miscFiles/face-api-files/'),
+	    faceapi.nets.faceLandmark68Net.load('../miscFiles/face-api-files/'),
+	    faceapi.nets.faceExpressionNet.load('../miscFiles/face-api-files/')
+	  ])
+	  // noLoop() was called in setup, pausing draw() while we load, we resume here once models are loaded
+	  .then(()=>{
+	  	s.loop();
+	  })
+	}
 
 	let perfectPositions = [90, 0, 90, 0, 135, 45, 135, 45];
 	let currentPositions = [0,0,0,0,0,0,0,0];
@@ -73,33 +65,6 @@ const sketch = (s) => {
 // 7 goes on top of 3, 8
 // 8 goes on top of 1
 
-	document.getElementById('canvas-container').onclick = function() {
-		console.log('fired')
-        goalPositions = [...perfectPositions];
-        goingHome = goingHome ? false : true;
-    };
-
-	s.setup = () => {
-
-		p5Canvas = s.createCanvas(width, height*2);
-		p5CanvasElement = p5Canvas.elt;
-		s.pixelDensity(pixelDensity);
-		capture = s.createCapture(s.VIDEO);
-		//captureElement = capture.elt;
-		//captureElement.setAttribute('playsinline', '');
-		//capture.size(width, height);
-		capture.hide();
-		//displaySize = { width: width, height: height };
-		//faceapi.matchDimensions(p5Canvas, displaySize);
-
-		//s.frameRate(10);
-		s.angleMode(s.DEGREES);
-		//loadModels();
-		//s.noLoop();
-
-
-	};
-
 	let longLength = 200 - 16;
 	let shortLength = 141 - 16;
 
@@ -125,18 +90,44 @@ const sketch = (s) => {
 		{'x': 235, 'y': 165, 'len': shortLength}
 	]
 
+	document.getElementById('canvas-container').onclick = function() {
+		console.log('fired')
+        goalPositions = [...perfectPositions];
+        goingHome = goingHome ? false : true;
+    };
+
+	s.setup = () => {
+
+		p5Canvas = s.createCanvas(width, height*2);
+		p5CanvasElement = p5Canvas.elt;
+		s.pixelDensity(pixelDensity);
+		capture = s.createCapture(s.VIDEO);
+		captureElement = capture.elt;
+		captureElement.setAttribute('playsinline', '');
+		capture.size(width, height);
+		capture.hide();
+		displaySize = { width: width, height: height };
+		faceapi.matchDimensions(p5Canvas, displaySize);
+
+		s.frameRate(24);
+		s.angleMode(s.DEGREES);
+		loadModels();
+		s.noLoop();
+
+
+	};
+
 	s.draw = async () => {
 
 		s.clear();
 
-		// faceapi.detectAllFaces(captureElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
-		// 	.then(result => drawFace(faceapi.resizeResults(result, displaySize)))
+		faceapi.detectAllFaces(captureElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+			.then(result => drawFace(faceapi.resizeResults(result, displaySize)))
 
 		s.push();
 		//flip video
 		s.translate(width,0);
 		s.scale(-1, 1);
-		//s.tint(255,255 * 0.2)
 		s.image(capture, offset, height, vidWidth, height);
 		s.pop();
 
@@ -162,9 +153,8 @@ const sketch = (s) => {
 				}
 			}
 
-			console.log(goalPositions)
-			console.log(speeds)
-
+			// console.log(goalPositions)
+			// console.log(speeds)
 
 			let point = points[i]
 			s.push();
@@ -179,12 +169,60 @@ const sketch = (s) => {
 			let offset = Math.sqrt(Math.pow(offsetX,2) + Math.pow(offsetY,2));
 
 			s.line(0, -point.len/2 - offset, 0, point.len/2 - offset)
-			s.circle(0,0,3)
 			s.pop();
+
+			if(faceResult){
+				s.circle(-(faceResult[51]._x - width), height + faceResult[51]._y,3)
+				s.circle(-(faceResult[57]._x - width), height + faceResult[57]._y,3)
+			}
 
 		}
 
 	};
+
+	function drawFace(result){
+
+		if(result[0]){
+
+			if(!faceResult){
+				faceResult = result[0].landmarks.positions;
+			}
+			else {
+				for(let i = 0; i < result[0].landmarks.positions.length; i++){
+					let newResult = result[0].landmarks.positions[i];
+					faceResult[i]._x = faceResult[i]._x * fade + newResult._x * (1 - fade);
+					faceResult[i]._y = faceResult[i]._y * fade + newResult._y * (1 - fade);
+				}
+			}
+
+		faceExpression = getTopExpression(result[0].expressions);
+		mouthSize = lengthOfLine(faceResult[51], faceResult[57]);
+		console.log(faceExpression, mouthSize)
+
+		}
+	}
+
+	function getTopExpression(result){
+
+		let array = [
+			{
+				expression: 'happy',
+				value: result.happy
+			},
+			{
+				expression: 'neutral',
+				value: result.neutral
+			},
+			{
+				expression: 'sad',
+				value: result.sad
+			}
+		]
+
+		let sortedArray = array.sort((a, b) => b.value - a.value);
+		return sortedArray[0].expression;
+
+	}
 
 	function getRandomAngle(){
 		return Math.round(s.random(positionBounds[0],positionBounds[1]));
@@ -195,68 +233,18 @@ const sketch = (s) => {
 	}
 
 	function speedMap(speed){
-		return s.map(speed, 1, 9, 0.15, 0.4);
+		return s.map(speed, 1, 9, 0.5, 1.5);
+	}
+
+	function calculateAngle(p1, p2){
+		return Math.atan2(p2._y - p1._y, p2._x - p1._x) * 180 / Math.PI;
+	}
+
+	function lengthOfLine(p1, p2){
+		let a = p1._x - p2._x;
+		let b = p1._y - p2._y;
+		return Math.sqrt(a*a + b*b);
 	}
 
 };
-
-
-
-function drawFace(result){
-
-	if(result[0]){
-
-		if(!faceResult){
-			faceResult = result[0].landmarks.positions;
-		}
-		else {
-			for(let i = 0; i < result[0].landmarks.positions.length; i++){
-				let newResult = result[0].landmarks.positions[i];
-				faceResult[i]._x = faceResult[i]._x * fade + newResult._x * (1 - fade);
-				faceResult[i]._y = faceResult[i]._y * fade + newResult._y * (1 - fade);
-			}
-		}
-
-		// if(increment > 15 + 15 * totalRecordings){
-
-		// 	let box = result[0].alignedRect._box;
-		// 	//let head = s.get(-(box._x - width) - box._width, box._y, box._width, box._height);
-		// 	let head = capture.get(box._x, box._y, box._width, box._height);
-
-		// 	heads[headNum] = {
-		// 		eye1: {
-		// 			_x: faceResult[39]._x,
-		// 			_y: faceResult[39]._y
-		// 		},
-		// 		eye2: {
-		// 			_x: faceResult[42]._x,
-		// 			_y: faceResult[42]._y
-		// 		},
-		// 		translate: {
-		// 			transX: (box._x + box._width/2) - faceResult[39]._x,
-		// 			transY: (box._y + box._height/2) - faceResult[39]._y
-		// 		},
-		// 		image: head
-		// 	};
-
-		// 	totalRecordings++;
-		// 	headNum++;
-
-		// 	if(heads.length === maxHeads){
-		// 		headNum = 0;
-		// 	}
-
-		// }
-	}
-}
-
-function calculateAngle(p1, p2){
-	return Math.atan2(p2._y - p1._y, p2._x - p1._x) * 180 / Math.PI;
-}
-
-function lengthOfLine(p1, p2){
-	let a = p1._x - p2._x;
-	let b = p1._y - p2._y;
-	return Math.sqrt(a*a + b*b);
-}
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
