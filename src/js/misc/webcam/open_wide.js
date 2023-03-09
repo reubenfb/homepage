@@ -25,6 +25,7 @@ const sketch = (s) => {
 	let headNum = 0;
 	let totalRecordings = 0;
 	let pixelSet = [];
+	let positionBounds = [0,180];
 
 	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
 	// 	vidWidth = height * 3/4;
@@ -45,21 +46,36 @@ const sketch = (s) => {
 	// }
 
 
-	let perfectPositions = [90, 0, 90, 0, -45, 45, -45, 45];
-	let currentPositions = [];
+
+
+	let perfectPositions = [90, 0, 90, 0, 135, 45, 135, 45];
+	let currentPositions = [0,0,0,0,0,0,0,0];
+	let speeds = [];
 	let goalPositions = [];
 	let goingHome = false;
 
 	for(let i = 0; i < perfectPositions.length; i++){
-		currentPositions.push(s.random(-90,90));
-		goalPositions.push(s.random(-90,90));
+		goalPositions.push(getRandomAngle());
+		speeds.push(getRandomSpeed());
 	}
 
+
+// STACK ORDER (bottom to top)
+// 5, 1, 6, 3, 8, 2, 7, 4
+
+// 1 goes on top of 5 
+// 2 goes on top of 5
+// 3 goes on top of 6
+// 4 goes on top of 3, 6, 7, 8
+// 5 all clear
+// 6 all clear
+// 7 goes on top of 3, 8
+// 8 goes on top of 1
 
 	document.getElementById('canvas-container').onclick = function() {
 		console.log('fired')
         goalPositions = [...perfectPositions];
-        goingHome = true;
+        goingHome = goingHome ? false : true;
     };
 
 	s.setup = () => {
@@ -83,8 +99,8 @@ const sketch = (s) => {
 
 	};
 
-	let longLength = 200;
-	let shortLength = 141;
+	let longLength = 200 - 16;
+	let shortLength = 141 - 16;
 
 	let sideCenters = [
 		{'x': 300, 'y': 100},
@@ -98,17 +114,15 @@ const sketch = (s) => {
 	]
 
 	let points = [
-		{'x': 280, 'y': 100, 'len': longLength},
-		{'x': 400, 'y': 150, 'len': longLength},
-		{'x': 320, 'y': 300, 'len': longLength},
-		{'x': 200, 'y': 220, 'len': longLength},
-		{'x': 360, 'y': 160, 'len': shortLength},
+		{'x': 265, 'y': 100, 'len': longLength},
+		{'x': 400, 'y': 200, 'len': longLength},
+		{'x': 260, 'y': 300, 'len': longLength},
+		{'x': 200, 'y': 250, 'len': longLength},
+		{'x': 340, 'y': 140, 'len': shortLength},
 		{'x': 330, 'y': 270, 'len': shortLength},
-		{'x': 230, 'y': 230, 'len': shortLength},
-		{'x': 260, 'y': 140, 'len': shortLength}
+		{'x': 220, 'y': 220, 'len': shortLength},
+		{'x': 240, 'y': 160, 'len': shortLength}
 	]
-
-	let speeds = new Array(points.length).fill(0.5);
 
 	s.draw = async () => {
 
@@ -131,7 +145,7 @@ const sketch = (s) => {
 			let direction = goalPositions[i] > currentPositions[i] ? 1 : -1;
 
 			// move in that direction 
-			currentPositions[i] += (speeds[i] * direction);
+			currentPositions[i] += (speedMap(speeds[i]) * direction);
 
 			// check to see if the next step would be in the same direction
 			let newDirection = goalPositions[i] > currentPositions[i] ? 1 : -1;
@@ -142,10 +156,13 @@ const sketch = (s) => {
 
 				// set a new goal and speed, unless you're going home
 				if(!goingHome){
-					speeds[i] = s.random(0.2, 0.7);
-					goalPositions[i] = s.random(-90, 90);
+					speeds[i] = getRandomSpeed();
+					goalPositions[i] = getRandomAngle();
 				}
 			}
+
+			console.log(goalPositions)
+			console.log(speeds)
 
 
 			let point = points[i]
@@ -160,23 +177,26 @@ const sketch = (s) => {
 			let offsetY = sideCenters[i].y - point.y;
 			let offset = Math.sqrt(Math.pow(offsetX,2) + Math.pow(offsetY,2));
 
-			let newOffset = offset;
-
-			if(offsetY > 0){
-				newOffset = -offset
-			}
-
-			if(offsetY == 0 && offsetX < 0){
-				newOffset = -offset
-			}
-
-			s.line(0, -point.len/2 - newOffset, 0, point.len/2 - newOffset)
+			s.line(0, -point.len/2 - offset, 0, point.len/2 - offset)
 			//s.circle(0,0,3)
 			s.pop();
 
 		}
 
 	};
+
+	function getRandomAngle(){
+		return Math.round(s.random(positionBounds[0],positionBounds[1]));
+	}
+
+	function getRandomSpeed(){
+		return Math.round(s.random(0.5, 9.5));
+	}
+
+	function speedMap(speed){
+		return s.map(speed, 1, 9, 0.1, 0.4);
+	}
+
 };
 
 
