@@ -56,6 +56,7 @@ const sketch = (s) => {
 
 	for(let i = 0; i < perfectPositions.length; i++){
 		goalPositions.push(getRandomAngle());
+		//goalPositions = [0,0,0,0,0,0,0,0];
 		speeds.push(getRandomSpeed());
 	}
 
@@ -63,8 +64,8 @@ const sketch = (s) => {
 // STACK ORDER (bottom to top)
 // 5, 1, 6, 3, 8, 2, 7, 4
 
-// 1 goes on top of 5 
-// 2 goes on top of 5
+// 1 goes on top of 5
+// 2 goes on top of 5, 6 
 // 3 goes on top of 6
 // 4 goes on top of 3, 6, 7, 8
 // 5 all clear
@@ -121,7 +122,7 @@ const sketch = (s) => {
 		{'x': 340, 'y': 140, 'len': shortLength},
 		{'x': 330, 'y': 270, 'len': shortLength},
 		{'x': 220, 'y': 220, 'len': shortLength},
-		{'x': 240, 'y': 160, 'len': shortLength}
+		{'x': 235, 'y': 165, 'len': shortLength}
 	]
 
 	s.draw = async () => {
@@ -178,7 +179,7 @@ const sketch = (s) => {
 			let offset = Math.sqrt(Math.pow(offsetX,2) + Math.pow(offsetY,2));
 
 			s.line(0, -point.len/2 - offset, 0, point.len/2 - offset)
-			//s.circle(0,0,3)
+			s.circle(0,0,3)
 			s.pop();
 
 		}
@@ -194,7 +195,7 @@ const sketch = (s) => {
 	}
 
 	function speedMap(speed){
-		return s.map(speed, 1, 9, 0.1, 0.4);
+		return s.map(speed, 1, 9, 0.15, 0.4);
 	}
 
 };
