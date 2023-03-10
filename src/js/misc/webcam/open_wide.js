@@ -77,14 +77,7 @@ const sketch = (s) => {
 		{'x': 235, 'y': 165, 'len': shortLength}
 	]
 
-	// document.getElementById('canvas-container').onclick = function() {
-	// 	console.log('fired')
-    //     goalPositions = [...perfectPositions];
-    //     goingHome = goingHome ? false : true;
-    // };
-
 	s.setup = () => {
-
 
 		p5Canvas = s.createCanvas(width, height*2);
 		p5CanvasElement = p5Canvas.elt;
@@ -101,7 +94,6 @@ const sketch = (s) => {
 		s.angleMode(s.DEGREES);
 		loadModels();
 		s.noLoop();
-
 
 	};
 
@@ -126,8 +118,6 @@ const sketch = (s) => {
 		s.image(capture, offset, height, vidWidth, height);
 		s.pop();
 
-		console.log(commands)
-
 		for (let i = 0; i < points.length; i++){
 
 			// figure out if you need to increment up or down
@@ -139,28 +129,25 @@ const sketch = (s) => {
 			// check to see if the next step would be in the same direction
 			let newDirection = commands.goalPositions[i] > commands.currentPositions[i] ? 1 : -1;
 
-			// if you've overshot, set current to goal
+			// if mouth is open, force to perfect position
+			if(faceExpression == 'open'){
+				commands.goalPositions[i] = perfectPositions[i];
+			}
+
+			//if you've overshot, set current to goal
 			if(newDirection != direction){
 
 				commands.currentPositions[i] = commands.goalPositions[i];
 
-				// set a new goal and speed based on expression
+				// if you're not oppen mouthed, set a new goal and speed based on expression
 
-				getNewCommands(faceExpression, i)
-
-				// speeds[i] = getRandomSpeed();
-
-				// // set a new goal based on expression
-				// if(faceExpression !== 'open'){
-				// 	goalPositions[i] = getRandomAngle();
-				// }
-				// else {
-				// 	goalPositions = [...perfectPositions];
-				// }
+				if(faceExpression != 'open'){
+					getNewCommands(faceExpression, i);
+				}
 			}
 
-			// console.log(goalPositions)
-			// console.log(speeds)
+
+
 
 			let point = points[i]
 			s.push();
@@ -202,20 +189,20 @@ const sketch = (s) => {
 				}
 			}
 
-		//fade expressionValues
-		expressionValues[0] = expressionValues[0] * fade + result[0].expressions.happy * (1 - fade);
-		expressionValues[1] = expressionValues[1] * fade + result[0].expressions.neutral * (1 - fade);
-		expressionValues[2] = expressionValues[2] * fade + result[0].expressions.sad * (1 - fade);
+			//fade expressionValues
+			expressionValues[0] = expressionValues[0] * fade + result[0].expressions.happy * (1 - fade);
+			expressionValues[1] = expressionValues[1] * fade + result[0].expressions.neutral * (1 - fade);
+			expressionValues[2] = expressionValues[2] * fade + result[0].expressions.sad * (1 - fade);
 
-		faceExpression = getTopExpression(expressionValues);
-		mouthAngles[0] = 180 - calculateAngle(faceResult[51], faceResult[48]);
-		mouthAngles[1] = calculateAngle(faceResult[51], faceResult[54]);
+			oldExpression = faceExpression;
+			faceExpression = getTopExpression(expressionValues);
 
-		if(mouthAngles[0] > 30 && mouthAngles[1] > 30){
-			faceExpression = 'open';
-		}
-		console.log(faceExpression, mouthAngles);
+			mouthAngles[0] = 180 - calculateAngle(faceResult[51], faceResult[48]);
+			mouthAngles[1] = calculateAngle(faceResult[51], faceResult[54]);
 
+			if(mouthAngles[0] > 30 && mouthAngles[1] > 30){
+				faceExpression = 'open';
+			}
 
 		}
 	}
@@ -224,13 +211,16 @@ const sketch = (s) => {
 	function getNewCommands(expression, i){
 
 		let newGoal;
-		let newSpeed = getRandomSpeed();
+		let newSpeed;
 
-		if(expression == 'open'){
-			newGoal = perfectPositions[i];
+		if(expression === 'X'){
 		}
+		// if happy, do tight wiggles
+		// if sad, do slow sweeping arcs
+		// if neutral, do default 
 		else {
 			newGoal = getRandomAngle();
+			newSpeed = getRandomSpeed();
 		}
 
 		commands.goalPositions[i] = newGoal,
