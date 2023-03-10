@@ -4,7 +4,10 @@ const sketch = (s) => {
 	let width = height * 4/3;
 	let offset = 0;
 	let vidWidth = width;
-	const pixelDensity = 4;
+	const pixelDensity = 2;
+
+	// count the loops so we don't detect faces constantly
+	let drawLoops = 0;
 
 	// p5.js canvas and it's HTML <canvas/> element
 	let p5Canvas;
@@ -21,16 +24,9 @@ const sketch = (s) => {
 	let fade = 0.2;
 	let positionBounds = [0,180];
 
-	// if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
-	// 	vidWidth = height * 3/4;
-	// 	offset = (width - vidWidth)/2;
-	// 	document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
-	// }
-
 	function loadModels(){
 	  Promise.all([
 	  	faceapi.nets.tinyFaceDetector.load('../miscFiles/face-api-files/'),
-	    //faceapi.nets.ssdMobilenetv1.load('../miscFiles/face-api-files/'),
 	    faceapi.nets.faceLandmark68Net.load('../miscFiles/face-api-files/'),
 	    faceapi.nets.faceExpressionNet.load('../miscFiles/face-api-files/')
 	  ])
@@ -109,7 +105,7 @@ const sketch = (s) => {
 		displaySize = { width: width, height: height };
 		faceapi.matchDimensions(p5Canvas, displaySize);
 
-		s.frameRate(24);
+		s.frameRate(40);
 		s.angleMode(s.DEGREES);
 		loadModels();
 		s.noLoop();
@@ -120,9 +116,16 @@ const sketch = (s) => {
 	s.draw = async () => {
 
 		s.clear();
+		s.background(255);
+		drawLoops++;
 
-		faceapi.detectAllFaces(captureElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
-			.then(result => drawFace(faceapi.resizeResults(result, displaySize)))
+		// for performance, only redect face every 4 frames
+		if(drawLoops % 4 == 0){
+			faceapi.detectAllFaces(captureElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions()
+				.then(result => detectFace(faceapi.resizeResults(result, displaySize)));
+
+			drawLoops = 0;
+		}
 
 		s.push();
 		//flip video
@@ -171,16 +174,16 @@ const sketch = (s) => {
 			s.line(0, -point.len/2 - offset, 0, point.len/2 - offset)
 			s.pop();
 
-			if(faceResult){
-				s.circle(-(faceResult[51]._x - width), height + faceResult[51]._y,3)
-				s.circle(-(faceResult[57]._x - width), height + faceResult[57]._y,3)
-			}
+		};
 
+		if(faceResult){
+			s.circle(-(faceResult[51]._x - width), height + faceResult[51]._y,3)
+			s.circle(-(faceResult[57]._x - width), height + faceResult[57]._y,3)
 		}
 
 	};
 
-	function drawFace(result){
+	function detectFace(result){
 
 		if(result[0]){
 
@@ -197,7 +200,7 @@ const sketch = (s) => {
 
 		faceExpression = getTopExpression(result[0].expressions);
 		mouthSize = lengthOfLine(faceResult[51], faceResult[57]);
-		console.log(faceExpression, mouthSize)
+		console.log(faceExpression, mouthSize);
 
 		}
 	}
@@ -229,7 +232,7 @@ const sketch = (s) => {
 	}
 
 	function getRandomSpeed(){
-		return Math.round(s.random(0.5, 9.5));
+		return Math.round(s.random(0.1, 0.5));
 	}
 
 	function speedMap(speed){
