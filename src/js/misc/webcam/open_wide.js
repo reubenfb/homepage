@@ -18,34 +18,25 @@ const sketch = (s) => {
 
 	// storage variables for faceapi
 	let faceResult = null;
-	let expressionResult;
+	let faceExpression = 'neutral';
 	let mouthAngles = [];
 	let expressionValues = [0, 0, 0];
 	let displaySize;
 	let fade = 0.2;
 	let positionBounds = [0,180];
 
-	function loadModels(){
-	  Promise.all([
-	  	faceapi.nets.tinyFaceDetector.load('../miscFiles/face-api-files/'),
-	    faceapi.nets.faceLandmark68Net.load('../miscFiles/face-api-files/'),
-	    faceapi.nets.faceExpressionNet.load('../miscFiles/face-api-files/')
-	  ])
-	  // noLoop() was called in setup, pausing draw() while we load, we resume here once models are loaded
-	  .then(()=>{
-	  	s.loop();
-	  })
+	let commands = {
+		speeds: [],
+		currentPositions: [0,0,0,0,0,0,0,0],
+		goalPositions: []
 	}
 
 	let perfectPositions = [90, 0, 90, 0, 135, 45, 135, 45];
-	let currentPositions = [0,0,0,0,0,0,0,0];
-	let speeds = [];
-	let goalPositions = [];
 
 	for(let i = 0; i < perfectPositions.length; i++){
-		goalPositions.push(getRandomAngle());
-		//goalPositions = [0,0,0,0,0,0,0,0];
-		speeds.push(getRandomSpeed());
+		commands.speeds.push(getRandomSpeed());
+		commands.goalPositions.push(getRandomAngle());
+		//commands.goalPositions = [0,0,0,0,0,0,0,0];
 	}
 
 
@@ -94,6 +85,7 @@ const sketch = (s) => {
 
 	s.setup = () => {
 
+
 		p5Canvas = s.createCanvas(width, height*2);
 		p5CanvasElement = p5Canvas.elt;
 		s.pixelDensity(pixelDensity);
@@ -134,29 +126,37 @@ const sketch = (s) => {
 		s.image(capture, offset, height, vidWidth, height);
 		s.pop();
 
+		console.log(commands)
+
 		for (let i = 0; i < points.length; i++){
 
 			// figure out if you need to increment up or down
-			let direction = goalPositions[i] > currentPositions[i] ? 1 : -1;
+			let direction = commands.goalPositions[i] > commands.currentPositions[i] ? 1 : -1;
 
 			// move in that direction 
-			currentPositions[i] += (speedMap(speeds[i]) * direction);
+			commands.currentPositions[i] += (speedMap(commands.speeds[i]) * direction);
 
 			// check to see if the next step would be in the same direction
-			let newDirection = goalPositions[i] > currentPositions[i] ? 1 : -1;
+			let newDirection = commands.goalPositions[i] > commands.currentPositions[i] ? 1 : -1;
 
 			// if you've overshot, set current to goal
 			if(newDirection != direction){
-				currentPositions[i] = goalPositions[i];
 
-				speeds[i] = getRandomSpeed();
-				// set a new goal based on expression
-				if(faceExpression !== 'open'){
-					goalPositions[i] = getRandomAngle();
-				}
-				else {
-					goalPositions = [...perfectPositions];
-				}
+				commands.currentPositions[i] = commands.goalPositions[i];
+
+				// set a new goal and speed based on expression
+
+				getNewCommands(faceExpression, i)
+
+				// speeds[i] = getRandomSpeed();
+
+				// // set a new goal based on expression
+				// if(faceExpression !== 'open'){
+				// 	goalPositions[i] = getRandomAngle();
+				// }
+				// else {
+				// 	goalPositions = [...perfectPositions];
+				// }
 			}
 
 			// console.log(goalPositions)
@@ -168,7 +168,7 @@ const sketch = (s) => {
 			s.stroke(50)
 			s.strokeWeight(3)
 			s.fill(50)
-			s.rotate(currentPositions[i])
+			s.rotate(commands.currentPositions[i])
 
 			let offsetX = sideCenters[i].x - point.x;
 			let offsetY = sideCenters[i].y - point.y;
@@ -220,6 +220,24 @@ const sketch = (s) => {
 		}
 	}
 
+
+	function getNewCommands(expression, i){
+
+		let newGoal;
+		let newSpeed = getRandomSpeed();
+
+		if(expression == 'open'){
+			newGoal = perfectPositions[i];
+		}
+		else {
+			newGoal = getRandomAngle();
+		}
+
+		commands.goalPositions[i] = newGoal,
+		commands.speeds[i] = newSpeed
+
+	}
+
 	function getTopExpression(smoothedValues){
 
 		let valuesArray = [
@@ -255,6 +273,19 @@ const sketch = (s) => {
 		let b = p1._y - p2._y;
 		return Math.sqrt(a*a + b*b);
 	}
+
+	function loadModels(){
+	  Promise.all([
+	  	faceapi.nets.tinyFaceDetector.load('../miscFiles/face-api-files/'),
+	    faceapi.nets.faceLandmark68Net.load('../miscFiles/face-api-files/'),
+	    faceapi.nets.faceExpressionNet.load('../miscFiles/face-api-files/')
+	  ])
+	  // noLoop() was called in setup, pausing draw() while we load, we resume here once models are loaded
+	  .then(()=>{
+	  	s.loop();
+	  })
+	}
+
 
 };
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
