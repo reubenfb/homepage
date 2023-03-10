@@ -15,12 +15,13 @@ const sketch = (s) => {
 	// p5.js capture and it's HTML <video/> element
 	let capture;
 	let captureElement;
+
 	// storage variables for faceapi
 	let faceResult = null;
 	let expressionResult;
-	let mouthSize;
+	let mouthAngles = [];
+	let expressionValues = [0, 0, 0];
 	let displaySize;
-
 	let fade = 0.2;
 	let positionBounds = [0,180];
 
@@ -40,7 +41,6 @@ const sketch = (s) => {
 	let currentPositions = [0,0,0,0,0,0,0,0];
 	let speeds = [];
 	let goalPositions = [];
-	let goingHome = false;
 
 	for(let i = 0; i < perfectPositions.length; i++){
 		goalPositions.push(getRandomAngle());
@@ -86,11 +86,11 @@ const sketch = (s) => {
 		{'x': 235, 'y': 165, 'len': shortLength}
 	]
 
-	document.getElementById('canvas-container').onclick = function() {
-		console.log('fired')
-        goalPositions = [...perfectPositions];
-        goingHome = goingHome ? false : true;
-    };
+	// document.getElementById('canvas-container').onclick = function() {
+	// 	console.log('fired')
+    //     goalPositions = [...perfectPositions];
+    //     goingHome = goingHome ? false : true;
+    // };
 
 	s.setup = () => {
 
@@ -149,10 +149,13 @@ const sketch = (s) => {
 			if(newDirection != direction){
 				currentPositions[i] = goalPositions[i];
 
-				// set a new goal and speed, unless you're going home
-				if(!goingHome){
-					speeds[i] = getRandomSpeed();
+				speeds[i] = getRandomSpeed();
+				// set a new goal based on expression
+				if(faceExpression !== 'open'){
 					goalPositions[i] = getRandomAngle();
+				}
+				else {
+					goalPositions = [...perfectPositions];
 				}
 			}
 
@@ -178,7 +181,8 @@ const sketch = (s) => {
 
 		if(faceResult){
 			s.circle(-(faceResult[51]._x - width), height + faceResult[51]._y,3)
-			s.circle(-(faceResult[57]._x - width), height + faceResult[57]._y,3)
+			s.circle(-(faceResult[48]._x - width), height + faceResult[48]._y,3)
+			s.circle(-(faceResult[54]._x - width), height + faceResult[54]._y,3)
 		}
 
 	};
@@ -198,34 +202,37 @@ const sketch = (s) => {
 				}
 			}
 
-		faceExpression = getTopExpression(result[0].expressions);
-		mouthSize = lengthOfLine(faceResult[51], faceResult[57]);
-		console.log(faceExpression, mouthSize);
+		//fade expressionValues
+		expressionValues[0] = expressionValues[0] * fade + result[0].expressions.happy * (1 - fade);
+		expressionValues[1] = expressionValues[1] * fade + result[0].expressions.neutral * (1 - fade);
+		expressionValues[2] = expressionValues[2] * fade + result[0].expressions.sad * (1 - fade);
+
+		faceExpression = getTopExpression(expressionValues);
+		mouthAngles[0] = 180 - calculateAngle(faceResult[51], faceResult[48]);
+		mouthAngles[1] = calculateAngle(faceResult[51], faceResult[54]);
+
+		if(mouthAngles[0] > 30 && mouthAngles[1] > 30){
+			faceExpression = 'open';
+		}
+		console.log(faceExpression, mouthAngles);
+
 
 		}
 	}
 
-	function getTopExpression(result){
+	function getTopExpression(smoothedValues){
 
-		let array = [
-			{
-				expression: 'happy',
-				value: result.happy
-			},
-			{
-				expression: 'neutral',
-				value: result.neutral
-			},
-			{
-				expression: 'sad',
-				value: result.sad
-			}
+		let valuesArray = [
+			{ expression: 'happy', value: smoothedValues[0] },
+			{ expression: 'neutral', value: smoothedValues[1] },
+			{ expression: 'sad', value: smoothedValues[2] }
 		]
 
-		let sortedArray = array.sort((a, b) => b.value - a.value);
+		let sortedArray = valuesArray.sort((a, b) => b.value - a.value);
 		return sortedArray[0].expression;
 
 	}
+
 
 	function getRandomAngle(){
 		return Math.round(s.random(positionBounds[0],positionBounds[1]));
