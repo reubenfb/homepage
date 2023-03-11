@@ -178,6 +178,10 @@ const sketch = (s) => {
 		// 	s.circle(-(faceResult[54]._x - width), height + faceResult[54]._y,3)
 		// }
 
+
+		// console.log(commands.goalPositions)
+		// console.log(commands.speeds)
+
 	};
 
 	function detectFace(result){
@@ -248,7 +252,7 @@ const sketch = (s) => {
 
 			// if just arriving at happy, set a random wiggle
 			if(commands.happyWiggleDirection[i] === 0){
-				commands.wiggleAngle[i] = getRandomInt(10, 40);
+				commands.wiggleAngle[i] = getRandomInt(15, 35);
 				newGoal = getRandomInt(75, 105);
 				commands.happyWiggleDirection[i] = Math.random() < 0.5 ? -1 : 1;
 			}
@@ -286,7 +290,7 @@ const sketch = (s) => {
 			commands.happyWiggleDirection[i] = 0;
 			commands.sadArcDirection[i] = 0;
 			newGoal = getRandomInt(20, 160);
-			newSpeed = getRandomInt(4, 6);
+			newSpeed = getRandomInt(3, 7);
 		}
 
 		commands.goalPositions[i] = newGoal;
@@ -322,7 +326,7 @@ const sketch = (s) => {
 
 	// map 1-9 speed values to actual increments
 	function speedMap(speed){
-		return s.map(speed, 1, 9, 0.8, 2);
+		return s.map(speed, 1, 9, 0.4, 2.5);
 	}
 
 	// calculate angle between two points
