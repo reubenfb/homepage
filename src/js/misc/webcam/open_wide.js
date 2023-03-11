@@ -34,8 +34,8 @@ const sketch = (s) => {
 
 	// set initial random speeds and goal positions
 	for(let i = 0; i < perfectPositions.length; i++){
-		commands.speeds.push(getRandomSpeed());
-		commands.goalPositions.push(getRandomAngle());
+		commands.speeds.push(getRandomInt(1, 9));
+		commands.goalPositions.push(getRandomInt(0, 180));
 		//commands.goalPositions = [0,0,0,0,0,0,0,0];
 	}
 
@@ -229,8 +229,8 @@ const sketch = (s) => {
 		// if sad, do slow sweeping arcs
 		// if neutral, do default 
 		else {
-			newGoal = getRandomAngle();
-			newSpeed = getRandomSpeed();
+			newGoal = getRandomInt(0, 180);
+			newSpeed = getRandomInt(1, 9);
 		}
 
 		commands.goalPositions[i] = newGoal,
@@ -238,7 +238,7 @@ const sketch = (s) => {
 
 	}
 
-	// get top expression out of expreasions array
+	// get top expression out of expressions array
 	function getTopExpression(smoothedValues){
 
 		let valuesArray = [
@@ -257,19 +257,14 @@ const sketch = (s) => {
 		return oldVal * fade + newVal * (1 - fade);
 	}
 
-	// generate a random angle given bounds
-	function getRandomAngle(){
-		return Math.round(s.random(positionBounds[0],positionBounds[1]));
-	}
-
-	// generate a random speed given bounds
-	function getRandomSpeed(){
-		return Math.round(s.random(0.1, 0.5));
+	// generate a random integer given bounds
+	function getRandomInt(low, high){
+		return Math.round(s.random(low, high));
 	}
 
 	// map 1-9 speed values to actual increments
 	function speedMap(speed){
-		return s.map(speed, 1, 9, 1, 3);
+		return s.map(speed, 1, 9, 0.8, 2);
 	}
 
 	// calculate angle between two points
