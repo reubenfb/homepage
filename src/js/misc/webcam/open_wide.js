@@ -340,6 +340,9 @@ const sketch = (s) => {
 			if(i !== (servos - 1)){
 				string += ',';
 			}
+			else {
+				string += '\n';
+			}
 		}
 		return string;
 	}
