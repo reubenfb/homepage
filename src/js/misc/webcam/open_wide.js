@@ -29,7 +29,10 @@ const sketch = (s) => {
 	let commands = {
 		speeds: [],
 		currentPositions: [0,0,0,0,0,0,0,0],
-		goalPositions: []
+		goalPositions: [],
+		wiggleAngle: [0,0,0,0,0,0,0,0],
+		happyWiggleDirection: [0,0,0,0,0,0,0,0],
+		sadArcDirection: [0,0,0,0,0,0,0,0]
 	}
 
 	// set initial random speeds and goal positions
@@ -122,30 +125,36 @@ const sketch = (s) => {
 		// s.pop();
 
 		// CODE TO ACTUALLY MOVE THE LINES
+
 		for (let i = 0; i < points.length; i++){
 
-			// if mouth is open, interrupt movement and head to perfectPositions
-			if(faceExpression === 'open'){
-				commands.goalPositions[i] = perfectPositions[i];
-			}
+			// only start moving if facial recognition is working
+			if(faceResult){
+				// if mouth is open, interrupt movement and head to perfectPositions
+				if(faceExpression === 'open'){
+					commands.happyWiggleDirection[i] = 0;
+					commands.sadArcDirection[i] = 0;
+					commands.goalPositions[i] = perfectPositions[i];
+				}
 
-			// figure out if you need to increment up or down
-			let direction = commands.goalPositions[i] > commands.currentPositions[i] ? 1 : -1;
+				// figure out if you need to increment up or down
+				let direction = commands.goalPositions[i] > commands.currentPositions[i] ? 1 : -1;
 
-			// move in that direction 
-			commands.currentPositions[i] += (speedMap(commands.speeds[i]) * direction);
+				// move in that direction 
+				commands.currentPositions[i] += (speedMap(commands.speeds[i]) * direction);
 
-			// check to see if the next step would be in the same direction
-			let newDirection = commands.goalPositions[i] > commands.currentPositions[i] ? 1 : -1;
+				// check to see if the next step would be in the same direction
+				let newDirection = commands.goalPositions[i] > commands.currentPositions[i] ? 1 : -1;
 
-			//if you've overshot, set currentPosition to goalPosition
-			if(newDirection != direction){
+				//if you've overshot, set currentPosition to goalPosition
+				if(newDirection != direction){
 
-				commands.currentPositions[i] = commands.goalPositions[i];
+					commands.currentPositions[i] = commands.goalPositions[i];
 
-				// if you're not open mouthed, set a new goal and speed based on expression
-				if(faceExpression !== 'open'){
-					getNewCommands(faceExpression, i);
+					// if you're not open mouthed, set a new goal and speed based on expression
+					if(faceExpression !== 'open'){
+						getNewCommands(faceExpression, i);
+					}
 				}
 			}
 
@@ -185,10 +194,16 @@ const sketch = (s) => {
 				}
 			}
 
+			// add a bunch of bad vibe variables together for sad
+			let sad = result[0].expressions.sad +
+					  result[0].expressions.fearful +
+					  result[0].expressions.angry +
+					  result[0].expressions.disgusted;
+
 			// smoothed recording of happy/neutral/sad expressions
 			expressionValues[0] = smoothVal(expressionValues[0], result[0].expressions.happy, 0.2);
 			expressionValues[1] = smoothVal(expressionValues[1], result[0].expressions.neutral, 0.2);
-			expressionValues[2] = smoothVal(expressionValues[2], result[0].expressions.sad, 0.2);
+			expressionValues[2] = smoothVal(expressionValues[2], sad, 0.2);
 
 			// pull the most likely expressions
 			faceExpression = getTopExpression(expressionValues);
@@ -200,6 +215,8 @@ const sketch = (s) => {
 			if(mouthAngles[0] > 30 && mouthAngles[1] > 30){
 				faceExpression = 'open';
 			}
+
+			console.log(faceExpression)
 
 		}
 	}
@@ -223,18 +240,53 @@ const sketch = (s) => {
 		let newGoal;
 		let newSpeed;
 
-		if(expression === 'X'){
+		// tight, fast wiggles if happy
+		if(expression === 'happy'){
+
+			commands.sadArcDirection[i] = 0;
+			newSpeed = getRandomInt(7, 9);
+
+			if(commands.happyWiggleDirection[i] === 0){
+				commands.wiggleAngle[i] = getRandomInt(10, 40);
+				newGoal = getRandomInt(75, 105);
+				commands.happyWiggleDirection[i] = Math.random() < 0.5 ? -1 : 1;
+			}
+			else {
+				newGoal = commands.currentPositions[i] + (commands.wiggleAngle[i] * commands.happyWiggleDirection[i]);
+				commands.happyWiggleDirection[i] = -commands.happyWiggleDirection[i];
+			}
 		}
-		// if happy, do tight wiggles
-		// if sad, do slow sweeping arcs
+		// slow, big arcs if sad
+		else if(expression === 'sad'){
+
+			commands.happyWiggleDirection[i] = 0;
+			newSpeed = getRandomInt(1, 2);
+			
+			if(commands.sadArcDirection[i] === 0){
+				commands.wiggleAngle[i] = getRandomInt(150, 180);
+				commands.sadArcDirection[i] = Math.random() < 0.5 ? -1 : 1;
+				// pick an edge to start on based on which direction the first arc will go
+				newGoal = commands.sadArcDirection[i] > 0 ? 
+					getRandomInt(0, 180 - commands.wiggleAngle[i]) :
+					getRandomInt(commands.wiggleAngle[i], 180);
+
+			}
+			else {
+				newGoal = commands.currentPositions[i] + (commands.wiggleAngle[i] * commands.sadArcDirection[i]);
+				commands.sadArcDirection[i] = -commands.sadArcDirection[i];
+			}
+
+		}
 		// if neutral, do default 
 		else {
-			newGoal = getRandomInt(0, 180);
-			newSpeed = getRandomInt(1, 9);
+			commands.happyWiggleDirection[i] = 0;
+			commands.sadArcDirection[i] = 0;
+			newGoal = getRandomInt(20, 160);
+			newSpeed = getRandomInt(4, 6);
 		}
 
-		commands.goalPositions[i] = newGoal,
-		commands.speeds[i] = newSpeed
+		commands.goalPositions[i] = newGoal;
+		commands.speeds[i] = newSpeed;
 
 	}
 
@@ -258,8 +310,10 @@ const sketch = (s) => {
 	}
 
 	// generate a random integer given bounds
-	function getRandomInt(low, high){
-		return Math.round(s.random(low, high));
+	function getRandomInt(min, max){
+		// make it inclusive of max as well
+		max = max + 1;
+		return Math.floor(Math.random() * (max - min)) + min;
 	}
 
 	// map 1-9 speed values to actual increments
