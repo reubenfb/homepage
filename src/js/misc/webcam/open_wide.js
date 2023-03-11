@@ -1,3 +1,33 @@
+let started = false;
+
+// obj that contains line commands
+let commands = {
+	speeds: [],
+	currentPositions: [0,0,0,0,0,0,0,0],
+	goalPositions: [],
+	wiggleAngle: [0,0,0,0,0,0,0,0],
+	happyWiggleDirection: [0,0,0,0,0,0,0,0],
+	sadArcDirection: [0,0,0,0,0,0,0,0]
+}
+
+// event handler to trigger serial communication
+document.querySelector('h1').addEventListener('click', async () => {
+	started = true;
+	const port = await navigator.serial.requestPort();
+	await port.open({ baudRate: 115200 });
+
+	const textEncoder = new TextEncoderStream();
+	const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+	const writer = textEncoder.writable.getWriter();
+
+	let message = stitchMessage(1);
+
+	while (true) {
+	  await writer.write('message');
+	}
+});
+
+
 const sketch = (s) => {
 
 	let height = 450;
@@ -24,16 +54,6 @@ const sketch = (s) => {
 
 	// open wide positions
 	let perfectPositions = [90, 0, 90, 0, 135, 45, 135, 45];
-
-	// obj that contains line commands
-	let commands = {
-		speeds: [],
-		currentPositions: [0,0,0,0,0,0,0,0],
-		goalPositions: [],
-		wiggleAngle: [0,0,0,0,0,0,0,0],
-		happyWiggleDirection: [0,0,0,0,0,0,0,0],
-		sadArcDirection: [0,0,0,0,0,0,0,0]
-	}
 
 	// set initial random speeds and goal positions
 	for(let i = 0; i < perfectPositions.length; i++){
@@ -128,8 +148,8 @@ const sketch = (s) => {
 
 		for (let i = 0; i < points.length; i++){
 
-			// only start moving if facial recognition is working
-			if(faceResult){
+			// only start moving if facial recognition is working, and the button has been clicked
+			if(faceResult && started){
 				// if mouth is open, interrupt movement and head to perfectPositions
 				if(faceExpression === 'open'){
 					commands.happyWiggleDirection[i] = 0;
@@ -178,10 +198,8 @@ const sketch = (s) => {
 		// 	s.circle(-(faceResult[54]._x - width), height + faceResult[54]._y,3)
 		// }
 
-
-		// console.log(commands.goalPositions)
-		// console.log(commands.speeds)
-
+		let message = stitchMessage(8);
+		console.log(message)
 	};
 
 	function detectFace(result){
@@ -312,6 +330,20 @@ const sketch = (s) => {
 
 	}
 
+	// stitch together commands for serial communication
+	function stitchMessage(servos){
+		let string = '';
+
+		for(let i = 0; i < servos; i++){
+			string += commands.goalPositions[i] + ',';
+			string += commands.speeds[i];
+			if(i !== (servos - 1)){
+				string += ',';
+			}
+		}
+		return string;
+	}
+
 	// function to smooth value readings over time
 	function smoothVal(oldVal, newVal, fade){
 		return oldVal * fade + newVal * (1 - fade);
@@ -333,7 +365,6 @@ const sketch = (s) => {
 	function calculateAngle(p1, p2){
 		return Math.atan2(p2._y - p1._y, p2._x - p1._x) * 180 / Math.PI;
 	}
-
 
 };
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
