@@ -246,11 +246,13 @@ const sketch = (s) => {
 			commands.sadArcDirection[i] = 0;
 			newSpeed = getRandomInt(7, 9);
 
+			// if just arriving at happy, set a random wiggle
 			if(commands.happyWiggleDirection[i] === 0){
 				commands.wiggleAngle[i] = getRandomInt(10, 40);
 				newGoal = getRandomInt(75, 105);
 				commands.happyWiggleDirection[i] = Math.random() < 0.5 ? -1 : 1;
 			}
+			// otherwise, oscillate the wiggle angle
 			else {
 				newGoal = commands.currentPositions[i] + (commands.wiggleAngle[i] * commands.happyWiggleDirection[i]);
 				commands.happyWiggleDirection[i] = -commands.happyWiggleDirection[i];
@@ -262,6 +264,7 @@ const sketch = (s) => {
 			commands.happyWiggleDirection[i] = 0;
 			newSpeed = getRandomInt(1, 2);
 			
+			// if just arriving at sad, set a random big arc
 			if(commands.sadArcDirection[i] === 0){
 				commands.wiggleAngle[i] = getRandomInt(150, 180);
 				commands.sadArcDirection[i] = Math.random() < 0.5 ? -1 : 1;
@@ -271,6 +274,7 @@ const sketch = (s) => {
 					getRandomInt(commands.wiggleAngle[i], 180);
 
 			}
+			// otherwise, oscillate the arc
 			else {
 				newGoal = commands.currentPositions[i] + (commands.wiggleAngle[i] * commands.sadArcDirection[i]);
 				commands.sadArcDirection[i] = -commands.sadArcDirection[i];
