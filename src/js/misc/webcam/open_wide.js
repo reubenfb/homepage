@@ -361,7 +361,7 @@ const sketch = (s) => {
 
 	// map 1-9 speed values to actual increments
 	function speedMap(speed){
-		return s.map(speed, 1, 9, 0.4, 2.5);
+		return s.map(speed, 1, 9, 0.4, 3.6);
 	}
 
 	// calculate angle between two points
