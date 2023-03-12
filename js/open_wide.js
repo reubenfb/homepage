@@ -35,7 +35,21 @@ const sketch = (s) => {
 
 	let height = 480;
 	let width = height * 4/3;
+	let vidWidth = width;
 	const pixelDensity = 2;
+
+	let webcamHeight = 120;
+	let webcamWidth = webcamHeight * 4/3;
+
+	if(webcamWidth % 1 !== 0){
+		console.error('Bad webcam aspect ratio')
+	}
+
+	if(navigator.userAgent.match(/Android/i) || navigator.userAgent.match(/iPhone/i)){
+		vidWidth = height * 3/4;
+		webcamWidth = webcamHeight * 3/4;
+		document.querySelector('#canvas-container').style.transform = 'scale(1.5)';
+	}
 
 	// count the loops so we don't detect faces constantly
 	let drawLoops = 0;
@@ -103,13 +117,6 @@ const sketch = (s) => {
 		{'x': 235, 'y': 205, 'len': shortLength}
 	]
 
-	let webcamWidth = 152;
-	let webcamHeight = webcamWidth * 3/4;
-
-	if(webcamHeight % 1 !== 0){
-		console.error('Bad webcam aspect ratio')
-	}
-
 	s.setup = () => {
 
 		p5Canvas = s.createCanvas(width, height);
@@ -118,7 +125,7 @@ const sketch = (s) => {
 		capture = s.createCapture(s.VIDEO);
 		captureElement = capture.elt;
 		captureElement.setAttribute('playsinline', '');
-		capture.size(width, height);
+		capture.size(vidWidth, height);
 		capture.hide();
 		faceapi.matchDimensions(p5Canvas, displaySize);
 
