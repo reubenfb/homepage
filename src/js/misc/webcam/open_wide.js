@@ -1,4 +1,4 @@
-let started = false;
+let started = true;
 
 // obj that contains line commands
 let commands = {
@@ -11,26 +11,28 @@ let commands = {
 }
 
 // event handler to trigger serial communication
-document.querySelector('h1').addEventListener('click', async () => {
-	started = true;
-	const port = await navigator.serial.requestPort();
-	await port.open({ baudRate: 115200 });
+// document.querySelector('h1').addEventListener('click', async () => {
+// 	started = true;
+// 	const port = await navigator.serial.requestPort();
+// 	await port.open({ baudRate: 115200 });
 
-	const textEncoder = new TextEncoderStream();
-	const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
-	const writer = textEncoder.writable.getWriter();
+// 	const textEncoder = new TextEncoderStream();
+// 	const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+// 	const writer = textEncoder.writable.getWriter();
 
-	let message = stitchMessage(1);
+// 	setInterval(sendMessage, 10);
 
-	while (true) {
-	  await writer.write('message');
-	}
-});
+// 	async function sendMessage(){
+// 		let message = stitchMessage(1);
+// 		await writer.write(message);
+// 		console.log(message);
+// 	}
 
+// });
 
 const sketch = (s) => {
 
-	let height = 450;
+	let height = 480;
 	let width = height * 4/3;
 	const pixelDensity = 2;
 
@@ -59,7 +61,6 @@ const sketch = (s) => {
 	for(let i = 0; i < perfectPositions.length; i++){
 		commands.speeds.push(getRandomInt(1, 9));
 		commands.goalPositions.push(getRandomInt(0, 180));
-		//commands.goalPositions = [0,0,0,0,0,0,0,0];
 	}
 
 
@@ -76,35 +77,41 @@ const sketch = (s) => {
 	// 8 goes on top of 1
 
 	// config for positioning and length of the lines
-
-	let longLength = 200 - 16;
-	let shortLength = 141 - 16;
+	let longLength = 200 - 14;
+	let shortLength = 141 - 14;
 
 	let sideCenters = [
-		{'x': 300, 'y': 100},
-		{'x': 400, 'y': 200},
-		{'x': 300, 'y': 300},
-		{'x': 200, 'y': 200},
-		{'x': 350, 'y': 150},
-		{'x': 350, 'y': 250},
-		{'x': 250, 'y': 250},
-		{'x': 250, 'y': 150}
+		{'x': 300, 'y': 140},
+		{'x': 400, 'y': 240},
+		{'x': 300, 'y': 340},
+		{'x': 200, 'y': 240},
+		{'x': 350, 'y': 190},
+		{'x': 350, 'y': 290},
+		{'x': 250, 'y': 290},
+		{'x': 250, 'y': 190}
 	]
 
 	let points = [
-		{'x': 265, 'y': 100, 'len': longLength},
-		{'x': 400, 'y': 200, 'len': longLength},
-		{'x': 260, 'y': 300, 'len': longLength},
-		{'x': 200, 'y': 250, 'len': longLength},
-		{'x': 340, 'y': 140, 'len': shortLength},
-		{'x': 330, 'y': 270, 'len': shortLength},
-		{'x': 220, 'y': 220, 'len': shortLength},
-		{'x': 235, 'y': 165, 'len': shortLength}
+		{'x': 265, 'y': 140, 'len': longLength},
+		{'x': 400, 'y': 240, 'len': longLength},
+		{'x': 260, 'y': 340, 'len': longLength},
+		{'x': 200, 'y': 290, 'len': longLength},
+		{'x': 340, 'y': 180, 'len': shortLength},
+		{'x': 330, 'y': 310, 'len': shortLength},
+		{'x': 220, 'y': 260, 'len': shortLength},
+		{'x': 235, 'y': 205, 'len': shortLength}
 	]
+
+	let webcamWidth = 152;
+	let webcamHeight = webcamWidth * 3/4;
+
+	if(webcamHeight % 1 !== 0){
+		console.error('Bad webcam aspect ratio')
+	}
 
 	s.setup = () => {
 
-		p5Canvas = s.createCanvas(width, height*2);
+		p5Canvas = s.createCanvas(width, height);
 		p5CanvasElement = p5Canvas.elt;
 		s.pixelDensity(pixelDensity);
 		capture = s.createCapture(s.VIDEO);
@@ -114,12 +121,11 @@ const sketch = (s) => {
 		capture.hide();
 		faceapi.matchDimensions(p5Canvas, displaySize);
 
-		// line styling
-		s.stroke(50)
-		s.strokeWeight(3)
-
 		s.frameRate(40);
 		s.angleMode(s.DEGREES);
+		s.textSize(14);
+		s.textFont('Courier New');
+		s.strokeCap(s.SQUARE);
 		loadModels();
 		s.noLoop();
 
@@ -137,14 +143,24 @@ const sketch = (s) => {
 			drawLoops = 0;
 		}
 
-		// s.push();
-		// //flip video
-		// s.translate(width,0);
-		// s.scale(-1, 1);
-		// s.image(capture, 0, height, width, height);
-		// s.pop();
+		// add webcam
+		s.push();
+		//flip video
+		s.translate(width,0);
+		s.scale(-1, 1);
+		s.image(capture, width - webcamWidth, height - webcamHeight, webcamWidth, webcamHeight);
+		s.pop();
+
+		// draw mood above webcam
+		if(faceResult){
+			s.noStroke();
+			s.textAlign(s.CENTER);
+			s.text(faceExpression.toUpperCase(), webcamWidth/2, height - webcamHeight - 5);
+		}
 
 		// CODE TO ACTUALLY MOVE THE LINES
+		s.stroke(50)
+		s.strokeWeight(3)
 
 		for (let i = 0; i < points.length; i++){
 
@@ -192,14 +208,6 @@ const sketch = (s) => {
 
 		};
 
-		// if(faceResult){
-		// 	s.circle(-(faceResult[51]._x - width), height + faceResult[51]._y,3)
-		// 	s.circle(-(faceResult[48]._x - width), height + faceResult[48]._y,3)
-		// 	s.circle(-(faceResult[54]._x - width), height + faceResult[54]._y,3)
-		// }
-
-		let message = stitchMessage(8);
-		console.log(message)
 	};
 
 	function detectFace(result){
@@ -238,8 +246,10 @@ const sketch = (s) => {
 				faceExpression = 'open';
 			}
 
-			console.log(faceExpression)
-
+		}
+		else {
+			// if no face detected, set expression back to neutral
+			faceExpression = 'neutral';
 		}
 	}
 
@@ -330,23 +340,6 @@ const sketch = (s) => {
 
 	}
 
-	// stitch together commands for serial communication
-	function stitchMessage(servos){
-		let string = '';
-
-		for(let i = 0; i < servos; i++){
-			string += commands.goalPositions[i] + ',';
-			string += commands.speeds[i];
-			if(i !== (servos - 1)){
-				string += ',';
-			}
-			else {
-				string += '\n';
-			}
-		}
-		return string;
-	}
-
 	// function to smooth value readings over time
 	function smoothVal(oldVal, newVal, fade){
 		return oldVal * fade + newVal * (1 - fade);
@@ -361,7 +354,7 @@ const sketch = (s) => {
 
 	// map 1-9 speed values to actual increments
 	function speedMap(speed){
-		return s.map(speed, 1, 9, 0.4, 3.6);
+		return s.map(speed, 1, 9, 0.6, 5.4);
 	}
 
 	// calculate angle between two points
@@ -370,4 +363,23 @@ const sketch = (s) => {
 	}
 
 };
+
+// stitch together commands for serial communication
+// this one is initialized outside of sketch
+function stitchMessage(servos){
+	let string = '';
+
+	for(let i = 0; i < servos; i++){
+		string += commands.goalPositions[i] + ',';
+		string += commands.speeds[i];
+		if(i !== (servos - 1)){
+			string += ',';
+		}
+		else {
+			string += '\n';
+		}
+	}
+	return string;
+}
+
 let myp5 = new p5(sketch, document.querySelector('#canvas-container'));
