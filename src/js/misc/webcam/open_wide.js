@@ -11,24 +11,24 @@ let commands = {
 }
 
 // event handler to trigger serial communication
-// document.querySelector('h1').addEventListener('click', async () => {
-// 	started = true;
-// 	const port = await navigator.serial.requestPort();
-// 	await port.open({ baudRate: 115200 });
+document.querySelector('h1').addEventListener('click', async () => {
+	started = true;
+	const port = await navigator.serial.requestPort();
+	await port.open({ baudRate: 115200 });
 
-// 	const textEncoder = new TextEncoderStream();
-// 	const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
-// 	const writer = textEncoder.writable.getWriter();
+	const textEncoder = new TextEncoderStream();
+	const writableStreamClosed = textEncoder.readable.pipeTo(port.writable);
+	const writer = textEncoder.writable.getWriter();
 
-// 	setInterval(sendMessage, 10);
+	setInterval(sendMessage, 10);
 
-// 	async function sendMessage(){
-// 		let message = stitchMessage(1);
-// 		await writer.write(message);
-// 		console.log(message);
-// 	}
+	async function sendMessage(){
+		let message = stitchMessage(2);
+		await writer.write(message);
+		console.log(message);
+	}
 
-// });
+});
 
 const sketch = (s) => {
 
