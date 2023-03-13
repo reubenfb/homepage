@@ -1,4 +1,4 @@
-let started = true;
+let started = false;
 
 // obj that contains line commands
 let commands = {
