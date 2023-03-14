@@ -178,6 +178,7 @@ const sketch = (s) => {
 					commands.happyWiggleDirection[i] = 0;
 					commands.sadArcDirection[i] = 0;
 					commands.goalPositions[i] = perfectPositions[i];
+					commands.speeds[i] = getRandomInt(3,7);
 				}
 
 				// figure out if you need to increment up or down
