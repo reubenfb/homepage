@@ -106,14 +106,14 @@ const sketch = (s) => {
 	]
 
 	let points = [
-		{'x': 265, 'y': 140, 'len': longLength},
-		{'x': 400, 'y': 240, 'len': longLength},
-		{'x': 260, 'y': 340, 'len': longLength},
-		{'x': 200, 'y': 290, 'len': longLength},
-		{'x': 340, 'y': 180, 'len': shortLength},
-		{'x': 330, 'y': 310, 'len': shortLength},
+		{'x': 310, 'y': 140, 'len': longLength},
+		{'x': 400, 'y': 300, 'len': longLength},
+		{'x': 310, 'y': 340, 'len': longLength},
+		{'x': 200, 'y': 200, 'len': longLength},
+		{'x': 360, 'y': 200, 'len': shortLength},
+		{'x': 370, 'y': 270, 'len': shortLength},
 		{'x': 220, 'y': 260, 'len': shortLength},
-		{'x': 235, 'y': 205, 'len': shortLength}
+		{'x': 255, 'y': 185, 'len': shortLength}
 	]
 
 	s.setup = () => {
@@ -205,11 +205,27 @@ const sketch = (s) => {
 			// DRAW AND ROTATE LINES
 			s.push();
 			s.translate(points[i].x, points[i].y);
+			s.rectMode(s.CENTER);
+			s.noStroke();
+			s.fill(0.8*255);
+			s.rect(0,0,22.5,31.9);
+			s.stroke(50);
+			s.strokeWeight(3);
 			s.rotate(commands.currentPositions[i]);
 
-			let offsetX = sideCenters[i].x - points[i].x;
-			let offsetY = sideCenters[i].y - points[i].y;
+			let offsetX = points[i].x - sideCenters[i].x;
+			let offsetY = points[i].y - sideCenters[i].y;
 			let offset = Math.sqrt(Math.pow(offsetX,2) + Math.pow(offsetY,2));
+
+			let direction = offsetX * offsetY;
+
+			if(offsetY <= offsetX) {
+				offset = -offset;
+			}
+
+			if(offsetY < 0 && offsetX < 0){
+				offset = -offset;
+			}
 
 			s.line(0, -points[i].len/2 - offset, 0, points[i].len/2 - offset);
 			s.pop();
