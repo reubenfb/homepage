@@ -106,16 +106,16 @@ const sketch = (s) => {
 	]
 
 	let points = [
-		{'x': 310, 'y': 140, 'len': longLength},
-		{'x': 400, 'y': 300, 'len': longLength},
-		{'x': 310, 'y': 340, 'len': longLength},
-		{'x': 200, 'y': 200, 'len': longLength},
-		{'x': 360, 'y': 200, 'len': shortLength},
-		{'x': 370, 'y': 270, 'len': shortLength},
+		{'x': 265, 'y': 140, 'len': longLength},
+		{'x': 400, 'y': 240, 'len': longLength},
+		{'x': 260, 'y': 340, 'len': longLength},
+		{'x': 200, 'y': 290, 'len': longLength},
+		{'x': 340, 'y': 180, 'len': shortLength},
+		{'x': 330, 'y': 310, 'len': shortLength},
 		{'x': 220, 'y': 260, 'len': shortLength},
-		{'x': 255, 'y': 185, 'len': shortLength}
+		{'x': 235, 'y': 205, 'len': shortLength}
 	]
-
+	
 	s.setup = () => {
 
 		p5Canvas = s.createCanvas(width, height);
