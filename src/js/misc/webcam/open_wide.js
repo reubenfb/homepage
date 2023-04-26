@@ -77,22 +77,9 @@ const sketch = (s) => {
 		commands.goalPositions.push(getRandomInt(0, 180));
 	}
 
-
-	// STACK ORDER (bottom to top)
-	// 5, 1, 6, 3, 8, 2, 7, 4
-
-	// 1 goes on top of 5
-	// 2 goes on top of 5, 6 
-	// 3 goes on top of 6
-	// 4 goes on top of 3, 6, 7, 8
-	// 5 all clear
-	// 6 all clear
-	// 7 goes on top of 3, 8
-	// 8 goes on top of 1
-
 	// config for positioning and length of the lines
-	let longLength = 200 - 14;
-	let shortLength = 141 - 14;
+	let longLength = 200 - 20;
+	let shortLength = 141 - 20;
 
 	let sideCenters = [
 		{'x': 300, 'y': 140},
@@ -106,16 +93,16 @@ const sketch = (s) => {
 	]
 
 	let points = [
-		{'x': 265, 'y': 140, 'len': longLength},
-		{'x': 400, 'y': 240, 'len': longLength},
-		{'x': 260, 'y': 340, 'len': longLength},
-		{'x': 200, 'y': 290, 'len': longLength},
-		{'x': 340, 'y': 180, 'len': shortLength},
-		{'x': 330, 'y': 310, 'len': shortLength},
-		{'x': 220, 'y': 260, 'len': shortLength},
-		{'x': 235, 'y': 205, 'len': shortLength}
+		{'x': 223, 'y': 140, 'len': longLength},
+		{'x': 400, 'y': 175, 'len': longLength},
+		{'x': 376, 'y': 340, 'len': longLength},
+		{'x': 200, 'y': 260, 'len': longLength},
+		{'x': 375, 'y': 215, 'len': shortLength},
+		{'x': 362, 'y': 278, 'len': shortLength},
+		{'x': 247, 'y': 287, 'len': shortLength},
+		{'x': 237, 'y': 203, 'len': shortLength}
 	]
-	
+
 	s.setup = () => {
 
 		p5Canvas = s.createCanvas(width, height);
@@ -209,9 +196,6 @@ const sketch = (s) => {
 			s.noStroke();
 			s.fill(0.8*255);
 			s.rect(0,0,22.5,31.9);
-			s.stroke(50);
-			s.strokeWeight(3);
-			s.rotate(commands.currentPositions[i]);
 
 			let offsetX = points[i].x - sideCenters[i].x;
 			let offsetY = points[i].y - sideCenters[i].y;
@@ -226,6 +210,33 @@ const sketch = (s) => {
 			if(offsetY < 0 && offsetX < 0){
 				offset = -offset;
 			}
+
+
+			let draw = [];
+
+			// top to bottom
+			// 4, 1, 2, 3, 5, 8, 7, 6
+
+			//X 1 on top of 2, 5, 7, 8
+			//X 2 on top of 3, 5, 6
+			//X 3 on top of 5, 6, 7
+			//X 4 on top of 1, 7, 8
+			//X 5 on top of 6
+			//X 6 all clear
+			//X 7 all clear
+			//X 8 on top of 7
+
+			if(draw.indexOf(i) > -1){
+				let firstSlice = Math.abs(-points[i].len/2 - offset) + 3;
+				let secondSlice = Math.abs(points[i].len/2 - offset) + 3;
+				s.fill(0.8*255, 0.8*255, 0, 0.5*255);
+				s.arc(0, 0, firstSlice*2, firstSlice*2, -90, 90);
+				s.arc(0, 0, secondSlice*2, secondSlice*2, 90, 270);
+			}
+
+			s.stroke(50);
+			s.strokeWeight(3);
+			s.rotate(commands.currentPositions[i]);
 
 			s.line(0, -points[i].len/2 - offset, 0, points[i].len/2 - offset);
 			s.pop();
