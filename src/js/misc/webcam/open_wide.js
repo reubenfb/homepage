@@ -78,29 +78,29 @@ const sketch = (s) => {
 	}
 
 	// config for positioning and length of the lines
-	let longLength = 200 - 20;
-	let shortLength = 141 - 20;
+	let longLength = 200 - 28;
+	let shortLength = 141 - 28;
 
 	let sideCenters = [
-		{'x': 300, 'y': 140},
-		{'x': 400, 'y': 240},
-		{'x': 300, 'y': 340},
-		{'x': 200, 'y': 240},
-		{'x': 350, 'y': 190},
-		{'x': 350, 'y': 290},
-		{'x': 250, 'y': 290},
-		{'x': 250, 'y': 190}
+		{'x': 320, 'y': 140},
+		{'x': 420, 'y': 240},
+		{'x': 320, 'y': 340},
+		{'x': 220, 'y': 240},
+		{'x': 370, 'y': 190},
+		{'x': 370, 'y': 290},
+		{'x': 270, 'y': 290},
+		{'x': 270, 'y': 190}
 	]
 
 	let points = [
-		{'x': 223, 'y': 140, 'len': longLength},
-		{'x': 400, 'y': 175, 'len': longLength},
-		{'x': 376, 'y': 340, 'len': longLength},
-		{'x': 200, 'y': 260, 'len': longLength},
-		{'x': 375, 'y': 215, 'len': shortLength},
-		{'x': 362, 'y': 278, 'len': shortLength},
-		{'x': 247, 'y': 287, 'len': shortLength},
-		{'x': 237, 'y': 203, 'len': shortLength}
+		{'x': 244, 'y': 140, 'len': longLength},
+		{'x': 420, 'y': 175, 'len': longLength},
+		{'x': 396, 'y': 340, 'len': longLength},
+		{'x': 220, 'y': 305, 'len': longLength},
+		{'x': 395, 'y': 215, 'len': shortLength},
+		{'x': 382, 'y': 278, 'len': shortLength},
+		{'x': 245, 'y': 265, 'len': shortLength},
+		{'x': 258, 'y': 202, 'len': shortLength}
 	]
 
 	s.setup = () => {
@@ -128,6 +128,7 @@ const sketch = (s) => {
 	s.draw = async () => {
 
 		s.clear();
+		s.rect(80,0,480,480);
 		drawLoops++;
 
 		// for performance, only re-detect face every 4 loops
@@ -195,7 +196,7 @@ const sketch = (s) => {
 			s.rectMode(s.CENTER);
 			s.noStroke();
 			s.fill(0.8*255);
-			s.rect(0,0,22.5,31.9);
+			s.rect(0,0,25.2,35.7);
 
 			let offsetX = points[i].x - sideCenters[i].x;
 			let offsetY = points[i].y - sideCenters[i].y;
@@ -215,16 +216,16 @@ const sketch = (s) => {
 			let draw = [];
 
 			// top to bottom
-			// 4, 1, 2, 3, 5, 8, 7, 6
+			// 2, 4, 1, 3, 5,7, 8, 6
 
-			//X 1 on top of 2, 5, 7, 8
-			//X 2 on top of 3, 5, 6
+			//X 1 on top of 5, 7, 8
+			//X 2 on top of 3, 5, 6, 8
 			//X 3 on top of 5, 6, 7
-			//X 4 on top of 1, 7, 8
+			//X 4 on top of 1, 6, 7, 8
 			//X 5 on top of 6
 			//X 6 all clear
-			//X 7 all clear
-			//X 8 on top of 7
+			//X 7 on top of 8 
+			//X 8 all clear
 
 			if(draw.indexOf(i) > -1){
 				let firstSlice = Math.abs(-points[i].len/2 - offset) + 3;
