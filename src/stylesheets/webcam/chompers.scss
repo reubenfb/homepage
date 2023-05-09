@@ -1,0 +1,24 @@
+@import '../app.scss';
+
+#canvas-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  #button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    border: 1px solid black;
+    padding: 7px 8px 5px;
+    border-radius: 5px;
+    background-color: white;
+    cursor: pointer;
+    font-family: Cousine;
+    text-transform: uppercase;
+    &:hover {
+      background-color: #fc7303 !important;
+      color: #fff;
+      border-color: #fc7303;
+    }
+  }
+}
