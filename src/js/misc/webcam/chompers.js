@@ -73,6 +73,8 @@ const sketch = (s) => {
 
 		s.frameRate(10);
 		s.angleMode(s.DEGREES);
+		s.textAlign(s.CENTER, s.CENTER);
+		s.textSize(20)
 		loadModels();
 		s.noLoop();
 
@@ -83,11 +85,13 @@ const sketch = (s) => {
 
 		s.clear();
 
+		s.background(250,250,250);
+		s.text('Loading ...', width/2, height/2);
+
 		faceapi.detectAllFaces(captureElement, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()
 			.then(result => drawFace(faceapi.resizeResults(result, displaySize)))
 
 		if(faceResult){
-
 			s.push();
 			//flip video
 			s.translate(width,0);
