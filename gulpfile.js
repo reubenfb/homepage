@@ -24,7 +24,7 @@ gulp.task('webserver', function() {
       fallback: 'index.html',
       livereload: false,
       open: false,
-      port: 3000
+      port: 4000
     }));
 });
 
@@ -71,7 +71,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('images', function () {
-  return gulp.src('./src/images/compressed/*.{png,jpg,gif,jpeg}')
+  return gulp.src('./src/images/**/*.{png,jpg,gif,jpeg,mp4}')
     .pipe(gulp.dest('./public/images/'));
 });
 
