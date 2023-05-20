@@ -24,7 +24,7 @@ function drawImage() {
 
   // draw the image in Canvas
   base_image = new Image();
-  base_image.src = 'images/brooke2.jpg';
+  base_image.src = 'images/recreating/brooke2.jpg';
   base_image.onload = function(){
   	let scaleX = width/base_image.width;
   	let scaleY = height/base_image.height;
