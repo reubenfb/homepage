@@ -71,7 +71,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('images', function () {
-  return gulp.src('./src/images/**/*.{png,jpg,gif,jpeg,mp4}')
+  return gulp.src('./src/images/compressed/*.{png,jpg,gif,jpeg,mp4}')
     .pipe(gulp.dest('./public/images/'));
 });
 
