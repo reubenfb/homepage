@@ -42,22 +42,25 @@ html(lang='en')
       .project-container.edit
         .intro
           p
-            | I’m an assignment editor on the graphics team at 
+            | I’m an editor on the graphics team at 
             a.orange.bold(href = 'https://www.washingtonpost.com/people/reuben-fischer-baum/') The Washington Post
-            | , focused on trackers and reader tools. I previously worked at  
+            | . I previously worked at  
             a.orange.bold(href = 'http://fivethirtyeight.com/contributors/reuben-fischer-baum/') FiveThirtyEight 
             | and 
             a.orange.bold(href = 'https://kinja.com/reubenfb') Deadspin
-            | , and I was a 2021-2022 
+            | , and was a 2021-2022 
             a.orange.bold(href = 'https://nieman.harvard.edu/alumni/class-of-2022/') Nieman Fellow
-            | . I’m at 
-            a.orange.bold(href = 'https://twitter.com/ReubenFB') @reubenfb
-            |  and reuben.fischerbaum [at] gmail.com. Check out my 
-            a.orange.bold(href = './webcam/studies.html') webcam studies
+            | . I also experiment with 
+            a.orange.bold(href = './webcam/studies.html') webcam art
             | .
-          p Here are some of the projects I’m most proud of
+         
+          p 
+            | See a list of my 
+            a.orange.bold(href="./awards.html") awards and talks
+            | , or reach me at reuben.fischerbaum [at] gmail.com. Here are some of the projects I’m most proud of
             span.bold  editing
             | .
+
         .four-column.column-container
           - fourData = utils.reorderData(editData, 4)
           +graphicImage(fourData)

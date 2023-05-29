@@ -27,6 +27,7 @@ body {
 
   .intro {
     text-align: left;
+    max-width: 860px;
     h1 {
       font-family: 'Cousine';
       font-weight: 700;
@@ -45,7 +46,7 @@ body {
 
     p {
       margin-top: 20px;
-      font-size: 24px;
+      font-size: 22px;
       padding-left: 3px;
       font-weight: 300;
       line-height: 1.55;
@@ -126,7 +127,7 @@ body {
           pointer-events: none;
         }
 
-        $border-gray: #e6e6e6;
+        $border-gray: #999;
 
         .graphic {
           border-radius: 2px;
