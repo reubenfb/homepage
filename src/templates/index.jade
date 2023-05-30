@@ -36,7 +36,7 @@ html(lang='en')
               .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'}")
                 .title
                   span #{graphic.title}
-                img.cutout.lazy(data-src="./images/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
+                img.cutout.lazy(data-src="./images/compressed/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
 
 
       .project-container.edit
