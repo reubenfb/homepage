@@ -27,7 +27,7 @@ doc.useApiKey(config.key);
 			rowArray.push(rowObj);
 		});
 
-		fs.writeFileSync('./data/data.json', JSON.stringify({projects: rowArray}))
+		fs.writeFileSync('./data/data.json', JSON.stringify({projects: rowArray}, null, 2))
 
 }());
 
