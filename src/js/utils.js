@@ -5,17 +5,16 @@ module.exports = {
 
   reorderData: function(data, columns){
 
-    var counter = [0,0,0,0].slice(0, columns);
-    var colArray = [[],[],[],[]];
+    var counter = new Array(columns).fill(0);
+    var colArray = _.map(counter, function(){ return []; });
 
-    var newData = [];
     var columnCount = 0;
 
     _.each(data, function(chart, i){
 
       if(i === 0){
         colArray[0].push(chart);
-        counter[0] = chart.highlight === "TRUE" ? counter[0] + 2 : counter[columnCount] + 1;
+        counter[0] = chart.highlight === "TRUE" ? 2 : 1;
       }
       else {
         assignColumn();
@@ -38,28 +37,7 @@ module.exports = {
       }
     });
 
-    // you need to balance the columns with blanks to make sure the sorting works
-    let  maxCount = Math.max(...counter);
-
-    let fakeChart = {
-      title: 'You found my secret column-balancing chart',
-      image: 'reuben.jpg',
-      link: 'reubenfb.com',
-      highlight: '',
-      secret: 'TRUE'
-    }
-
-    _.each(counter, function(count,i){
-
-      let offCount = maxCount - count;
-
-      for(let j = 0; j < offCount; j++){
-        colArray[i].push(fakeChart);
-      }
-
-    });
-
-    return colArray[0].concat(colArray[1]).concat(colArray[2]).concat(colArray[3])
+    return colArray;
 
   }
 

@@ -32,7 +32,7 @@ html(lang='en')
           if _.isNull(graphic.title)
             .graphic.small.blank
           else
-            a(href = "#{graphic.link}" target="_blank" rel='noopener' class= "#{graphic.secret === 'TRUE' ? 'secret' : ''}")
+            a(href = "#{graphic.link}" target="_blank" rel='noopener')
               .graphic(class = "#{graphic.highlight === 'TRUE' ? 'big' : 'small'}")
                 .title
                   span #{graphic.title}
@@ -64,33 +64,41 @@ html(lang='en')
             | , or reach me at reuben.fischerbaum [at] gmail.com. Here are some of the projects I’m most proud of editing.
 
         .four-column.column-container
-          - fourData = utils.reorderData(editData, 4)
-          +graphicImage(fourData)
+          each col in utils.reorderData(editData, 4)
+            .column
+              +graphicImage(col)
         .three-column.column-container
-          - threeData = utils.reorderData(editData, 3)
-          +graphicImage(threeData)
+          each col in utils.reorderData(editData, 3)
+            .column
+              +graphicImage(col)
         .two-column.column-container
-          - twoData = utils.reorderData(editData, 2)
-          +graphicImage(twoData)
+          each col in utils.reorderData(editData, 2)
+            .column
+              +graphicImage(col)
         .one-column.column-container
-          +graphicImage(editData)
+          .column
+            +graphicImage(editData)
 
       .project-container.made
         .intro
-          p Here are some projects I 
+          p Here are some projects I
             span.bold  made myself
             | . Most are from 2012 to 2018, before I became an editor. Some are more recent!
         .four-column.column-container
-          - fourData = utils.reorderData(madeData, 4)
-          +graphicImage(fourData)
+          each col in utils.reorderData(madeData, 4)
+            .column
+              +graphicImage(col)
         .three-column.column-container
-          - threeData = utils.reorderData(madeData, 3)
-          +graphicImage(threeData)
+          each col in utils.reorderData(madeData, 3)
+            .column
+              +graphicImage(col)
         .two-column.column-container
-          - twoData = utils.reorderData(madeData, 2)
-          +graphicImage(twoData)
+          each col in utils.reorderData(madeData, 2)
+            .column
+              +graphicImage(col)
         .one-column.column-container
-          +graphicImage(madeData)
+          .column
+            +graphicImage(madeData)
 
       .end
         | &nbsp;

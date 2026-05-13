@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,700|Cousine:400,700');
 
 @mixin colParams($colNum){
-  -moz-column-count: $colNum;
-  -webkit-column-count: $colNum;
-  column-count: $colNum;
   width: $colNum * 315px + 15px * ($colNum - 1);
 }
 
@@ -94,39 +91,39 @@ body {
       padding-bottom: 70px;
       .column-container {
         display: none;
-        -moz-column-gap: 15px;
-        -webkit-column-gap: 15px;
-        column-gap: 15px;
+        gap: 15px;
+
+        .column {
+          width: 315px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
 
         &.four-column {
           @include colParams(4);
           @media screen and (min-width: 1330px) {
-            display: block;
+            display: flex;
           }
         }
         &.three-column {
           @include colParams(3);
           @media screen and (min-width: 999px) and (max-width: 1329px) {
-            display: block;
+            display: flex;
           }
         }
         &.two-column {
           @include colParams(2);
           @media screen and (min-width: 665px) and (max-width: 998px) {
-            display: block;
+            display: flex;
           }
         }
         &.one-column {
           @include colParams(1);
           @media screen and (max-width: 664px) {
-            display: block;
+            display: flex;
           }
         }
-        a.secret {
-          visibility: hidden;
-          pointer-events: none;
-        }
-
         $border-gray: #999;
 
         .graphic {
@@ -137,9 +134,6 @@ body {
           margin-bottom: 17px;
           position: relative;
           display: grid;
-          -webkit-column-break-inside: avoid;
-          page-break-inside: avoid;
-          break-inside: avoid;
           .title {
             border-top-left-radius: 2px;
             border-top-right-radius: 2px;
