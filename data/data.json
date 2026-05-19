@@ -70,7 +70,9 @@
       "cat": "edit",
       "title": "Hurricane tracker relaunch",
       "image": "hurricane-tracker.png",
-      "link": "https://www.washingtonpost.com/weather/2023/09/05/tracking-path-tropical-storm-lee/"
+      "link": "https://www.washingtonpost.com/weather/2023/09/05/tracking-path-tropical-storm-lee/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "5/24/2023",
@@ -84,7 +86,9 @@
       "cat": "edit",
       "title": "Are home prices falling? See what it’s like in your area.",
       "image": "house-prices.png",
-      "link": "https://www.washingtonpost.com/business/interactive/2023/housing-market-price-trends/"
+      "link": "https://www.washingtonpost.com/business/interactive/2023/housing-market-price-trends/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "12/16/2022",
@@ -99,7 +103,9 @@
       "cat": "edit",
       "title": "See how much snow your hometown gets for the holidays",
       "image": "snowy-celebrations.png",
-      "link": "https://www.washingtonpost.com/weather/interactive/2022/holiday-snow-chances-us-cities/"
+      "link": "https://www.washingtonpost.com/weather/interactive/2022/holiday-snow-chances-us-cities/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "12/6/2022",
@@ -136,14 +142,18 @@
       "cat": "edit",
       "title": "Calculate how much of your student loan debt can be forgiven",
       "image": "student-loan-calc.png",
-      "link": "https://www.washingtonpost.com/education/interactive/2022/calculator-student-loan-debt-forgiveness/"
+      "link": "https://www.washingtonpost.com/education/interactive/2022/calculator-student-loan-debt-forgiveness/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "7/27/2022",
       "cat": "made",
       "title": "Where do you stand financially? Get a score on this quiz — and our advice.",
       "image": "economy-quiz.png",
-      "link": "https://www.washingtonpost.com/business/interactive/2022/how-the-economy-affects-me/"
+      "link": "https://www.washingtonpost.com/business/interactive/2022/how-the-economy-affects-me/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "6/13/2022",
@@ -165,7 +175,9 @@
       "cat": "edit",
       "title": "Pandora papers",
       "image": "pandora.png",
-      "link": "https://www.washingtonpost.com/business/interactive/2021/pandora-papers-offshore-finance/"
+      "link": "https://www.washingtonpost.com/business/interactive/2021/pandora-papers-offshore-finance/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "8/23/2021",
@@ -195,9 +207,7 @@
       "cat": "edit",
       "title": "Amazon warehouse workers suffer serious injuries at higher rates than other firms",
       "image": "amazon-osha.png",
-      "link": "https://www.washingtonpost.com/technology/2021/06/01/amazon-osha-injury-rate/",
-      "highlight": "",
-      "hide": "TRUE"
+      "link": "https://www.washingtonpost.com/technology/2021/06/01/amazon-osha-injury-rate/"
     },
     {
       "date": "4/30/2021",
@@ -284,7 +294,9 @@
       "cat": "edit",
       "title": "The U.S. hit 73% of 2016 voting before Election Day",
       "image": "early-voting_v2.png",
-      "link": "https://www.washingtonpost.com/graphics/2020/elections/early-voting-numbers-so-far/"
+      "link": "https://www.washingtonpost.com/graphics/2020/elections/early-voting-numbers-so-far/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "9/30/2020",
@@ -350,7 +362,9 @@
       "cat": "edit",
       "title": "At least 84% of American voters can cast ballots by mail in the fall",
       "image": "mail-in-rules.png?v2",
-      "link": "https://www.washingtonpost.com/graphics/2020/politics/vote-by-mail-states/"
+      "link": "https://www.washingtonpost.com/graphics/2020/politics/vote-by-mail-states/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "6/5/2020",
@@ -366,7 +380,9 @@
       "cat": "edit",
       "title": "As states start to reopen, here’s where people are going",
       "image": "business-reopening.png?v2",
-      "link": "https://www.washingtonpost.com/graphics/2020/national/businesses-foot-traffic-coronavirus-reopening-us/"
+      "link": "https://www.washingtonpost.com/graphics/2020/national/businesses-foot-traffic-coronavirus-reopening-us/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "5/26/2020",
@@ -396,14 +412,18 @@
       "cat": "edit",
       "title": "Where Americans are still staying at home the most",
       "image": "covid-stay-at-home.png",
-      "link": "https://www.washingtonpost.com/graphics/2020/national/map-us-still-staying-home-coronavirus/"
+      "link": "https://www.washingtonpost.com/graphics/2020/national/map-us-still-staying-home-coronavirus/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "3/26/2020",
       "cat": "edit",
-      "title": "Calculate how much you would get from the $600 (or more) coronavirus checks",
+      "title": "Calculate how much you would get from the $1,400 (or more) coronavirus checks",
       "image": "stimulus-calculator_v2.png",
-      "link": "https://www.washingtonpost.com/graphics/business/coronavirus-stimulus-check-calculator/"
+      "link": "https://www.washingtonpost.com/graphics/business/coronavirus-stimulus-check-calculator/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "3/2/2020",
@@ -419,7 +439,9 @@
       "cat": "edit",
       "title": "A timelapse inside one caucus site shows Iowa’s trouble narrowing the field",
       "image": "iowa-timelapse.png",
-      "link": "https://www.washingtonpost.com/graphics/2020/politics/iowa-caucus-from-above-second-choice/"
+      "link": "https://www.washingtonpost.com/graphics/2020/politics/iowa-caucus-from-above-second-choice/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "11/18/2019",
@@ -485,9 +507,7 @@
       "cat": "edit",
       "title": "What's inside the Mueller report",
       "image": "mueller-report.png",
-      "link": "https://www.washingtonpost.com/graphics/2019/politics/inside-the-mueller-report/",
-      "highlight": "",
-      "hide": "TRUE"
+      "link": "https://www.washingtonpost.com/graphics/2019/politics/inside-the-mueller-report/"
     },
     {
       "date": "3/14/2019",
@@ -503,7 +523,9 @@
       "cat": "edit",
       "title": "Unlike Mike",
       "image": "unlike-mike.png",
-      "link": "https://www.washingtonpost.com/graphics/sports/lebron-james-michael-jordan-nba-scoring-list/"
+      "link": "https://www.washingtonpost.com/graphics/sports/lebron-james-michael-jordan-nba-scoring-list/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "1/5/2019",
@@ -533,7 +555,9 @@
       "cat": "edit",
       "title": "2018 election results",
       "image": "results-2018.png",
-      "link": "https://www.washingtonpost.com/election-results/maine/"
+      "link": "https://www.washingtonpost.com/election-results/maine/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "10/29/2018",
@@ -558,7 +582,9 @@
       "cat": "edit",
       "title": "Baseball players are famous for cliches. Here are the ones they actually use.",
       "image": "baseball-cliches.png",
-      "link": "https://www.washingtonpost.com/graphics/2018/sports/baseball-cliches/"
+      "link": "https://www.washingtonpost.com/graphics/2018/sports/baseball-cliches/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "8/13/2018",
@@ -597,7 +623,9 @@
       "cat": "made",
       "title": "For some national politicians, over-the-top competition isn’t limited to elections",
       "image": "politician-athletes.png?v2",
-      "link": "https://www.washingtonpost.com/news/national/wp/2019/05/13/feature/for-some-national-politicians-over-the-top-competition-isnt-limited-to-elections/"
+      "link": "https://www.washingtonpost.com/news/national/wp/2019/05/13/feature/for-some-national-politicians-over-the-top-competition-isnt-limited-to-elections/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "10/20/2018",
@@ -621,7 +649,9 @@
       "cat": "made",
       "title": "One of the World Cup’s best goals was even crazier than you thought",
       "image": "expected-goals.png",
-      "link": "https://www.washingtonpost.com/graphics/2018/sports/expected-goals/"
+      "link": "https://www.washingtonpost.com/graphics/2018/sports/expected-goals/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "6/26/2018",
@@ -678,7 +708,9 @@
       "cat": "made",
       "title": "Thousands of Virginians may have voted in the wrong state House districts",
       "image": "virginia-districts.png",
-      "link": "https://www.washingtonpost.com/graphics/2018/local/virginia-wrong-districts/?utm_term=.ab3563473f0b"
+      "link": "https://www.washingtonpost.com/graphics/2018/local/virginia-wrong-districts/?utm_term=.ab3563473f0b",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "12/20/2017",
@@ -728,14 +760,18 @@
       "cat": "made",
       "title": "How Virginia went from blue to red and back again",
       "image": "va-gov.png",
-      "link": "https://www.washingtonpost.com/graphics/2017/politics/virginia-election-history/"
+      "link": "https://www.washingtonpost.com/graphics/2017/politics/virginia-election-history/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "10/19/2017",
       "cat": "made",
       "title": "The least distinguished careers in NBA history",
       "image": "worst-nba.jpg",
-      "link": "https://www.washingtonpost.com/graphics/2017/sports/worst-nba-careers/"
+      "link": "https://www.washingtonpost.com/graphics/2017/sports/worst-nba-careers/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "10/6/2017",
@@ -751,7 +787,9 @@
       "cat": "made",
       "title": "Some tax breaks are for the rich. Others for the poor. Which are for you?",
       "image": "tax-breaks.png?v2",
-      "link": "https://www.washingtonpost.com/graphics/2017/politics/tax-breaks/"
+      "link": "https://www.washingtonpost.com/graphics/2017/politics/tax-breaks/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "9/20/2017",
@@ -792,7 +830,9 @@
       "cat": "made",
       "title": "Houston’s ‘Wild West’ growth",
       "image": "houston-planning.png",
-      "link": "https://www.washingtonpost.com/graphics/2017/investigations/harvey-urban-planning/"
+      "link": "https://www.washingtonpost.com/graphics/2017/investigations/harvey-urban-planning/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "8/18/2017",
@@ -891,13 +931,6 @@
       "hide": "TRUE"
     },
     {
-      "date": "1/18/2017",
-      "cat": "made",
-      "title": "How America's Thinking Changed Under Obama",
-      "image": "obama-trends.png",
-      "link": "https://projects.fivethirtyeight.com/obama-polling-trends/"
-    },
-    {
       "date": "12/28/2016",
       "cat": "made",
       "title": "The Week 17 Games That Actually Matter",
@@ -920,7 +953,7 @@
       "cat": "made",
       "title": "College Football Predictions",
       "image": "college-football.png?v2",
-      "link": "http://projects.fivethirtyeight.com/2016-college-football-predictions/"
+      "link": "https://web.archive.org/web/20181030234124/https://projects.fivethirtyeight.com/2018-college-football-predictions/"
     },
     {
       "date": "10/20/2016",
@@ -936,16 +969,16 @@
       "cat": "made",
       "title": "Where Do Clinton And Trump Have The Most Upside?",
       "image": "vote-shift.png?v2",
-      "link": "https://projects.fivethirtyeight.com/clinton-trump-vote-maps-2016/",
-      "highlight": "",
-      "hide": "TRUE"
+      "link": "https://web.archive.org/web/20190819151515/https://projects.fivethirtyeight.com/clinton-trump-vote-maps-2016/?ex_cid=538fb"
     },
     {
       "date": "9/30/2016",
       "cat": "made",
       "title": "Ricky Williams’s Awful NFL Contract Never Gave Him A Chance",
       "image": "ricky-williams.jpg?v2",
-      "link": "http://fivethirtyeight.com/features/ricky-williams-awful-nfl-contract-never-gave-him-a-chance/"
+      "link": "https://web.archive.org/web/20161001150621/http://fivethirtyeight.com/features/ricky-williams-awful-nfl-contract-never-gave-him-a-chance/",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "9/7/2016",
@@ -970,14 +1003,14 @@
       "cat": "made",
       "title": "Which Olympic Sport Is Hardest On Its Goalies?",
       "image": "olympic-goalies.png",
-      "link": "http://fivethirtyeight.com/features/which-olympic-sport-is-hardest-on-its-goalies/"
+      "link": "https://web.archive.org/web/20160812234442/http://fivethirtyeight.com:80/features/which-olympic-sport-is-hardest-on-its-goalies"
     },
     {
       "date": "7/13/2016",
       "cat": "made",
       "title": "Gun Deaths In America",
       "image": "gun-deaths.png",
-      "link": "http://fivethirtyeight.com/features/gun-deaths/",
+      "link": "https://web.archive.org/web/20160713153143/http://fivethirtyeight.com/features/gun-deaths/",
       "highlight": "TRUE"
     },
     {
@@ -985,7 +1018,7 @@
       "cat": "made",
       "title": "2016 Election Forecast",
       "image": "general-forecast.png",
-      "link": "http://projects.fivethirtyeight.com/2016-election-forecast/",
+      "link": "https://web.archive.org/web/20160828002515/http://projects.fivethirtyeight.com:80/2016-election-forecast/?ex_cid=ozy",
       "highlight": "TRUE"
     },
     {
@@ -1002,21 +1035,21 @@
       "cat": "made",
       "title": "The Complete History Of MLB",
       "image": "mlb-history.png?v2",
-      "link": "http://projects.fivethirtyeight.com/complete-history-of-mlb/"
+      "link": "https://web.archive.org/web/20160613011907/http://projects.fivethirtyeight.com:80/complete-history-of-mlb/?ex_cid=espnfb"
     },
     {
       "date": "4/18/2016",
       "cat": "made",
       "title": "The Facebook Primary",
       "image": "facebook-primary_v2.png",
-      "link": "http://projects.fivethirtyeight.com/facebook-primary/"
+      "link": "https://web.archive.org/web/20160215054354/http://projects.fivethirtyeight.com:80/facebook-primary/?ex_cid=538fb"
     },
     {
       "date": "3/13/2016",
       "cat": "made",
       "title": "March Madness Predictions",
       "image": "march-madness.png",
-      "link": "http://projects.fivethirtyeight.com/2016-march-madness-predictions/",
+      "link": "https://web.archive.org/web/20190723143230/https://projects.fivethirtyeight.com/2017-march-madness-predictions/?ex_cid=SigDig",
       "highlight": "TRUE"
     },
     {
@@ -1042,7 +1075,7 @@
       "cat": "made",
       "title": "Uber Is Taking Millions Of Manhattan Rides Away From Taxis",
       "image": "uber-manhattan.png?v2",
-      "link": "http://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/"
+      "link": "https://web.archive.org/web/20151014102120/http://fivethirtyeight.com/features/uber-is-taking-millions-of-manhattan-rides-away-from-taxis/"
     },
     {
       "date": "9/16/2015",
@@ -1076,7 +1109,7 @@
       "cat": "made",
       "title": "Should Prison Sentences Be Based On Crimes That Haven’t Been Committed?",
       "image": "risk-assessment.png?v2",
-      "link": "http://fivethirtyeight.com/features/prison-reform-risk-assessment/#marshallvizproxyquiz"
+      "link": "https://web.archive.org/web/20150804195209/http://fivethirtyeight.com/features/prison-reform-risk-assessment/"
     },
     {
       "date": "5/21/2015",
@@ -1119,7 +1152,7 @@
       "cat": "made",
       "title": "Which City Has The Most Unpredictable Weather?",
       "image": "predictable-weather.png",
-      "link": "http://fivethirtyeight.com/features/which-city-has-the-most-unpredictable-weather/"
+      "link": "https://web.archive.org/web/20141204141112/http://fivethirtyeight.com/features/which-city-has-the-most-unpredictable-weather/"
     },
     {
       "date": "11/25/2014",
@@ -1171,7 +1204,7 @@
       "cat": "made",
       "title": "Nobody Knows How Many Americans The Police Kill Each Year",
       "image": "police-killings.png?v2",
-      "link": "http://fivethirtyeight.com/features/how-many-americans-the-police-kill-each-year/"
+      "link": "https://web.archive.org/web/20140824074025/https://fivethirtyeight.com/features/how-many-americans-the-police-kill-each-year/"
     },
     {
       "date": "7/31/2014",
@@ -1187,21 +1220,27 @@
       "cat": "made",
       "title": "When Did Nazi Insults Spike On Twitter During USA-Germany?",
       "image": "nazi-soccer.png",
-      "link": "https://web.archive.org/web/20140628025445/http://regressing.deadspin.com/when-did-nazi-insults-spike-on-twitter-during-usa-germa-1596610394"
+      "link": "https://web.archive.org/web/20140628025445/http://regressing.deadspin.com/when-did-nazi-insults-spike-on-twitter-during-usa-germa-1596610394",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "5/8/2014",
       "cat": "made",
       "title": "Which Words Are Used To Describe White And Black NFL Prospects?",
       "image": "draft-words_v2.png",
-      "link": "https://web.archive.org/web/20140520224211/https://deadspin.com/which-words-are-used-to-describe-white-and-black-nfl-pr-1573683214"
+      "link": "https://web.archive.org/web/20140520224211/https://deadspin.com/which-words-are-used-to-describe-white-and-black-nfl-pr-1573683214",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "4/30/2014",
       "cat": "made",
       "title": "Feel Old With Our \"How Many Pro Athletes Are Younger Than You?\" Tool",
       "image": "sports-ages.png",
-      "link": "https://web.archive.org/web/20170511125722/https://deadspin.com/feel-old-with-our-how-many-pro-athletes-are-younger-th-1565829499"
+      "link": "https://web.archive.org/web/20170511125722/https://deadspin.com/feel-old-with-our-how-many-pro-athletes-are-younger-th-1565829499",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "4/11/2014",
@@ -1242,7 +1281,9 @@
       "cat": "made",
       "title": "Superbowl: What Time Is the Super Bowl in One Amazing Chart",
       "image": "superbowl-time.png",
-      "link": "https://web.archive.org/web/20140210205555/https://www.gawker.com/what-time-is-the-super-bowl-in-one-amazing-chart-1513231876"
+      "link": "https://web.archive.org/web/20140210205555/https://www.gawker.com/what-time-is-the-super-bowl-in-one-amazing-chart-1513231876",
+      "highlight": "",
+      "hide": "TRUE"
     },
     {
       "date": "1/29/2014",
