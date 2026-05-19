@@ -1,6 +1,21 @@
 {
   "projects": [
     {
+      "date": "3/11/2026",
+      "cat": "made",
+      "title": "Yahoo 100: A real-time snapshot of what the internet is talking about",
+      "image": "y100-trending.png",
+      "link": "https://www.yahoo.com/trending/",
+      "highlight": "TRUE"
+    },
+    {
+      "date": "6/16/2025",
+      "cat": "made",
+      "title": "Yahoo 100: Top Movies",
+      "image": "y100-movies.png",
+      "link": "https://www.yahoo.com/films/best-movies/"
+    },
+    {
       "date": "7/26/2024",
       "cat": "edit",
       "title": "Paris Olympics medal count",
@@ -401,11 +416,11 @@
       "link": "https://www.washingtonpost.com/graphics/2020/business/retirement-planning-bot/"
     },
     {
-      "date": "5/8/2020",
-      "cat": "edit",
-      "title": "The iconic brands that could disappear because of coronavirus",
-      "image": "poor-credit-mall_v2.png",
-      "link": "https://www.washingtonpost.com/business/2020/04/29/which-iconic-brands-could-disappear-because-coronavirus/?arc404=true"
+      "date": "5/10/2020",
+      "cat": "made",
+      "title": "When coronavirus strikes, kids make the news",
+      "image": "kids-newspapers.png",
+      "link": "https://www.washingtonpost.com/graphics/2020/lifestyle/kidspost/kids-newspapers-coronavirus/"
     },
     {
       "date": "5/6/2020",
@@ -444,12 +459,11 @@
       "hide": "TRUE"
     },
     {
-      "date": "11/18/2019",
+      "date": "5/8/2020",
       "cat": "edit",
-      "title": "Which of these 2020 Democrats agrees with you most?",
-      "image": "primary-quiz.png",
-      "link": "https://www.washingtonpost.com/graphics/politics/policy-2020/quiz-which-candidate-agrees-with-me/",
-      "highlight": "TRUE"
+      "title": "The iconic brands that could disappear because of coronavirus",
+      "image": "poor-credit-mall_v2.png",
+      "link": "https://www.washingtonpost.com/business/2020/04/29/which-iconic-brands-could-disappear-because-coronavirus/?arc404=true"
     },
     {
       "date": "11/15/2019",
@@ -470,11 +484,11 @@
       "hide": "TRUE"
     },
     {
-      "date": "8/15/2019",
+      "date": "11/18/2019",
       "cat": "edit",
-      "title": "How 59 Iowans see the 2020 Democratic field",
-      "image": "iowa-circles.jpg",
-      "link": "https://www.washingtonpost.com/graphics/2019/politics/iowa-state-fair-candidate-recognition/",
+      "title": "Which of these 2020 Democrats agrees with you most?",
+      "image": "primary-quiz.png",
+      "link": "https://www.washingtonpost.com/graphics/politics/policy-2020/quiz-which-candidate-agrees-with-me/",
       "highlight": "TRUE"
     },
     {
@@ -496,18 +510,19 @@
       "hide": "TRUE"
     },
     {
+      "date": "8/15/2019",
+      "cat": "edit",
+      "title": "How 59 Iowans see the 2020 Democratic field",
+      "image": "iowa-circles.jpg",
+      "link": "https://www.washingtonpost.com/graphics/2019/politics/iowa-state-fair-candidate-recognition/",
+      "highlight": "TRUE"
+    },
+    {
       "date": "6/21/2019",
       "cat": "edit",
       "title": "The issues 2020 Democrats are running on, according to their social media",
       "image": "priorities-issues_v2.png",
       "link": "https://www.washingtonpost.com/graphics/politics/policy-2020/priorities-issues/"
-    },
-    {
-      "date": "4/18/2019",
-      "cat": "edit",
-      "title": "What's inside the Mueller report",
-      "image": "mueller-report.png",
-      "link": "https://www.washingtonpost.com/graphics/2019/politics/inside-the-mueller-report/"
     },
     {
       "date": "3/14/2019",
@@ -537,18 +552,18 @@
       "hide": "TRUE"
     },
     {
+      "date": "4/18/2019",
+      "cat": "edit",
+      "title": "What's inside the Mueller report",
+      "image": "mueller-report.png",
+      "link": "https://www.washingtonpost.com/graphics/2019/politics/inside-the-mueller-report/"
+    },
+    {
       "date": "12/31/2018",
       "cat": "edit",
       "title": "How did voter turnout in your county compare to the 2016 presidential election?",
       "image": "2018-turnout.png?v2",
       "link": "https://www.washingtonpost.com/graphics/2018/politics/county-turnout/"
-    },
-    {
-      "date": "12/19/2018",
-      "cat": "edit",
-      "title": "How would you narrow the 2020 Democratic field?",
-      "image": "candidate-demographics.png",
-      "link": "https://www.washingtonpost.com/graphics/politics/democratic-2020-contenders-demographics/"
     },
     {
       "date": "11/6/2018",
@@ -587,11 +602,11 @@
       "hide": "TRUE"
     },
     {
-      "date": "8/13/2018",
+      "date": "12/19/2018",
       "cat": "edit",
-      "title": "The many contradictions in Trump’s relationship with Russia",
-      "image": "trump-putin.png",
-      "link": "https://www.washingtonpost.com/graphics/2018/politics/trump-on-russia/"
+      "title": "How would you narrow the 2020 Democratic field?",
+      "image": "candidate-demographics.png",
+      "link": "https://www.washingtonpost.com/graphics/politics/democratic-2020-contenders-demographics/"
     },
     {
       "date": "4/11/2018",
@@ -603,11 +618,12 @@
       "hide": "TRUE"
     },
     {
-      "date": "5/10/2020",
+      "date": "9/24/2018",
       "cat": "made",
-      "title": "When coronavirus strikes, kids make the news",
-      "image": "kids-newspapers.png",
-      "link": "https://www.washingtonpost.com/graphics/2020/lifestyle/kidspost/kids-newspapers-coronavirus/"
+      "title": "This underdog candidate ran in nine Senate primaries and lost them all",
+      "image": "rocky-de-la-fuente.jpg",
+      "link": "https://www.washingtonpost.com/graphics/2018/politics/rocky-de-la-fuente/",
+      "highlight": "TRUE"
     },
     {
       "date": "2/3/2020",
@@ -637,12 +653,11 @@
       "hide": "TRUE"
     },
     {
-      "date": "9/24/2018",
-      "cat": "made",
-      "title": "This underdog candidate ran in nine Senate primaries and lost them all",
-      "image": "rocky-de-la-fuente.jpg",
-      "link": "https://www.washingtonpost.com/graphics/2018/politics/rocky-de-la-fuente/",
-      "highlight": "TRUE"
+      "date": "8/13/2018",
+      "cat": "edit",
+      "title": "The many contradictions in Trump’s relationship with Russia",
+      "image": "trump-putin.png",
+      "link": "https://www.washingtonpost.com/graphics/2018/politics/trump-on-russia/"
     },
     {
       "date": "7/5/2018",
