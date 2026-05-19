@@ -24,8 +24,6 @@ html(lang='en')
           | Fischer-Baum
 
       - showData = _.filter(data.projects, graphic => graphic.hide != 'TRUE');
-      - editData = _.filter(showData, graphic => graphic.cat == 'edit');
-      - madeData = _.filter(showData, graphic => graphic.cat == 'made');
 
       mixin graphicImage(data)
         each graphic in data
@@ -39,66 +37,45 @@ html(lang='en')
                 img.cutout.lazy(data-src="./images/compressed/#{graphic.image}" alt="#{graphic.image.replace('.png', '')}-cutout")
 
 
-      .project-container.edit
+      .project-container
         .intro
           p
-            | I’m the Senior Data Editor on the Data Services team at Yahoo News. I previously worked at  
+            | I’m a Senior Data Editor at 
+            a.orange.bold(href= 'https://www.yahoo.com/author/reuben-fischer-baum/') Yahoo News
+            | . I previously worked at 
             a.orange.bold(href = 'https://www.washingtonpost.com/people/reuben-fischer-baum/') The Washington Post
             | , 
-            a.orange.bold(href = 'http://fivethirtyeight.com/contributors/reuben-fischer-baum/') FiveThirtyEight 
-            | and 
-            a.orange.bold(href = 'https://kinja.com/reubenfb') Deadspin
-            | , and was a 2021-22 
-            a.orange.bold(href = 'https://nieman.harvard.edu/alumni/class-of-2022/') Nieman Fellow
-            |  at Harvard. I teach data visualization at 
-            a.orange.bold(href='https://data-narratives.com/') RISD
+            a.orange.bold(href = 'https://fivethirtyeightindex.com/') FiveThirtyEight
             |  and 
+            a.orange.bold(href = 'https://deadspin.com/author/reubenfb/') Deadspin
+            | , and was a 
+            a.orange.bold(href = 'https://nieman.harvard.edu/alumni/class-of-2022/') 2021-22 Nieman Fellow
+            |  at Harvard. I teach data visualization at 
             a.orange.bold(href='https://data1500.github.io/') Brown
             | , and experiment with 
             a.orange.bold(href = './webcam/studies.html') webcam art
             | .
-         
-          p 
+
+          p
             | See a list of my 
             a.orange.bold(href="./awards.html") awards and talks
-            | , or reach me at reuben.fischerbaum [at] gmail.com. Here are some of the projects I’m most proud of editing.
+            | , or reach me at reuben.fischerbaum [at] gmail.com. Here are some of the projects I’m most proud of building and/or editing.
 
         .four-column.column-container
-          each col in utils.reorderData(editData, 4)
+          each col in utils.reorderData(showData, 4)
             .column
               +graphicImage(col)
         .three-column.column-container
-          each col in utils.reorderData(editData, 3)
+          each col in utils.reorderData(showData, 3)
             .column
               +graphicImage(col)
         .two-column.column-container
-          each col in utils.reorderData(editData, 2)
+          each col in utils.reorderData(showData, 2)
             .column
               +graphicImage(col)
         .one-column.column-container
           .column
-            +graphicImage(editData)
-
-      .project-container.made
-        .intro
-          p Here are some projects I
-            span.bold  made myself
-            | . Most are from 2012 to 2018, before I became an editor. Some are more recent!
-        .four-column.column-container
-          each col in utils.reorderData(madeData, 4)
-            .column
-              +graphicImage(col)
-        .three-column.column-container
-          each col in utils.reorderData(madeData, 3)
-            .column
-              +graphicImage(col)
-        .two-column.column-container
-          each col in utils.reorderData(madeData, 2)
-            .column
-              +graphicImage(col)
-        .one-column.column-container
-          .column
-            +graphicImage(madeData)
+            +graphicImage(showData)
 
       .end
         | &nbsp;
